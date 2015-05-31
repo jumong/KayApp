@@ -1,0 +1,17 @@
+<ion-view>
+  <ion-content>
+    <h3>Application Info</h3>
+
+   <!--  <div class="productType" ng-repeat="product in Applications">
+        <p>{{product.Title}}</p>
+    </div> -->
+
+    <div class="productType pageButtons">
+        <a ng-repeat="product in Applications" ng-click="LoadURL(product.Link)" on-finish-render ng-class="{noImage : hasImage(product)}">
+            <img src="{{product.Image}}" ng-show="{{product.Image.length > 10}}">
+            {{product.Title}}
+        </a>
+    </div>
+
+  </ion-content>
+</ion-view>

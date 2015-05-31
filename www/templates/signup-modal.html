@@ -1,0 +1,60 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="CloseNewAccountWithoutSignup()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+
+  <h3>Please create an account with Kaytech to access this section.</h3>
+
+  	<form novalidate name="NewAccount">
+
+	    <div class="list list-inset">
+
+		  <label class="item item-input">
+		    <input type="text" placeholder="Full Name" ng-model="NewUser.fullname">
+		  </label>
+
+		  <label class="item item-input">
+		    <input type="email" placeholder="Email Address" ng-model="NewUser.emailaddress">
+		  </label>
+
+		  <label class="item item-input">
+		    <input type="password" placeholder="Password" ng-model="NewUser.password">
+		  </label>
+
+		  <label class="item item-input">
+		    <input type="password" placeholder="Confirm password" ng-model="NewUser.confirmPassword">
+		  </label>
+
+		  <label class="item item-input">
+		    <input type="text" placeholder="Company Name" ng-model="NewUser.company">
+		  </label>
+
+		  <label class="item item-input">
+		    <input type="text" placeholder="Contact Number" ng-model="NewUser.contactNumber">
+		  </label>
+
+		  <label class="item item-input">
+		    <input type="text" placeholder="Physical Address" ng-model="NewUser.address">
+		  </label>
+
+		  <label class="item item-input item-select">
+		    <div class="input-label">
+		      Region
+		    </div>
+		    <select ng-options="region for region in Regions" ng-model="NewUser.region">
+		    </select>
+		  </label>
+
+		<button ng-click="CreateUser()" class="button button-block button-balanced">
+		  Submit
+		</button>
+
+		</div>
+
+	</form>
+
+  </ion-content>
+</ion-modal-view>

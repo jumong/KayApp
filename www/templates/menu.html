@@ -1,0 +1,64 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left" enable-menu-with-back-views="false">
+    <ion-header-bar class="bar-stable">
+    </ion-header-bar>
+    <ion-content class="SideMenu">
+      <ion-list>
+
+        <ion-item nav-clear menu-close href="#/app/home">
+          Home
+        </ion-item>
+
+        <ion-item nav-clear menu-close href="#/app/request/order">
+          Order Request
+        </ion-item>
+
+        <ion-item nav-clear menu-close href="#/app/request/technical">
+          Technical Support
+        </ion-item>
+
+        <ion-item nav-clear menu-close href="#/app/request/design">
+          Design Request
+        </ion-item>
+
+        <ion-item nav-clear menu-close href="#/app/request/account">
+          Account Enquiry
+        </ion-item>
+
+        <ion-item nav-clear menu-close href="#/app/productinfo">
+          Product Info
+        </ion-item>
+
+        <ion-item nav-clear menu-close href="#/app/game">
+          bidim Game
+        </ion-item>
+
+        <ion-item nav-clear menu-close href="#/app/media">
+          Media
+        </ion-item>
+
+        <ion-item nav-clear menu-close href="#/app/findus">
+          Find Us
+        </ion-item>
+
+        <ion-item nav-clear menu-close ng-click="OpenWebsite()">
+          Website
+        </ion-item>
+
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

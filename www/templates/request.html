@@ -1,0 +1,117 @@
+<ion-view>
+  <ion-content class="formPage" has-tabs="false" ng-hide="Authorized">
+	<h3>Your account is still being created, please try again soon.</h3>
+  </ion-content>
+  <ion-content class="formPage" has-tabs="false" ng-show="Authorized">
+    <h3>{{Heading}}</h3>
+
+    <div class="dots">
+    	<span ng-class="" ng-click="PopulateForm()"></span>
+    	<span ng-click="ClearForm()"></span>
+    </div>
+
+	<!-- Order/Quote Request Form -->
+    <form novalidate name="OrderQuoteRequest" ng-show="Type == 'order'">
+
+	    <div class="list">
+			
+		  <p class="formTxt">Personal Details</p>
+		  <label class="item item-input">
+		    <input type="text" placeholder="Full Name" ng-model="Request.fullname">
+		  </label>
+
+		  <label class="item item-input">
+		    <input type="email" placeholder="Email Address" ng-model="Request.emailaddress">
+		  </label>
+
+		<p class="formTxt">Company Details</p>
+		  <label class="item item-input">
+		    <input type="text" placeholder="Password" ng-model="Request.company">
+		  </label>
+
+		  <label class="item item-input">
+		    <input type="text" placeholder="Confirm password" ng-model="Request.contactNumber">
+		  </label>
+
+		  <label class="item item-input">
+		    <input type="text" placeholder="Company Name" ng-model="Request.address">
+		  </label>
+
+		  <label class="item item-input item-select">
+		    <div class="input-label">
+		      Region
+		    </div>
+		    <select ng-options="region for region in Regions" ng-model="Request.region">
+		    </select>
+		  </label>
+
+		<p class="formTxt">Request Details</p>
+		  <label class="item item-input item-select">
+		    <div class="input-label">
+		      Request Type
+		    </div>
+		    <select ng-model="Request.type">
+		    	<option>Quote</option>
+		    	<option>Order</option>
+		    </select>
+		  </label>
+
+		  <label class="item item-input">
+		    <input type="text" placeholder="Products/Quantities" ng-model="Request.prodquant">
+		  </label>
+
+		  <label class="item item-input">
+		    <input type="text" placeholder="Project Details" ng-model="Request.details">
+		  </label>
+
+		<button ng-click="SendEnquiry(Request)" type="submit" class="button button-block button-balanced">
+		  Submit
+		</button>
+
+		</div>
+
+	</form>
+
+
+
+
+
+	<!-- Other Requests -->
+	<form novalidate name="StandardRequest" ng-hide="Type == 'order'">
+
+	    <div class="list">
+		
+		<p class="formTxt">Personal Details</p>
+		  <label class="item item-input">
+		    <input type="text" placeholder="Full Name" ng-model="Enquiry.fullname">
+		  </label>
+
+		  <label class="item item-input">
+		    <input type="email" placeholder="Email Address" ng-model="Enquiry.emailaddress">
+		  </label>
+
+		  <label class="item item-input item-select">
+		    <div class="input-label">
+		      Enquiry Type
+		    </div>
+		    <select ng-options="option for option in Options" ng-model="Enquiry.type">
+		    </select>
+		  </label>
+
+		  
+		<p class="formTxt">Comments</p>
+		  <label class="item item-input">
+		    <textarea ng-model="Enquiry.comments"></textarea>
+		  </label>
+
+		<button ng-click="SendEnquiry(Enquiry)" type="submit" class="button button-block button-balanced">
+		  Submit
+		</button>
+
+		</div>
+
+	</form>
+
+
+  </ion-content>
+</ion-view>

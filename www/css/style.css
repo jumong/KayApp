@@ -1,0 +1,294 @@
+/* Empty. Add your own CSS if you like */
+
+html, body, input {
+	font-family: 'Lato', sans-serif;
+}
+
+h1,h2,h3,h4 {
+	font-family: 'Lato', sans-serif;
+	text-align: center;
+}
+
+h3 {
+	font-size: 0.8rem;
+	margin-top: 200px;
+	text-transform: uppercase;
+	color: #555;
+	padding-top: 10px;
+}
+
+.back-button {
+	color: #fff !important;
+}
+
+.gear {
+	position: absolute;
+	right: 15px;
+	top: 25px;
+	color: #fff;
+	font-size: 27px;
+	z-index: 1000000;
+	width: 30px;
+ 	height: 30px;
+}
+
+.bar-header {
+	background: url('../img/kayapp_white-green.png') #063b6f no-repeat center 30px !important;
+	background-size: 150px !important;
+	background-position-x: 10px;
+}
+
+ion-content {
+	/*background: #eee;*/
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.pageButtons {
+	width: 95%;
+	margin: auto;
+}
+
+.button-positive {
+	background: #063b6f !important;
+	border-color: #063b6f !important;
+}
+
+.button-balanced {
+	background: #cad022 !important;
+	border-color: #cad022 !important;
+}
+
+.pageButtons a {
+	float: left;
+	text-align: center;
+	font-family: 'Lato', sans-serif;
+	text-decoration: none;
+	border-radius: 2px;
+	position: relative;
+	margin: 1%;
+}
+
+.homeIcons a {
+	width: 31%;
+	color: #fff;
+	margin: 1%;
+	height: 85px;
+	border-bottom: 3px solid #56bdef;
+	padding-top: 48px;
+	font-size: 0.8em;
+	background: #063b6f;
+}
+
+.homeIcons {
+	margin-top: 6rem;
+}
+
+.homeIcons i {
+	position: absolute;
+	left: 0;
+	top: 17px;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	font-size: 25px;
+}
+
+.findIcons {
+	width: 95%;
+	margin: auto;
+	margin-top: 4rem;
+}
+
+.findIcons a {
+	width: 100%;
+	background: #fff;
+	color: #063b6f;
+	height: 85px;
+	border-bottom: 16px solid #063b6f;
+	padding-top: 28px;
+	font-size: 1.5em;
+	box-shadow: 0px 0px 2px #999;
+}
+
+.productIcons a {
+	width: 48%;
+	background: #fff;
+	color: #fff;
+	height: 85px;
+	border-bottom: 16px solid #063b6f;
+	padding-top: 67px;
+	font-size: 0.9em;
+	box-shadow: 0px 0px 2px #999;
+}
+
+.productIcons {
+	width: 95%;
+	margin: auto;
+	margin-top: 2rem;
+}
+
+.productIcons img {
+	position: absolute;
+	left: 0;
+	top: -3px;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	font-size: 25px;
+	width: 34%;
+}
+
+.productType {
+	width: 95%;
+	margin: auto;
+	margin-top: 2rem;
+}
+
+.productType a {
+	width: 48%;
+	background: #fff;
+	color: #fff;
+	height: 85px;
+	border-radius: 2px;
+	border-bottom: 16px solid #063b6f;
+	padding-top: 67px;
+	font-size: 0.9em;
+	box-shadow: 0px 0px 2px #999;
+}
+
+a.noImage {
+	padding-top: 27px !important;
+	color: #063b6f !important;
+	font-size: 1.3rem;
+}
+
+.productType img {
+	position: absolute;
+	left: 0;
+	top: -3px;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	font-size: 25px;
+	width: 50%;
+}
+
+.mediaLinks {
+	width: 95%;
+	margin: auto;
+	margin-top: 4rem;
+}
+
+.mediaLinks a {
+	width: 48%;
+	background: #fff;
+	color: #fff;
+	height: 85px;
+	border-radius: 2px;
+	font-size: 4em;
+	padding-top: 20px;
+	box-shadow: 0px 0px 2px #999;
+}
+
+.formTxt {
+	margin: 10px 0 3px 10px;
+	text-transform: uppercase;
+	color: #555;
+	font-size: 0.75rem;
+}
+
+.ion-navicon {
+	color: #fff !important;
+}
+
+.SideMenu {
+	background: #063b6f;
+}
+
+.SideMenu .item-content, .SideMenu .item {
+	background: #063b6f;
+	color: #fff;
+}
+
+.SideMenu .item, .SideMenu ion-item {
+	border-color: #022d57;
+}
+
+
+.tabs-positive > .tabs, .tabs.tabs-positive {
+	background: #cad022;
+}
+
+textarea {
+	min-height: 100px;
+}
+
+.formPage {
+	background: #efeff4;
+}
+
+ion-content {
+	bottom: 50px !important;
+}
+
+
+
+
+
+.youTube {
+	color: #bb291e;
+}
+
+.linkedIn {
+	color: #0478ab;
+}
+
+.faceBook {
+	color: #334e96;
+}
+
+.twitter {
+	color: #569ed7;
+}
+
+.pinterest {
+	color: #b23131;
+}
+
+.googlePlus {
+	color: #d1382f;
+}
+
+
+.dots span {
+	width: 11px;
+	height: 11px;
+	background: #ccc;
+	display: inline-block;
+	border-radius: 50%;
+	margin: 0 10px 0 10px;
+}
+
+.dots {
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
