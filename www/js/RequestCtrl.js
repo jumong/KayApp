@@ -2,7 +2,7 @@
 
 
 
-KayApp.controller('RequestCtrl', ['$rootScope','$scope','$stateParams','Local','Request','GetOptions','Regions', 'Enquiry', 'API', '$timeout', '$ionicLoading', '$ionicPopup', '$state', function($rootScope, $scope, $stateParams, Local, Request, GetOptions, Regions, Enquiry, API, $timeout, $ionicLoading, $ionicPopup, $state){
+KayApp.controller('RequestCtrl', ['$rootScope','$scope','$stateParams','Local','Request','GetOptions','Regions', 'Enquiry', 'API', '$timeout', '$ionicLoading', '$ionicPopup', '$state', 'TakePhoto', function($rootScope, $scope, $stateParams, Local, Request, GetOptions, Regions, Enquiry, API, $timeout, $ionicLoading, $ionicPopup, $state, TakePhoto){
 	$scope.Type = $stateParams.type;
 	$scope.Heading;
 	$scope.Regions = Regions.Get();
@@ -24,6 +24,9 @@ KayApp.controller('RequestCtrl', ['$rootScope','$scope','$stateParams','Local','
 
 	$scope.SendEnquiry = function(data) {
 		$scope.Loading();
+		if ($scope.Photo) {
+			data.photo = $scope.Photo;
+		};
 		API.SendRequestEnquiry(data).then(function(response) {
 			if (response.data.success) {
 				$scope.HideLoader();
@@ -79,17 +82,56 @@ KayApp.controller('RequestCtrl', ['$rootScope','$scope','$stateParams','Local','
 	$scope.showAlert = function() {
 		var alertPopup = $ionicPopup.alert({
 			title: 'Thank You!',
-			template: 'We will be in contact soon.'
+			template: 'A representative from Kaytech will be in contact with you shortly. If you require any further assistance please contact us on +27 31 717 2300'
 		});
 		alertPopup.then(function(res) {
-			console.log('Thank you for not eating my delicious ice cream cone');
+			$state.go('app.home');
 		});
 	};
 
 	$scope.CheckLogin('app.request');
 
-	
+	$scope.Remove = function() {
+		$scope.Photo = {};
+		if ($scope.Enquiry.photo) {
+			delete $scope.Enquiry.photo;
+		};
+		if ($scope.Request.photo) {
+			delete $scope.Request.photo;
+		};
+	}
 
+	
+	$scope.ChooseSourceAndTakePhoto = function() {
+	  $scope.Photo = {};
+
+	  var myPopup = $ionicPopup.show({
+	    title: 'Attach new picture from..',
+	    scope: $scope,
+	    buttons: [
+	      {
+	        text: '<b>Camera</b>',
+	        type: 'button-positive',
+	        onTap: function(e) {
+	          $scope.FromCam = 1;
+	        }
+	      },
+	      {
+	        text: '<b>Photo Library</b>',
+	        type: 'button-positive',
+	        onTap: function(e) {
+	          $scope.FromCam = 0;
+	        }
+	      }
+
+	    ]
+	  });
+	  myPopup.then(function(res) {
+	    TakePhoto($scope.FromCam, $scope.Photo);
+	  });
+	 };
+
+	 // $scope.ChooseSourceAndTakePhoto();
 	
 
 	

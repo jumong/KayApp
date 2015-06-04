@@ -1,6 +1,43 @@
 
 angular.module('starter.services', [])
 
+.factory('TakePhoto', function($cordovaCamera, $ionicPlatform){
+	return function(fromCam, photo){
+
+
+		try {
+
+			$ionicPlatform.ready(function() {
+
+	  			var options = {
+			      quality: 75,
+			      destinationType: Camera.DestinationType.DATA_URL,
+			      sourceType: fromCam,
+			      allowEdit: true,
+			      encodingType: Camera.EncodingType.JPEG,
+			      targetWidth: 500,
+			      targetHeight: 500,
+			      popoverOptions: CameraPopoverOptions,
+			      saveToPhotoAlbum: true
+			    };
+			  
+
+		  		$cordovaCamera.getPicture(options).then(function(imageData) {
+			      photo.src = "data:image/jpeg;base64," + imageData;
+			      photo.date = new Date();
+			    }, function(err) {
+			      console.log(err);
+			    });
+			}); // End Platform Ready
+
+
+		} catch (err) {
+  			alert(err);
+  		}
+
+	};
+})
+
 .factory('Local', function(APIPath, $http){
 	return {
 		StoreLogin : function(user) {
@@ -24,6 +61,25 @@ angular.module('starter.services', [])
 			var temp = JSON.parse(localStorage.KayApp);
 			temp.LoggedIn = val;
 			localStorage.KayApp = JSON.stringify(temp);
+		},
+		StorePushDetails : function(udid) {
+			var temp;
+			if (!localStorage.KayApp) {
+				localStorage.KayApp = '{}';
+			}
+			temp = JSON.parse(localStorage.KayApp);
+			temp.PushEnabled = {
+				status : true,
+				id : udid
+			}
+			localStorage.KayApp = JSON.stringify(temp);
+		},
+		HasPushEnabled : function() {
+			if (localStorage.KayApp && JSON.parse(localStorage.KayApp).PushEnabled) {
+				return JSON.parse(localStorage.KayApp).PushEnabled.status;
+			} else {
+				return false;
+			}
 		}
 	};
 })
@@ -46,9 +102,6 @@ angular.module('starter.services', [])
 			return $http.post(APIPath + 'products');
 		},
 		SendRequestEnquiry : function(data) {
-			// return $http.post(APIPath + 'enquiryRequest');
-			// return true;
-
 			$http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode(Local.GetLogin().User.emailaddress + ':' + Local.GetLogin().User.password);
 
 		    return $http(
@@ -61,6 +114,18 @@ angular.module('starter.services', [])
 		},
 		CheckAuthorized : function() {
 			return $http.post(APIPath + 'checkAuth?email='+Local.GetLogin().User.emailaddress);
+		},
+		StoreTokenForPush : function(token) {
+			var payload = {
+				token : token
+			}
+			return $http(
+		        {
+		          method : 'POST',
+		          url : APIPath + 'storeToken',
+		          data : payload,
+		          headers : {'Content-Type': 'application/json'}
+		        });
 		}
 	};
 })

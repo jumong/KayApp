@@ -82,6 +82,11 @@ ion-content {
 	background: #063b6f;
 }
 
+.homeIcons a.activated {
+	background: #cad022;
+	border-bottom: 3px solid #cad022;
+}
+
 .homeIcons {
 	margin-top: 6rem;
 }
@@ -277,11 +282,42 @@ ion-content {
 }
 
 
+.cam {
+	/*width: 20%;*/
+	margin-top: 10px;
+	margin-left: 3px;
+}
 
+.nextToCam {
+	display: inline;
+	width: 80%;
+	margin-top: 10px;
+}
 
+.blockBtn {
+	display: block !important;
+	width: 100% !important;
+}
 
+.caps {
+	text-transform: capitalize;
+}
 
+.largeTitle {
+	position: absolute;
+	color: #ccc;
+	top: 26px;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+	color: #063b6f !important;
+	font-size: 1.3rem;
+}
 
+.caseStudy {
+	width: 40% !important;
+}
 
 
 

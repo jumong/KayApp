@@ -46,7 +46,6 @@ KayApp.controller('ProductCtrl', function($scope, $stateParams, $http, API, $ion
 		}); //End Each
 
 		$scope.Applications = $scope.ProductApplications[$scope.Type];
-
 	});
 
 	$scope.$on('ngRepeatFinished', function() {

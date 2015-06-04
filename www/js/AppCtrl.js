@@ -1,8 +1,33 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function(Regions, $scope, $ionicModal, $timeout, $state, $ionicPopup, Local, API, $rootScope, User, $ionicSideMenuDelegate, $cordovaInAppBrowser, $ionicLoading) {
+.controller('AppCtrl', function(Regions, $scope, $ionicModal, $timeout, $state, $ionicPopup, Local, API, $rootScope, User, $ionicSideMenuDelegate, $cordovaInAppBrowser, $ionicLoading, $ionicUser, $ionicPush) {
 
   $scope.loginData = {};
+
+  if (!Local.HasPushEnabled()) {
+
+      $ionicUser.identify({
+          // Generate GUID
+          user_id: $ionicUser.generateGUID()
+        }).then(function(res) {
+
+          $ionicPush.register({
+            canShowAlert: true, //Should new pushes show an alert on your screen?
+            canSetBadge: true, //Should new pushes be allowed to update app icon badges?
+            canPlaySound: true, //Should notifications be allowed to play a sound?
+            canRunActionsOnWake: true, // Whether to run auto actions outside the app,
+            onNotification: function(notification) {
+              $scope.lastNotification = JSON.stringify(notification);
+            }
+          }).then(function(res) {
+            Local.StorePushDetails(res);
+            API.StoreTokenForPush(res).then(function(response) {
+              localStorage.KayA
+            });
+          });
+      });
+  };
+
 
   $scope.$watch(function() { 
     // console.log(!$ionicSideMenuDelegate.isOpen());
@@ -55,6 +80,16 @@ angular.module('starter.controllers', [])
         Local.StoreLogin($scope.NewUser);
         $scope.CloseNewAccount();
         $state.go('app.home');
+
+        var alertPopup = $ionicPopup.alert({
+          title: 'Thank You!',
+          template: 'Your registration details are being verfied. You will receive an email notifying you when your KayApp user has been activated. Should not receive this notification within 24 hours please contact our offices on +27 31 717 2300'
+        });
+        alertPopup.then(function(res) {
+          $state.go('app.home');
+        });
+
+
       } else {
         alert('Something went wrong, please try again.');
       }
@@ -66,34 +101,6 @@ angular.module('starter.controllers', [])
 
   $scope.showPopup = function() {
     $scope.user = {}
-
-    // An elaborate, custom popup
-    // var myPopup = $ionicPopup.show({
-    //   template: '<input type="username" ng-model="user.username"><input type="password" ng-model="user.password">',
-    //   title: 'Please sign in',
-    //   scope: $scope,
-    //   buttons: [
-    //     { text: 'Cancel' },
-    //     {
-    //       text: '<b>Ok</b>',
-    //       type: 'button-positive',
-    //       onTap: function(e) {
-    //         if (!$scope.user) {
-    //           e.preventDefault();
-    //         } else {
-    //           return $scope.user;
-    //         }
-    //       }
-    //     }
-    //   ]
-    // });
-    // myPopup.then(function(res) {
-    //   if (res == undefined) {
-    //     $scope.GoTo('app.home');
-    //   };
-    //   Local.StoreLogin(res);
-    //   myPopup.close();
-    // });
 
       var alertPopup = $ionicPopup.alert({
         title: 'Sorry!',
@@ -119,17 +126,59 @@ angular.module('starter.controllers', [])
 
 
    //In App Browser
-   $rootScope.LoadURL = function(url) {
+   $rootScope.LoadURL = function(url, type) {
       var options = {
           location: 'no',
           clearcache: 'yes',
           toolbar: 'yes'
         };
 
+        var StringCheck;
+
+        if (type) {
+          switch(type){
+            case 'diy':
+              StringCheck = 'DIY'
+              break;
+            case 'filtration-and-drainage':
+              StringCheck = 'Filtration'
+              break;
+            case 'erosion-control' :
+              StringCheck = 'Erosion'
+              break;
+            case 'hydraulic-construction' :
+              StringCheck = 'Hydraulic'
+              break;
+            case 'other' :
+              StringCheck = 'Other'
+              break;
+            case 'reinforcement-separation' :
+              StringCheck = 'Reinforcement'
+              break;
+            case 'road-maintenance-rehabilitation' :
+              StringCheck = 'Road Maintenance'
+              break;
+            case 'water-and-waste-containment' :
+              StringCheck = 'Waste Containment'
+              break;
+            default:
+              StringCheck = 'Waste Containment'
+              break;
+          }
+        };
+
         $rootScope.$on('$cordovaInAppBrowser:loadstop', function(e, event){
           $cordovaInAppBrowser.insertCSS({
-            code: '.headerCenter, #sidebar, #topBar, #main-menu, .mainFooter {display: none !important;}'
+            code: '.headerCenter, #sidebar, #topBar, #main-menu, .mainFooter, .kayAppBox {display: none !important;}'
           });
+
+          // Filter the Case Studies
+          if (type) {
+            $cordovaInAppBrowser.executeScript({
+              code: '$(".case-studies").hide(); $( "h2:contains('+StringCheck+')" ).parent().parent().show()'
+            });
+          };
+
       });
 
         $cordovaInAppBrowser.open(url, '_blank', options)

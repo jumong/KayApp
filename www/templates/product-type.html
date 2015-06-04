@@ -2,15 +2,22 @@
   <ion-content>
     <h3>Application Info</h3>
 
-   <!--  <div class="productType" ng-repeat="product in Applications">
-        <p>{{product.Title}}</p>
-    </div> -->
+    <!-- ng-class="{noImage : hasImage(product)}" -->
 
     <div class="productType pageButtons">
-        <a ng-repeat="product in Applications" ng-click="LoadURL(product.Link)" on-finish-render ng-class="{noImage : hasImage(product)}">
+
+        <a ng-click="LoadURL('http://kaytech.co.za/case-studies/', Type)">
+            <img src="img/CaseStudy.png" class="caseStudy">
+            Case Studies
+            <!-- <span class="largeTitle">Case Studies</span> -->
+        </a>
+
+        <a ng-repeat="product in Applications" ng-click="LoadURL(product.Link)" on-finish-render>
             <img src="{{product.Image}}" ng-show="{{product.Image.length > 10}}">
             {{product.Title}}
+            <span ng-show="hasImage(product)" class="largeTitle">{{product.Title}}</span>
         </a>
+
     </div>
 
   </ion-content>

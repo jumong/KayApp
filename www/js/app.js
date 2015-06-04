@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-var KayApp = angular.module('starter', ['ionic', 'starter.controllers','starter.services','ngCordova'])
+var KayApp = angular.module('starter', ['ionic', 'starter.controllers','starter.services','ngCordova','ionic.service.core','ionic.service.push'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -21,8 +21,19 @@ var KayApp = angular.module('starter', ['ionic', 'starter.controllers','starter.
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $ionicAppProvider) {
   // $ionicConfigProvider.views.swipeBackEnabled(false);
+
+  $ionicAppProvider.identify({
+    // The App ID for the server
+    app_id: '38b920ae',
+    // The API key all services will use for this app
+    api_key: '9ad2c0b82a870b2d425434eab632c924a2df23e31b76f229'
+    // Your GCM sender ID/project number (Uncomment if using GCM)
+    //gcm_id: 'YOUR_GCM_ID'
+  });
+
+  $ionicConfigProvider.tabs.position('bottom');
 
   $stateProvider
 

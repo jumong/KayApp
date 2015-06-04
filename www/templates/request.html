@@ -17,7 +17,7 @@
 			
 		  <p class="formTxt">Personal Details</p>
 		  <label class="item item-input">
-		    <input type="text" placeholder="Full Name" ng-model="Request.fullname">
+		    <input type="text" class="caps" placeholder="Full Name" ng-model="Request.fullname">
 		  </label>
 
 		  <label class="item item-input">
@@ -64,7 +64,21 @@
 		    <input type="text" placeholder="Project Details" ng-model="Request.details">
 		  </label>
 
-		<button ng-click="SendEnquiry(Request)" type="submit" class="button button-block button-balanced">
+		<div class="list" ng-show="Photo.src">
+		    <a class="item item-thumbnail-left" href="#">
+				<img src="{{Photo.src}}">
+				<h2>{{Photo.date  | date:'medium'}}</h2>
+				<button class="button button-small button-assertive" ng-click="Remove(Photo)">
+					<i class="icon ion-ios-close-empty"></i> Remove
+				</button>
+		    </a>
+		</div>
+
+		<button class="button button-positive cam" ng-click="ChooseSourceAndTakePhoto()" ng-hide="Photo.src">
+		  <i class="icon ion-camera cam"></i>
+		</button>
+
+		<button ng-click="SendEnquiry(Request)" type="submit" class="button nextToCam button-balanced" ng-class="{blockBtn : Photo.src}">
 		  Submit
 		</button>
 
@@ -83,7 +97,7 @@
 		
 		<p class="formTxt">Personal Details</p>
 		  <label class="item item-input">
-		    <input type="text" placeholder="Full Name" ng-model="Enquiry.fullname">
+		    <input type="text" class="caps" placeholder="Full Name" ng-model="Enquiry.fullname">
 		  </label>
 
 		  <label class="item item-input">
@@ -104,13 +118,29 @@
 		    <textarea ng-model="Enquiry.comments"></textarea>
 		  </label>
 
-		<button ng-click="SendEnquiry(Enquiry)" type="submit" class="button button-block button-balanced">
+		<div class="list" ng-show="Photo.src">
+		    <a class="item item-thumbnail-left" href="#">
+				<img src="{{Photo.src}}">
+				<h2>{{Photo.date  | date:'medium'}}</h2>
+				<button class="button button-small button-assertive" ng-click="Remove(Photo)">
+					<i class="icon ion-ios-close-empty"></i> Remove
+				</button>
+		    </a>
+		</div>
+
+		<button class="button button-positive cam" ng-click="ChooseSourceAndTakePhoto()" ng-hide="Photo.src">
+		  <i class="icon ion-camera cam"></i>
+		</button>
+
+		<button ng-click="SendEnquiry(Enquiry)" type="submit" class="button nextToCam button-balanced" ng-class="{blockBtn : Photo.src}">
 		  Submit
 		</button>
 
 		</div>
 
 	</form>
+
+	
 
 
   </ion-content>
