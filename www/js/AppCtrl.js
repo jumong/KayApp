@@ -22,7 +22,7 @@ angular.module('starter.controllers', [])
           }).then(function(res) {
             Local.StorePushDetails(res);
             API.StoreTokenForPush(res).then(function(response) {
-              localStorage.KayA
+              
             });
           });
       });

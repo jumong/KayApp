@@ -131,7 +131,8 @@ angular.module('starter.services', [])
 })
 
 .factory('APIPath', function(){
-	return 'http://192.168.1.101:5000/api/';
+	// return 'http://192.168.1.101:5000/api/';
+	return 'http://10.1.50.23:5000/api/';
 	// return 'http://10.1.50.18:5000/api/'
 })
 
