@@ -104,7 +104,7 @@ angular.module('starter.services', [])
 		},
 		SendRequestEnquiry : function(data) {
 			$http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode(Local.GetLogin().User.emailaddress + ':' + Local.GetLogin().User.password);
-
+			data.region = JSON.parse(localStorage.KayApp).User.region;
 		    return $http(
 		        {
 		          method : 'POST',
@@ -131,9 +131,8 @@ angular.module('starter.services', [])
 	};
 })
 
-.factory('APIPath', function(){
-	// return 'http://192.168.1.101:5000/api/';
-	// return 'http://10.1.50.23:5000/api/';
+.factory('APIPath', function() {
+	// return 'http://192.168.1.103:5001/api/';
 	return 'http://Kayappapi.kaymac.co.za/api/';
 	// return 'http://10.1.50.18:5000/api/'
 })
