@@ -35,13 +35,13 @@ angular.module('starter.controllers', [])
   })
 
   $rootScope.Settings = function() {
-    $scope.settings.show();
+    $rootScope.settings.show();
   }
 
   $ionicModal.fromTemplateUrl('templates/settings-modal.html', {
     scope: $scope
   }).then(function(modal) {
-    $scope.settings = modal;
+    $rootScope.settings = modal;
   });
 
   $ionicModal.fromTemplateUrl('templates/signup-modal.html', {
@@ -68,6 +68,10 @@ angular.module('starter.controllers', [])
     $scope.settings.hide();
   };
 
+  $rootScope.CloseSettings = function() {
+    $rootScope.settings.hide();
+  }
+
   $rootScope.GoTo = function(url, param) {
     $state.go(url, param);
   }
@@ -75,6 +79,7 @@ angular.module('starter.controllers', [])
   $scope.Regions = Regions.Get();
 
   $scope.CreateUser = function() {
+    $rootScope.Loading();
     API.CreateUser($scope.NewUser).then(function(data) {
       if (data.data.success) {
         Local.StoreLogin($scope.NewUser);
@@ -93,7 +98,7 @@ angular.module('starter.controllers', [])
       } else {
         alert('Something went wrong, please try again.');
       }
-      
+      $rootScope.HideLoader();
     });
   }
 

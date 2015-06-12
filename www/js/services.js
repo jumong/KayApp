@@ -64,27 +64,42 @@ angular.module('starter.services', [])
 		},
 		StorePushDetails : function(udid) {
 			var temp;
-			if (!localStorage.KayApp) {
-				localStorage.KayApp = '{}';
+			if (!localStorage.KayAppUDID) {
+				localStorage.KayAppUDID = '{}';
 			}
-			temp = JSON.parse(localStorage.KayApp);
+			temp = JSON.parse(localStorage.KayAppUDID);
+			temp.LoggedIn = false;
 			temp.PushEnabled = {
 				status : true,
 				id : udid
 			}
-			localStorage.KayApp = JSON.stringify(temp);
+			localStorage.KayAppUDID = JSON.stringify(temp);
 		},
 		HasPushEnabled : function() {
-			if (localStorage.KayApp && JSON.parse(localStorage.KayApp).PushEnabled) {
-				return JSON.parse(localStorage.KayApp).PushEnabled.status;
+			if (localStorage.KayAppUDID && JSON.parse(localStorage.KayAppUDID).PushEnabled) {
+				return JSON.parse(localStorage.KayAppUDID).PushEnabled.status;
 			} else {
 				return false;
 			}
+		},
+		StoreActivity : function(activity) {
+			var temp;
+			if (!localStorage.KayAppActivities) {
+				localStorage.KayAppActivities = '[]';
+			};
+			temp = JSON.parse(localStorage.KayAppActivities);
+			temp.push(activity);
+			localStorage.KayAppActivities = JSON.stringify(temp);
+		},
+		GetActivities : function() {
+			if (localStorage.KayAppActivities) {
+				return JSON.parse(localStorage.KayAppActivities);
+			};
 		}
 	};
 })
 
-.factory('API', function(APIPath, $http, Base64, Local){
+.factory('API', function(APIPath, $http, Base64, Local, APIKey){
 	return {
 		CreateUser : function(user) {
 			return $http.post(APIPath + 'users?'
@@ -96,15 +111,17 @@ angular.module('starter.services', [])
 				+'&contactNumber='+ user.contactNumber
 				+'&address='+ user.address
 				+'&region='+ user.region
-				+'&APIKEY=913we766wykg'
+				+'&APIKEY='+ APIKey
 				)
 		},
 		GetProducts : function() {
-			return $http.post(APIPath + 'products');
+			return $http.get(APIPath + 'products');
 		},
 		SendRequestEnquiry : function(data) {
 			$http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode(Local.GetLogin().User.emailaddress + ':' + Local.GetLogin().User.password);
 			data.region = JSON.parse(localStorage.KayApp).User.region;
+			data.date = new Date().toDateString();
+			Local.StoreActivity(data);
 		    return $http(
 		        {
 		          method : 'POST',
@@ -127,14 +144,29 @@ angular.module('starter.services', [])
 		          data : payload,
 		          headers : {'Content-Type': 'application/json'}
 		        });
+		},
+		UpdateUser : function(user) {
+			$http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode(Local.GetLogin().User.emailaddress + ':' + Local.GetLogin().User.password);
+			user.APIKEY = APIKey;
+			return $http({
+				method : 'POST',
+				url : APIPath + 'users/update',
+				data : user,
+				headers : {'Content-Type' : 'application/json'}
+			});
 		}
 	};
 })
 
 .factory('APIPath', function() {
 	// return 'http://192.168.1.103:5001/api/';
-	return 'http://Kayappapi.kaymac.co.za/api/';
+	// return 'http://Kayappapi.kaymac.co.za/api/';
+	return 'http://kayappapi.azurewebsites.net/api/';
 	// return 'http://10.1.50.18:5000/api/'
+})
+
+.factory('APIKey', function(){
+	return '913we766wykg';
 })
 
 .factory('Regions', function(){

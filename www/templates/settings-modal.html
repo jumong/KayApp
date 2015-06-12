@@ -1,14 +1,28 @@
 <ion-modal-view>
   <ion-header-bar>
     <div class="buttons">
-      <button class="button button-clear" ng-click="closeLogin()">Close</button>
+      <button class="button button-clear" ng-click="CloseSettings()">Close</button>
     </div>
   </ion-header-bar>
-  <ion-content ng-class="formPage">
+  <ion-content ng-class="formPage" ng-controller="SettingsCtrl">
 
-    <h3>Settings</h3>
+    <h3>Logged in as {{User.fullname}}</h3>
 
     <ul class="list">
+
+    <li class="item" ng-click="GoUrl('app.profile')">
+      Profile
+    </li>
+
+    <li class="item" ng-click="GoUrl('app.activity')">
+      Activity
+    </li>
+
+    <li class="item">
+      Logout
+    </li>
+
+    <h4>Settings</h4>
 
 	  <li class="item item-toggle">
 	     Setting

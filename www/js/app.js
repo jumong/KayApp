@@ -119,6 +119,30 @@ var KayApp = angular.module('starter', ['ionic', 'starter.controllers','starter.
     }
   })
 
+  // SETTINGS CONTROLLER
+
+  .state('app.profile', {
+    url: "/profile",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/profile.html",
+        controller: 'SettingsCtrl'
+      }
+    }
+  })
+
+  // ACTIVITY
+
+  .state('app.activity', {
+    url: "/activity",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/activity.html",
+        controller: 'SettingsCtrl'
+      }
+    }
+  })
+
   // FIND US CONTROLLER
 
   .state('app.findus', {

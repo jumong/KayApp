@@ -1,0 +1,17 @@
+<ion-view>
+  <ion-content>
+    <h3>Activity Record</h3>
+
+    <div class="list">
+
+	   <a class="item item-avatar" href="#" ng-repeat="activity in Activities">
+	      <img src="{{activity.photo.src}}">
+	      <h2 style="text-align: left">{{activity.type}}</h2>
+	      <p>{{activity.comments}} <span>{{activity.date}}</span></p>
+	    </a>
+
+	</div>
+
+
+  </ion-content>
+</ion-view>
