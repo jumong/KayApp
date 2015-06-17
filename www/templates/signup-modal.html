@@ -13,32 +13,60 @@
 	    <div class="list list-inset">
 
 		  <label class="item item-input">
-		    <input type="text" class="caps" placeholder="Full Name" ng-model="NewUser.fullname">
+		    <input type="text" class="caps" placeholder="Full Name" name="FullName" ng-model="NewUser.fullname" required="">
 		  </label>
 
-		  <label class="item item-input">
-		    <input type="email" placeholder="Email Address" ng-model="NewUser.emailaddress">
-		  </label>
+			<div ng-show="NewAccount.$submitted || NewAccount.FullName.$touched">
+				<span class="err" ng-show="NewAccount.FullName.$error.required">Please provide your name.</span>
+			</div>
 
 		  <label class="item item-input">
-		    <input type="password" placeholder="Password" ng-model="NewUser.password">
+		    <input type="email" placeholder="Email Address" name="EmailAddress" ng-model="NewUser.emailaddress" required="">
 		  </label>
 
-		  <label class="item item-input">
-		    <input type="password" placeholder="Confirm password" ng-model="NewUser.confirmPassword">
-		  </label>
+		  	<div ng-show="NewAccount.$submitted || NewAccount.EmailAddress.$touched">
+				<span class="err" ng-show="NewAccount.EmailAddress.$error.required">Please provide your email.</span>
+			</div>
 
 		  <label class="item item-input">
-		    <input type="text" placeholder="Company Name" ng-model="NewUser.company">
+		    <input type="password" placeholder="Password" name="Password" ng-model="NewUser.password" required="">
 		  </label>
 
-		  <label class="item item-input">
-		    <input type="text" placeholder="Contact Number" ng-model="NewUser.contactNumber">
-		  </label>
+		  	<div ng-show="NewAccount.$submitted || NewAccount.Password.$touched">
+				<span class="err" ng-show="NewAccount.Password.$error.required">Please provide your password.</span>
+			</div>
 
 		  <label class="item item-input">
-		    <input type="text" placeholder="Physical Address" ng-model="NewUser.address">
+		    <input type="password" placeholder="Confirm password" name="ConfirmPassword" ng-model="NewUser.confirmPassword" required="">
 		  </label>
+
+		  	<div ng-show="NewAccount.$submitted || NewAccount.ConfirmPassword.$touched">
+				<span class="err" ng-show="NewAccount.ConfirmPassword.$error.required">Please confirm your password.</span>
+			</div>
+
+		  <label class="item item-input">
+		    <input type="text" placeholder="Company Name" name="Company" ng-model="NewUser.company" required="">
+		  </label>
+
+		  	<div ng-show="NewAccount.$submitted || NewAccount.Company.$touched">
+				<span class="err" ng-show="NewAccount.Company.$error.required">Please provide your company name.</span>
+			</div>
+
+		  <label class="item item-input">
+		    <input type="text" placeholder="Contact Number" name="ContactNumber" ng-model="NewUser.contactNumber" required="">
+		  </label>
+
+		  	<div ng-show="NewAccount.$submitted || NewAccount.ContactNumber.$touched">
+				<span class="err" ng-show="NewAccount.ContactNumber.$error.required">Please provide your contact number.</span>
+			</div>
+
+		  <label class="item item-input">
+		    <input type="text" placeholder="Physical Address" name="Address" ng-model="NewUser.address" required="">
+		  </label>
+
+		  	<div ng-show="NewAccount.$submitted || NewAccount.Address.$touched">
+				<span class="err" ng-show="NewAccount.Address.$error.required">Please provide your address.</span>
+			</div>
 
 		  <label class="item item-input item-select">
 		    <div class="input-label">
@@ -48,7 +76,7 @@
 		    </select>
 		  </label>
 
-		<button ng-click="CreateUser()" class="button button-block button-balanced">
+		<button ng-click="CreateUser()" class="button button-block button-balanced" ng-show="NewAccount.$valid">
 		  Submit
 		</button>
 

@@ -2,13 +2,13 @@
   <ion-content class="formPage" has-tabs="false" ng-hide="Authorized">
 	<h3>Your account is still being created, please try again soon.</h3>
   </ion-content>
-  <ion-content class="formPage" has-tabs="false" ng-show="Authorized">
+  <ion-content class="formPage" has-tabs="false" ng-show="Authorized" on-swipe-left="ClearForm()" on-swipe-right="PopulateForm()">
     <h3>{{Heading}}</h3>
 
-    <div class="dots">
+    <!-- <div class="dots">
     	<span ng-class="" ng-click="PopulateForm()"></span>
     	<span ng-click="ClearForm()"></span>
-    </div>
+    </div> -->
 
 	<!-- Order/Quote Request Form -->
     <form novalidate name="OrderQuoteRequest" ng-show="Type == 'order'">
@@ -17,25 +17,45 @@
 			
 		  <p class="formTxt">Personal Details</p>
 		  <label class="item item-input">
-		    <input type="text" class="caps" placeholder="Full Name" ng-model="Request.fullname">
+		    <input type="text" class="caps" placeholder="Full Name" name="FullName" ng-model="Request.fullname" required="">
 		  </label>
 
+		  	<div ng-show="OrderQuoteRequest.$submitted || OrderQuoteRequest.FullName.$touched">
+				<span class="err" ng-show="OrderQuoteRequest.FullName.$error.required">Please provide your name.</span>
+			</div>
+
 		  <label class="item item-input">
-		    <input type="email" placeholder="Email Address" ng-model="Request.emailaddress">
+		    <input type="email" placeholder="Email Address" name="EmailAddress" ng-model="Request.emailaddress" required="">
 		  </label>
+
+		  	<div ng-show="OrderQuoteRequest.$submitted || OrderQuoteRequest.EmailAddress.$touched">
+				<span class="err" ng-show="OrderQuoteRequest.EmailAddress.$error.required">Please provide your email.</span>
+			</div>
 
 		<p class="formTxt">Company Details</p>
 		  <label class="item item-input">
-		    <input type="text" placeholder="Password" ng-model="Request.company">
+		    <input type="text" placeholder="Company Name" name="Company" ng-model="Request.company" required="">
 		  </label>
 
-		  <label class="item item-input">
-		    <input type="text" placeholder="Confirm password" ng-model="Request.contactNumber">
-		  </label>
+		  	<div ng-show="OrderQuoteRequest.$submitted || OrderQuoteRequest.Company.$touched">
+				<span class="err" ng-show="OrderQuoteRequest.Company.$error.required">Please provide your company name.</span>
+			</div>
 
 		  <label class="item item-input">
-		    <input type="text" placeholder="Company Name" ng-model="Request.address">
+		    <input type="text" placeholder="Contact Number" name="ContactNumber" ng-model="Request.contactNumber" required="">
 		  </label>
+
+		  	<div ng-show="OrderQuoteRequest.$submitted || OrderQuoteRequest.ContactNumber.$touched">
+				<span class="err" ng-show="OrderQuoteRequest.ContactNumber.$error.required">Please provide your contact number.</span>
+			</div>
+
+		  <label class="item item-input">
+		    <input type="text" placeholder="Address" name="Address" ng-model="Request.address" required="">
+		  </label>
+
+		  	<div ng-show="OrderQuoteRequest.$submitted || OrderQuoteRequest.Address.$touched">
+				<span class="err" ng-show="OrderQuoteRequest.Address.$error.required">Please provide your address.</span>
+			</div>
 
 		  <label class="item item-input item-select">
 		    <div class="input-label">
@@ -57,8 +77,12 @@
 		  </label>
 
 		  <label class="item item-input">
-		    <input type="text" placeholder="Products/Quantities" ng-model="Request.prodquant">
+		    <input type="text" placeholder="Products/Quantities" name="ProductsQuantities" ng-model="Request.prodquant" required="">
 		  </label>
+
+		  	<div ng-show="OrderQuoteRequest.$submitted || OrderQuoteRequest.ProductsQuantities.$touched">
+				<span class="err" ng-show="OrderQuoteRequest.ProductsQuantities.$error.required">Please provide some more information.</span>
+			</div>
 
 		  <label class="item item-input">
 		    <input type="text" placeholder="Project Details" ng-model="Request.details">
@@ -78,7 +102,7 @@
 		  <i class="icon ion-camera cam"></i>
 		</button>
 
-		<button ng-click="SendEnquiry(Request)" type="submit" class="button nextToCam button-balanced" ng-class="{blockBtn : Photo.src}">
+		<button ng-click="SendEnquiry(Request)" ng-show="OrderQuoteRequest.$valid" type="submit" class="button nextToCam button-balanced" ng-class="{blockBtn : Photo.src}">
 		  Submit
 		</button>
 
@@ -97,26 +121,42 @@
 		
 		<p class="formTxt">Personal Details</p>
 		  <label class="item item-input">
-		    <input type="text" class="caps" placeholder="Full Name" ng-model="Enquiry.fullname">
+		    <input type="text" class="caps" placeholder="Full Name" name="FullName" ng-model="Enquiry.fullname" required="">
 		  </label>
 
+		  	<div ng-show="StandardRequest.$submitted || StandardRequest.FullName.$touched">
+				<span class="err" ng-show="StandardRequest.FullName.$error.required">Please provide your name.</span>
+			</div>
+
 		  <label class="item item-input">
-		    <input type="email" placeholder="Email Address" ng-model="Enquiry.emailaddress">
+		    <input type="email" placeholder="Email Address" name="EmailAddress" ng-model="Enquiry.emailaddress" required="">
 		  </label>
+
+		  	<div ng-show="StandardRequest.$submitted || StandardRequest.EmailAddress.$touched">
+				<span class="err" ng-show="StandardRequest.EmailAddress.$error.required">Please provide your email.</span>
+			</div>
 
 		  <label class="item item-input item-select">
 		    <div class="input-label">
 		      Enquiry Type
 		    </div>
-		    <select ng-options="option for option in Options" ng-model="Enquiry.type">
+		    <select ng-options="option for option in Options" ng-model="Enquiry.type" name="EnquiryType" required="">
 		    </select>
 		  </label>
+
+		  	<div ng-show="StandardRequest.$submitted || StandardRequest.EnquiryType.$touched">
+				<span class="err" ng-show="StandardRequest.EnquiryType.$error.required">Please select enquiry type.</span>
+			</div>
 
 		  
 		<p class="formTxt">Comments</p>
 		  <label class="item item-input">
-		    <textarea ng-model="Enquiry.comments"></textarea>
+		    <textarea ng-model="Enquiry.comments" name="EnquiryDetails" required=""></textarea>
 		  </label>
+
+		  	<div ng-show="StandardRequest.$submitted || StandardRequest.EnquiryDetails.$touched">
+				<span class="err" ng-show="StandardRequest.EnquiryDetails.$error.required">Please provide some more information.</span>
+			</div>
 
 		<div class="list" ng-show="Photo.src">
 		    <a class="item item-thumbnail-left" href="#">
@@ -132,7 +172,7 @@
 		  <i class="icon ion-camera cam"></i>
 		</button>
 
-		<button ng-click="SendEnquiry(Enquiry)" type="submit" class="button nextToCam button-balanced" ng-class="{blockBtn : Photo.src}">
+		<button ng-click="SendEnquiry(Enquiry)" ng-show="StandardRequest.$valid" type="submit" class="button nextToCam button-balanced" ng-class="{blockBtn : Photo.src}">
 		  Submit
 		</button>
 

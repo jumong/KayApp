@@ -79,6 +79,12 @@ angular.module('starter.controllers', [])
   $scope.Regions = Regions.Get();
 
   $scope.CreateUser = function() {
+
+    if ($scope.NewUser.password != $scope.NewUser.confirmPassword) {
+      alert('Your passwords do not match.');
+      return;
+    };
+
     $rootScope.Loading();
     API.CreateUser($scope.NewUser).then(function(data) {
       if (data.data.success) {
@@ -88,7 +94,7 @@ angular.module('starter.controllers', [])
 
         var alertPopup = $ionicPopup.alert({
           title: 'Thank You!',
-          template: 'Your registration details are being verfied. You will receive an email notifying you when your KayApp user has been activated. Should not receive this notification within 24 hours please contact our offices on +27 31 717 2300'
+          template: 'Your registration details are being verfied. You will receive an email notifying you when your KayApp user has been activated. Should not receive this notification within 24 hours please contact our offices on <a href="tel:+27317172300">+27 31 717 2300</a>'
         });
         alertPopup.then(function(res) {
           $state.go('app.home');

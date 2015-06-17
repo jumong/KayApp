@@ -7,7 +7,7 @@ KayApp.controller('RequestCtrl', ['$rootScope','$scope','$stateParams','Local','
 	$scope.Heading;
 	$scope.Regions = Regions.Get();
 	$scope.Enquiry = {};
-	$scope.Authorized = Local.GetLogin().LoggedIn;
+	$scope.Authorized = Local.GetLogin().Authorized;
 	console.log('Authorized : ' + $scope.Authorized);
 
 	$scope.Options = GetOptions($scope);
@@ -27,6 +27,7 @@ KayApp.controller('RequestCtrl', ['$rootScope','$scope','$stateParams','Local','
 		if ($scope.Photo) {
 			data.photo = $scope.Photo;
 		};
+		data.EnquiryType = $scope.Heading;
 		API.SendRequestEnquiry(data).then(function(response) {
 			if (response.data.success) {
 				$scope.HideLoader();
@@ -55,7 +56,7 @@ KayApp.controller('RequestCtrl', ['$rootScope','$scope','$stateParams','Local','
 
 	$scope.CheckLogin = function(toState) {
 
-		if (!Local.GetLogin().LoggedIn && Local.GetLogin() && toState == 'app.request') {
+		if (!Local.GetLogin().Authorized && Local.GetLogin() && toState == 'app.request') {
 			API.CheckAuthorized().then(function(response) {
 				if (response.data == true) {
 					Local.UpdateUserStatus(response.data);
@@ -66,23 +67,27 @@ KayApp.controller('RequestCtrl', ['$rootScope','$scope','$stateParams','Local','
 
 		if (toState == 'app.request') {
 
-			if (!Local.GetLogin().User && !Local.GetLogin().LoggedIn) {
+			if (!Local.GetLogin().User) {
 				$scope.OpenNewAccount();
 				return;
 			};
 
 			if (!Local.GetLogin().LoggedIn) {
-				$scope.Authorized = false;
+				var pw = prompt('Please enter your password');
+				if (pw === Local.GetLogin().User.password) {
+					Local.Login();
+				} else {
+					alert('This password is incorrect');
+				}
 				return;
 			};
-			
 		};
 	}
 
 	$scope.showAlert = function() {
 		var alertPopup = $ionicPopup.alert({
 			title: 'Thank You!',
-			template: 'A representative from Kaytech will be in contact with you shortly. If you require any further assistance please contact us on +27 31 717 2300'
+			template: 'A representative from Kaytech will be in contact with you shortly. If you require any further assistance please contact us on <a href="tel:+27317172300">+27 31 717 2300</a>'
 		});
 		alertPopup.then(function(res) {
 			$state.go('app.home');

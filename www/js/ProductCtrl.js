@@ -12,7 +12,7 @@ KayApp.controller('ProductCtrl', function($scope, $stateParams, $http, API, $ion
 
 	$scope.hasImage = function(data) {
 		if (data.Image == undefined) {
-			return true;
+			return true
 		} else{
 			return false;
 		}

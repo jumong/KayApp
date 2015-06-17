@@ -38,10 +38,24 @@ h4 {
  	height: 30px;
 }
 
-.bar-header {
+.platform-ios .bar-header {
 	background: url('../img/kayapp_white-green.png') #063b6f no-repeat center 30px !important;
 	background-size: 150px !important;
 	background-position-x: 10px;
+}
+
+.platform-android .bar-header {
+	background: url('../img/kayapp_white-green.png') #063b6f no-repeat center 15px !important;
+	background-size: 150px !important;
+	background-position-x: 10px;
+}
+
+.platform-android .gear {
+	top: 10px;
+}
+
+.platform-ios .gear {
+	top: 25px;
 }
 
 ion-content {
@@ -230,7 +244,7 @@ a.noImage {
 
 
 .tabs-positive > .tabs, .tabs.tabs-positive {
-	background: #cad022;
+	background: #cad022 !important;
 }
 
 textarea {
@@ -325,7 +339,12 @@ ion-content {
 	width: 40% !important;
 }
 
-
+.err {
+  color: #ec5a5a;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
 
 
 

@@ -47,7 +47,8 @@ angular.module('starter.services', [])
 			}
 			temp = JSON.parse(localStorage.KayApp);
 			temp.User = user;
-			temp.LoggedIn = false;
+			temp.LoggedIn = true;
+			temp.Authorized = false;
 			localStorage.KayApp = JSON.stringify(temp);
 		},
 		GetLogin : function() {
@@ -57,9 +58,15 @@ angular.module('starter.services', [])
 				return false;
 			}
 		},
+		Login : function() {
+			var temp = JSON.parse(localStorage.KayApp);
+			temp.LoggedIn = true;
+			localStorage.KayApp = JSON.stringify(temp);
+		},
 		UpdateUserStatus : function(val) {
 			var temp = JSON.parse(localStorage.KayApp);
 			temp.LoggedIn = val;
+			temp.Authorized = true;
 			localStorage.KayApp = JSON.stringify(temp);
 		},
 		StorePushDetails : function(udid) {
@@ -159,9 +166,9 @@ angular.module('starter.services', [])
 })
 
 .factory('APIPath', function() {
-	// return 'http://192.168.1.103:5001/api/';
-	// return 'http://Kayappapi.kaymac.co.za/api/';
-	return 'http://kayappapi.azurewebsites.net/api/';
+	// return 'http://192.168.1.102:5001/api/';
+	return 'http://Kayappapi.kaymac.co.za/api/';
+	// return 'http://kayappapi.azurewebsites.net/api/';
 	// return 'http://10.1.50.18:5000/api/'
 })
 
