@@ -1,8 +1,11 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function(Regions, $scope, $ionicModal, $timeout, $state, $ionicPopup, Local, API, $rootScope, User, $ionicSideMenuDelegate, $cordovaInAppBrowser, $ionicLoading, $ionicUser, $ionicPush) {
+.controller('AppCtrl', function(Regions, $scope, $ionicModal, $timeout, $state, $ionicPopup, Local, API, $rootScope, User, $ionicSideMenuDelegate, $cordovaInAppBrowser, $ionicLoading, $ionicUser, $ionicPush, Alert) {
 
   $scope.loginData = {};
+  $scope.IHaveAnAccount = false;
+  $scope.LoginFormData = {};
+  $rootScope.LoggedIn = Local.GetLogin().LoggedIn;
 
   if (!Local.HasPushEnabled()) {
 
@@ -30,7 +33,6 @@ angular.module('starter.controllers', [])
 
 
   $scope.$watch(function() { 
-    // console.log(!$ionicSideMenuDelegate.isOpen());
     $rootScope.ShowTabs = !$ionicSideMenuDelegate.isOpen();
   })
 
@@ -81,22 +83,22 @@ angular.module('starter.controllers', [])
   $scope.CreateUser = function() {
 
     if ($scope.NewUser.password != $scope.NewUser.confirmPassword) {
-      alert('Your passwords do not match.');
+      Alert('Your passwords do not match.');
       return;
     };
 
     $rootScope.Loading();
+
+    $scope.NewUser.username = $scope.NewUser.emailaddress;
+
     API.CreateUser($scope.NewUser).then(function(data) {
       if (data.data.success) {
         Local.StoreLogin($scope.NewUser);
+        $rootScope.LoggedIn = Local.GetLogin().LoggedIn;
         $scope.CloseNewAccount();
         $state.go('app.home');
 
-        var alertPopup = $ionicPopup.alert({
-          title: 'Thank You!',
-          template: 'Your registration details are being verfied. You will receive an email notifying you when your KayApp user has been activated. Should not receive this notification within 24 hours please contact our offices on <a href="tel:+27317172300">+27 31 717 2300</a>'
-        });
-        alertPopup.then(function(res) {
+        Alert('Thank You!', 'Your registration details are being verified. You will receive an email notifying you when your KayApp user has been activated. Should not receive this notification within 24 hours please contact our offices on <a href="tel:+27317172300">+27 31 717 2300</a>', function() {
           $state.go('app.home');
         });
 
@@ -108,19 +110,31 @@ angular.module('starter.controllers', [])
     });
   }
 
+  $scope.LoginUser = function() {
+    $rootScope.Loading();
+    API.Login($scope.LoginFormData).then(function(res) {
+      console.log(res);
+      if (res.data.success) {
+        var user = res.data.user;
+        user.password = $scope.LoginFormData.password;
+        Local.StoreLogin(user);
+        $rootScope.LoggedIn = Local.GetLogin().LoggedIn;
+      };
+       Alert('Response', res.data.message);
+       $rootScope.HideLoader();
+       $scope.signUpModal.hide();
+       $state.go('app.home');
+    });
+  }
+
 
 
   $scope.showPopup = function() {
     $scope.user = {}
 
-      var alertPopup = $ionicPopup.alert({
-        title: 'Sorry!',
-        template: 'Your account is being authorized, please try again soon.'
-      });
-      alertPopup.then(function(res) {
-        $state.go('app.home');
-      });
-
+    Alert('Sorry!', 'Your account is being authorized, please try again soon.', function() {
+      $state.go('app.home');
+    });
 
    };
 

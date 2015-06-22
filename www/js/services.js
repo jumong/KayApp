@@ -110,7 +110,7 @@ angular.module('starter.services', [])
 	return {
 		CreateUser : function(user) {
 			return $http.post(APIPath + 'users?'
-				+'user=' + user.emailaddress
+				+'user=' + user.username
 				+'&password='+ user.password
 				+'&fullname='+ user.fullname
 				+'&emailaddress='+ user.emailaddress
@@ -120,6 +120,16 @@ angular.module('starter.services', [])
 				+'&region='+ user.region
 				+'&APIKEY='+ APIKey
 				)
+		},
+		Login : function(user) {
+			$http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode(user.username + ':' + user.password);
+			user.APIKEY = APIKey;
+			return $http({
+				method : 'POST',
+				url : APIPath + 'users/login',
+				data : user,
+				headers : {'Content-Type' : 'Application/json'}
+			});
 		},
 		GetProducts : function() {
 			return $http.get(APIPath + 'products');
@@ -155,6 +165,7 @@ angular.module('starter.services', [])
 		UpdateUser : function(user) {
 			$http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode(Local.GetLogin().User.emailaddress + ':' + Local.GetLogin().User.password);
 			user.APIKEY = APIKey;
+			user.username = Local.GetLogin().User.username;
 			return $http({
 				method : 'POST',
 				url : APIPath + 'users/update',
@@ -169,7 +180,7 @@ angular.module('starter.services', [])
 	// return 'http://192.168.1.102:5001/api/';
 	return 'http://Kayappapi.kaymac.co.za/api/';
 	// return 'http://kayappapi.azurewebsites.net/api/';
-	// return 'http://10.1.50.18:5000/api/'
+	// return 'http://10.1.50.24:5001/api/'
 })
 
 .factory('APIKey', function(){
@@ -182,6 +193,20 @@ angular.module('starter.services', [])
 			return ['Northern Cape','Eastern Cape','Free State','Western Cape','Limpopo','North West','KwaZulu-Natal','Mpumalanga','Gauteng'];
 		}
 	}
+})
+
+.factory('Alert', function($ionicPopup){
+	return function(title, message, callback){
+		var alertPopup = $ionicPopup.alert({
+		    title: title,
+		    template: message
+		  });
+		  alertPopup.then(function(res) {
+		    if (callback) {
+		    	callback();
+		    };
+		  });
+	};
 })
 
 .factory('Request', function(Local){

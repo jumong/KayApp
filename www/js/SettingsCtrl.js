@@ -1,9 +1,8 @@
 
 
-KayApp.controller('SettingsCtrl', function( $scope , API , Local, $state , $rootScope ){
+KayApp.controller('SettingsCtrl', function( $scope , API , Local, $state , $rootScope , Alert){
 	$scope.User = Local.GetLogin().User;
 	$scope.Activities = Local.GetActivities();
-	$rootScope.LoggedIn = Local.GetLogin().LoggedIn;
 
 	$rootScope.GoUrl = function(url) {
 	    $state.go(url);
@@ -14,22 +13,29 @@ KayApp.controller('SettingsCtrl', function( $scope , API , Local, $state , $root
 	$scope.SendUpdate = function() {
 		$rootScope.Loading();
 		API.UpdateUser($scope.User).then(function(response) {
-			alert(response.data.message);
+			Alert('Response', response.data.message);
 			$rootScope.HideLoader();
 		});
 	}
 
 	$scope.LogOutUser = function() {
-	    var user;
+	    // var user;
+	    // if (localStorage.KayApp) {
+	    //   user = JSON.parse(localStorage.KayApp);
+	    // };
+	    // if (user.LoggedIn) {
+	    //   user.LoggedIn = false;
+	    //   localStorage.KayApp = JSON.stringify(user);
+	    //   Alert('Info','User logged out');
+	    //   $state.go('app.home');
+	    //   $rootScope.settings.hide();
+	    // }
+
 	    if (localStorage.KayApp) {
-	      user = JSON.parse(localStorage.KayApp);
+			delete localStorage.KayApp;
+			Alert('Info','User logged out');
+			$state.go('app.home');
+			$rootScope.settings.hide();
 	    };
-	    if (user.LoggedIn) {
-	      user.LoggedIn = false;
-	      localStorage.KayApp = JSON.stringify(user);
-	      alert('User logged out');
-	      $state.go('app.home');
-	      $rootScope.settings.hide();
-	    }
 	}
 });
