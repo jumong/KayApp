@@ -83,7 +83,7 @@ angular.module('starter.controllers', [])
   $scope.CreateUser = function() {
 
     if ($scope.NewUser.password != $scope.NewUser.confirmPassword) {
-      Alert('Your passwords do not match.');
+      Alert('Error','Your passwords do not match.');
       return;
     };
 
