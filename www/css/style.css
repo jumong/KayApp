@@ -346,9 +346,24 @@ ion-content {
   font-size: 0.7rem;
 }
 
+#box {
+    background-color: red;
+    height: 50px;
+    left: 20px;
+    position: absolute;
+    top: 10px;
+    width: 50px;
+}
 
-
-
+.gameArea {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	z-index: 1000000000000 !important;
+}
 
 
 

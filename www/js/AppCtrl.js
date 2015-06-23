@@ -7,6 +7,7 @@ angular.module('starter.controllers', [])
   $scope.IHaveAnAccount = false;
   $scope.LoginFormData = {};
   $rootScope.LoggedIn = Local.GetLogin().LoggedIn;
+  $rootScope.GameOn = false;
 
   if (!Local.HasPushEnabled()) {
 
@@ -136,7 +137,6 @@ angular.module('starter.controllers', [])
   $scope.LoginUser = function() {
     $rootScope.Loading();
     API.Login($scope.LoginFormData).then(function(res) {
-      console.log(res);
       if (res.data.success) {
         var user = res.data.user;
         user.password = $scope.LoginFormData.password;
