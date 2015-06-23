@@ -109,17 +109,14 @@ angular.module('starter.services', [])
 .factory('API', function(APIPath, $http, Base64, Local, APIKey){
 	return {
 		CreateUser : function(user) {
-			return $http.post(APIPath + 'users?'
-				+'user=' + user.username
-				+'&password='+ user.password
-				+'&firstName='+user.fullName+'&lastName='+user.lastName
-				+'&emailaddress='+ user.emailaddress
-				+'&company='+ user.company
-				+'&contactNumber='+ user.contactNumber
-				+'&address='+ user.address
-				+'&region='+ user.region+'&question='+user.Question+'&answer='+user.Answer
-				+'&APIKEY='+ APIKey
-				)
+            user.user = user.emailaddress;
+            user.APIKEY = APIKey;
+            return $http({
+                method:'POST',
+                url:APIPath+'users',
+                data:user,
+                headers : {'Content-Type': 'application/json'}
+            });
 		},
 		Login : function(user) {
 			$http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode(user.username + ':' + user.password);
