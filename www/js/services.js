@@ -138,6 +138,8 @@ angular.module('starter.services', [])
 			$http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode(Local.GetLogin().User.emailaddress + ':' + Local.GetLogin().User.password);
 			data.region = JSON.parse(localStorage.KayApp).User.region;
 			data.date = new Date().toDateString();
+			data.contactNumber = Local.GetLogin().User.contactNumber;
+			data.company = Local.GetLogin().User.company;
 			Local.StoreActivity(data);
 		    return $http(
 		        {
