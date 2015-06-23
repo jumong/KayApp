@@ -162,6 +162,18 @@ angular.module('starter.services', [])
 		          headers : {'Content-Type': 'application/json'}
 		        });
 		},
+        GetResetQuestion:function(username){
+            var data={};         
+			data.APIKEY = APIKey;
+			data.username = username;
+			return $http({
+				method : 'POST',
+				url : APIPath + 'users/resetPassword',
+				data : data,
+				headers : {'Content-Type' : 'application/json'}
+			});           
+        
+        },
 		UpdateUser : function(user) {
 			$http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode(Local.GetLogin().User.emailaddress + ':' + Local.GetLogin().User.password);
 			user.APIKEY = APIKey;

@@ -2,6 +2,7 @@ angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function(Regions, $scope, $ionicModal, $timeout, $state, $ionicPopup, Local, API, $rootScope, User, $ionicSideMenuDelegate, $cordovaInAppBrowser, $ionicLoading, $ionicUser, $ionicPush, Alert) {
 
+  $scope.canReset=false;
   $scope.loginData = {};
   $scope.IHaveAnAccount = false;
   $scope.LoginFormData = {};
@@ -39,6 +40,13 @@ angular.module('starter.controllers', [])
   $rootScope.Settings = function() {
     $rootScope.settings.show();
   }
+  
+  $ionicModal.fromTemplateUrl('templates/resetPassword-modal.html',{
+    scope:$scope
+  }).then(function(modal){
+    $scope.resetPasswordModal=modal;
+  });
+    
 
   $ionicModal.fromTemplateUrl('templates/settings-modal.html', {
     scope: $scope
@@ -60,6 +68,21 @@ angular.module('starter.controllers', [])
     $scope.signUpModal.hide();
     $state.go('app.home');
   }
+  
+  
+  $scope.ResetPassword = function(){       
+       $scope.resetPasswordModal.show();       
+  }
+  
+  $scope.GetResetQuestion = function(){
+      API.GetResetQuestion('me@domain.com').then(function(res){
+         $scope.canReset =true;
+      
+      });
+  }
+  
+  
+  
 
   $scope.OpenNewAccount = function() {
     $scope.NewUser = new User();
