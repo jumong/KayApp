@@ -117,7 +117,7 @@ angular.module('starter.services', [])
 				+'&company='+ user.company
 				+'&contactNumber='+ user.contactNumber
 				+'&address='+ user.address
-				+'&region='+ user.region
+				+'&region='+ user.region+'&question='+user.Question+'&answer='+user.Answer
 				+'&APIKEY='+ APIKey
 				)
 		},
