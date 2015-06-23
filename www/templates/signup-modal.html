@@ -23,11 +23,19 @@
 		    <div class="list list-inset">
 
 			  <label class="item item-input">
-			    <input type="text" class="caps" placeholder="Full Name" name="FullName" ng-model="NewUser.fullname" required="">
+			    <input type="text" class="caps" placeholder="First Name" name="FullName" ng-model="NewUser.firstName" required="">
 			  </label>
 
-				<div ng-show="NewAccount.$submitted || NewAccount.FullName.$touched">
-					<span class="err" ng-show="NewAccount.FullName.$error.required">Please provide your name.</span>
+				<div ng-show="NewAccount.$submitted || NewAccount.FirstName.$touched">
+					<span class="err" ng-show="NewAccount.FirstName.$error.required">Please provide your name.</span>
+				</div>
+
+			  <label class="item item-input">
+			    <input type="text" class="caps" placeholder="Last Name" name="LastName" ng-model="NewUser.lastName" required="">
+			  </label>
+
+				<div ng-show="NewAccount.$submitted || NewAccount.LastName.$touched">
+					<span class="err" ng-show="NewAccount.LastName.$error.required">Please provide your surname.</span>
 				</div>
 
 			  <label class="item item-input">

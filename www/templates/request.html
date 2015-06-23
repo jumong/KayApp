@@ -17,11 +17,19 @@
 			
 		  <p class="formTxt">Personal Details</p>
 		  <label class="item item-input">
-		    <input type="text" class="caps" placeholder="Full Name" name="FullName" ng-model="Request.fullname" required="">
+		    <input type="text" class="caps" placeholder="First Name" name="FirstName" ng-model="Request.firstName" required="">
 		  </label>
 
-		  	<div ng-show="OrderQuoteRequest.$submitted || OrderQuoteRequest.FullName.$touched">
-				<span class="err" ng-show="OrderQuoteRequest.FullName.$error.required">Please provide your name.</span>
+		  	<div ng-show="OrderQuoteRequest.$submitted || OrderQuoteRequest.FirstName.$touched">
+				<span class="err" ng-show="OrderQuoteRequest.FirstName.$error.required">Please provide your name.</span>
+			</div>
+
+		  <label class="item item-input">
+		    <input type="text" class="caps" placeholder="FLast Name" name="LastName" ng-model="Request.lastName" required="">
+		  </label>
+
+		  	<div ng-show="OrderQuoteRequest.$submitted || OrderQuoteRequest.LastName.$touched">
+				<span class="err" ng-show="OrderQuoteRequest.LastName.$error.required">Please provide your name.</span>
 			</div>
 
 		  <label class="item item-input">
@@ -121,11 +129,19 @@
 		
 		<p class="formTxt">Personal Details</p>
 		  <label class="item item-input">
-		    <input type="text" class="caps" placeholder="Full Name" name="FullName" ng-model="Enquiry.fullname" required="">
+		    <input type="text" class="caps" placeholder="First Name" name="FirstName" ng-model="Enquiry.firstName" required="">
 		  </label>
 
-		  	<div ng-show="StandardRequest.$submitted || StandardRequest.FullName.$touched">
-				<span class="err" ng-show="StandardRequest.FullName.$error.required">Please provide your name.</span>
+		  	<div ng-show="StandardRequest.$submitted || StandardRequest.FirstName.$touched">
+				<span class="err" ng-show="StandardRequest.FirstName.$error.required">Please provide your name.</span>
+			</div>
+
+		  <label class="item item-input">
+		    <input type="text" class="caps" placeholder="Last Name" name="LastName" ng-model="Enquiry.lastName" required="">
+		  </label>
+
+		  	<div ng-show="StandardRequest.$submitted || StandardRequest.LastName.$touched">
+				<span class="err" ng-show="StandardRequest.LastName.$error.required">Please provide your surname.</span>
 			</div>
 
 		  <label class="item item-input">
