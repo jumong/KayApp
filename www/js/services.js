@@ -191,7 +191,7 @@ angular.module('starter.services', [])
 })
 
 .factory('APIPath', function() {
-	// return 'http://192.168.1.102:5001/api/';
+	// return 'http://192.168.1.101:5001/api/';
 	return 'http://Kayappapi.kaymac.co.za/api/';
 	// return 'http://kayappapi.azurewebsites.net/api/';
 	// return 'http://10.1.50.24:5001/api/'

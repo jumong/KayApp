@@ -87,6 +87,23 @@
 			    </select>
 			  </label>
 
+			  <p class="formTxt">Security</p>
+
+			  <label class="item item-input item-select">
+			    <div class="input-label">
+			      Security Question
+			    </div>
+			    <select ng-model="NewUser.Question" required="">
+			    	<option value="petsName">What is your pet's name?</option>
+			    	<option value="fatherBirthYear">In what year was your father born?</option>
+			    	<option value="favourite">What is your favourite colour?</option>
+			    </select>
+			  </label>
+
+			  <label class="item item-input">
+			    <input type="text" placeholder="Answer" name="Answer" ng-model="NewUser.Answer" required="">
+			  </label>
+
 			<button ng-click="CreateUser()" class="button button-block button-balanced" ng-show="NewAccount.$valid">
 			  Submit
 			</button>
