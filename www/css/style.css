@@ -214,8 +214,15 @@ a.noImage {
 	height: 85px;
 	border-radius: 2px;
 	font-size: 4em;
-	padding-top: 20px;
 	box-shadow: 0px 0px 2px #999;
+	border-bottom: 16px solid #063b6f;
+ 	padding-top: 8px;
+}
+
+.mediaLinks span {
+	display: block;
+	font-size: 0.9rem;
+	padding-top: 3px;
 }
 
 .formTxt {
