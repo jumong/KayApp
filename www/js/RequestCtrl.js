@@ -2,7 +2,7 @@
 
 
 
-KayApp.controller('RequestCtrl', ['$rootScope','$scope','$stateParams','Local','Request','GetOptions','Regions', 'Enquiry', 'API', '$timeout', '$ionicLoading', '$ionicPopup', '$state', 'TakePhoto', function($rootScope, $scope, $stateParams, Local, Request, GetOptions, Regions, Enquiry, API, $timeout, $ionicLoading, $ionicPopup, $state, TakePhoto){
+KayApp.controller('RequestCtrl', ['$rootScope','$scope','$stateParams','Local','Request','GetOptions','Regions', 'Enquiry', 'API', '$timeout', '$ionicLoading', '$ionicPopup', '$state', 'TakePhoto', '$state', function($rootScope, $scope, $stateParams, Local, Request, GetOptions, Regions, Enquiry, API, $timeout, $ionicLoading, $ionicPopup, $state, TakePhoto, $state){
 	$scope.Type = $stateParams.type;
 	$scope.Heading;
 	$scope.Regions = Regions.Get();
@@ -137,7 +137,27 @@ KayApp.controller('RequestCtrl', ['$rootScope','$scope','$stateParams','Local','
 	 };
 
 	 // $scope.ChooseSourceAndTakePhoto();
-	
 
 	
 }])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

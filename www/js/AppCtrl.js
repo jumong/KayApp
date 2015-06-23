@@ -238,7 +238,29 @@ angular.module('starter.controllers', [])
           });  
     }
 
+
+
+
+    
+  $rootScope.isActive = function(state) {
+    if (state == $state.params.type) {
+        return true;
+    };
+  }
+
+
+
+
    
 
   
 });
+
+
+
+
+
+
+
+
+
