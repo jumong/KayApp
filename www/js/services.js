@@ -112,7 +112,7 @@ angular.module('starter.services', [])
 			return $http.post(APIPath + 'users?'
 				+'user=' + user.username
 				+'&password='+ user.password
-				+'&fullname='+ user.fullname
+				+'&firstName='+user.fullName+'&lastName='+user.lastName
 				+'&emailaddress='+ user.emailaddress
 				+'&company='+ user.company
 				+'&contactNumber='+ user.contactNumber
@@ -191,8 +191,8 @@ angular.module('starter.services', [])
 })
 
 .factory('APIPath', function() {
-	// return 'http://192.168.1.101:5001/api/';
-	return 'http://Kayappapi.kaymac.co.za/api/';
+	 return 'http://localhost:5001/api/';
+	//return 'http://Kayappapi.kaymac.co.za/api/';
 	// return 'http://kayappapi.azurewebsites.net/api/';
 	// return 'http://10.1.50.24:5001/api/'
 })
