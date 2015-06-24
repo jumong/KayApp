@@ -172,6 +172,23 @@ var KayApp = angular.module('starter', ['ionic', 'starter.controllers','starter.
   $urlRouterProvider.otherwise('/app/home');
 });
 
+KayApp.directive('imageSizer', function(){
+  // Runs during compile
+  return {
+     restrict: 'A',
+    link: function($scope, elem, iAttrs, controller) {
+
+      elem.on('load', function() {
+        if ($(this).height() < 20) {
+          $(this).height($(this).height() * 1.3);
+          $(this).width($(this).width() * 1.3);
+        };
+      });
+
+    }
+  };
+});
+
 ;!(function ($) {
     $.fn.classes = function (callback) {
         var classes = [];

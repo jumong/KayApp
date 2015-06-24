@@ -60,7 +60,6 @@ KayApp.controller('ProductCtrl', function($scope, $stateParams, $http, API, $ion
 	});
 
 	$scope.GetType = function(type) {
-		console.log(type);
 		switch(type){
 			case 'hydraulic-construction':
 				return 'Hydraulic Construction'
