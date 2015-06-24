@@ -238,7 +238,8 @@ angular.module('starter.services', [])
 
 		if (user) {
 			return {
-				fullname: user.fullname,
+				firstName: user.firstName,
+				lastName : user.lastName,
 				emailaddress: user.emailaddress,
 				company : user.company,
 				contactNumber : user.contactNumber,
@@ -250,7 +251,8 @@ angular.module('starter.services', [])
 			}
 		} else {
 			return {
-				fullname: '',
+				firstName : '',
+				lastName : '',
 				emailaddress: '',
 				company : '',
 				contactNumber : '',
@@ -275,14 +277,16 @@ angular.module('starter.services', [])
 
 		if (user) {
 			return {
-				fullname: user.fullname,
+				firstName: user.firstName,
+				lastName : user.lastName,
 				emailaddress: user.emailaddress,
 				type : '',
 				comments : ''
 			}
 		} else {
 			return {
-				fullname: '',
+				firstName: '',
+				lastName : '',
 				emailaddress: '',
 				type : '',
 				comments : ''

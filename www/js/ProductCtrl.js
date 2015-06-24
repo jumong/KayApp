@@ -54,8 +54,55 @@ KayApp.controller('ProductCtrl', function($scope, $stateParams, $http, API, $ion
 	    }, 500)
 	});
 
+	$scope.GetType = function(type) {
+		console.log(type);
+		switch(type){
+			case 'hydraulic-construction':
+				return 'Hydraulic Construction'
+				break;
+			case 'erosion-control':
+				return 'Erosion Control'
+				break;
+			case 'filtration-and-drainage':
+				return 'Filtration & Drainage'
+				break;
+			case 'other':
+				return 'Other'
+				break;
+			case 'diy':
+				return 'DIY'
+				break;
+			case 'reinforcement-separation':
+				return 'Reinforcement & Seperation'
+				break;
+			case 'road-maintenance-rehabilitation':
+				return 'Road Maintenance & Rehabilitation'
+				break;
+			case 'water-and-waste-containment':
+				return 'Water & Waste Containment'
+				break;
+			default:
+				return ''
+				break;
+		}
+	}
+
 });
 
 
 
-// Title : $(entry).find('h4').text().replace(/\s+/g, " ")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -77,9 +77,13 @@ angular.module('starter.controllers', [])
     $state.go('app.home');
   }
   
-  $scope.ShowPasswordReset=function(){
-      $scope.Reset =new User();
+  $scope.ShowPasswordReset = function(){
+      $scope.Reset = new User();
       $scope.resetPasswordModal.show();
+  }
+
+  $scope.CancelResetPassword = function() {
+    $scope.resetPasswordModal.hide();
   }
   
   $scope.ResetPassword = function(){ 
@@ -109,8 +113,8 @@ angular.module('starter.controllers', [])
           }
           else
           {              
-              Alert('Invalid emailaddress!', res.data.message, function() {
-                  $scope.canReset=false;
+              Alert('Invalid email address', res.data.message, function() {
+                  $scope.canReset = false;
           });
                            
           }      
@@ -282,6 +286,11 @@ angular.module('starter.controllers', [])
   }
 
 
+  // This is a temporary hack for the issue with the bottom tabs
+  setInterval(function() {
+    $('.bottomTab').removeClass('tab-item-active');
+    $('.bottomTab.'+$state.params.type).addClass('tab-item-active');
+  },200);
 
 
     

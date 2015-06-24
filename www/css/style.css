@@ -403,8 +403,8 @@ ion-content {
 }
 .scale-in.ng-enter,
 .scale-in > .ng-enter {
-	-webkit-transition: all cubic-bezier(.1, .7, .1, 1) 400ms;
- 	transition: all cubic-bezier(.1, .7, .1, 1) 400ms;
+	-webkit-transition: all cubic-bezier(.1, .7, .1, 1) 250ms;
+ 	transition: all cubic-bezier(.1, .7, .1, 1) 250ms;
 }
 .scale-in.ng-enter-active,
 .scale-in > .ng-enter-active {
@@ -414,8 +414,8 @@ ion-content {
 }
 .scale-in.ng-leave,
 .scale-in > .ng-leave {
-	-webkit-transition: all ease-in-out 250ms;
- 	transition: all ease-in-out 250ms;
+	-webkit-transition: all ease-in-out 150ms;
+ 	transition: all ease-in-out 150ms;
 }
 
 
