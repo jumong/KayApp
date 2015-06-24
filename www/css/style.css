@@ -394,6 +394,26 @@ ion-content {
 	background-color: rgba(0,0,0,0.5);
 }
 
+/*GAME*/
+
+.GameItem {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	background: blue;
+	top: 20px;
+	right: 0px;
+}
+
+.stopGame {
+	position: absolute;
+	-webkit-transform: rotate(90deg);
+	width: 100px;
+	right: -30px;
+	top: 290px;
+}
+
+
 /*Custom Modal Animation*/
 
 .scale-in {

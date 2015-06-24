@@ -1,11 +1,18 @@
 
 
-KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope ){
+KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope, $state ){
+
+	$scope.StopGame = function() {
+		stop();
+		$state.go('app.home');
+	}
 
 
 	var box = document.getElementById('box'),
 	boxPos = 10,
+	itemPos = 0,
 	boxVelocity = 0.1,
+	itemVelocity = 0.05,
 	limit = 300,
 	lastTimeStamp = 0,
 	maxFPS = 60,
@@ -17,15 +24,19 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 	lastFpsUpdate = 0,
 	frameID,
 	running = false,
-	started = false;
+	started = false,
+	timeBetweenSpawns = 5000,
+	lastSpawn = 0,
+	itemsToSpawn = 1,
+	totalItems = 0,
+	allItems = [],
+	itemPositions = [];
 
 	
 	$scope.Result;
 
 	document.addEventListener("deviceready", function () {
-
 		var options = { frequency: timeStep };
-
 		var watch = $cordovaDeviceMotion.watchAcceleration(options);
 	    watch.then(
 	      null,
@@ -33,23 +44,16 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 	      // An error occurred
 	      },
 	      function(result) {
-	        // var X = result.x;
-	        // boxVelocity = Math.floor(result.y / 10);
-	        // var Z = result.z;
-	        // var timeStamp = result.timestamp;
-	        // $scope.Result = (result.y / 10).toFixed(2);
 	        boxVelocity = (result.y / 10).toFixed(2);
 	    });
 	});
-
-
 
 	start();
 
 
 
 
-	
+	// GAME LOOP
 
 	function begin() {
 
@@ -89,12 +93,39 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 
 	function draw() {
 		box.style.top = boxPos + 'px';
+		
+		for (var i = 0; i < allItems.length; i++) {
+			allItems[i].style.right = itemPositions[i] + 'px';
+		};
 	}
 
-	function update(delta) {
-		// if (boxPos < window.outerHeight && boxPos > 0) {
-			boxPos += boxVelocity * delta;
-		// };
+	function update(delta, timestamp) {
+		boxPos += boxVelocity * delta;
+		// itemPos += itemVelocity * delta;
+
+		for (var i = 0; i < itemPositions.length; i++) {
+			itemPositions[i] += itemVelocity * delta;
+		};
+
+		if (timestamp > lastSpawn + timeBetweenSpawns) {
+			spawn(timestamp);
+		};
+		
+
+	}
+
+	function spawn(timestamp) {
+		lastSpawn = timestamp;
+		
+		for (var i = 0; i < itemsToSpawn; i++) {
+			$('._jsGameArea').append('<p class="_jsItem GameItem" id="item'+totalItems+'""></p>');
+			var item = document.getElementById('item'+totalItems);
+			allItems.push(item);
+			totalItems++;
+			itemPositions.push(itemPos);
+		};
+		itemsToSpawn++;
+		console.log(allItems);
 	}
 
 	function mainLoop(timestamp) {
@@ -117,7 +148,7 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 		lastTimeStamp = timestamp;
 
 		while (delta >= timeStep) {
-			update(timeStep);
+			update(timeStep, timestamp);
 			delta -= timeStep;
 			if (++numUpdateSteps >= 240) {
 				panic();
