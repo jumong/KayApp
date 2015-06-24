@@ -70,15 +70,43 @@ angular.module('starter.controllers', [])
     $state.go('app.home');
   }
   
+  $scope.ShowPasswordReset=function(){
+      $scope.Reset =new User();
+      $scope.resetPasswordModal.show();
+  }
   
-  $scope.ResetPassword = function(){       
-       $scope.resetPasswordModal.show();       
+  $scope.ResetPassword = function(){ 
+      var data={}
+      data.question =$scope.Reset.question;
+      data.username=$scope.Reset.username;
+      data.answer=$scope.Reset.answer;
+       API.ResetPassword(data).then(function(res){
+            if(res.data.success)
+            {
+             $scope.resetPasswordModal.hide();
+              
+              Alert('Success !', res.data.message, function() {
+                  $state.go('app.home');
+               });
+                
+            }
+       });      
   }
   
   $scope.GetResetQuestion = function(){
-      API.GetResetQuestion('me@domain.com').then(function(res){
-         $scope.canReset =true;
-      
+      API.GetResetQuestion($scope.Reset.username).then(function(res){
+          if(res.data.success)
+          {
+            $scope.canReset =true;
+            $scope.Reset.question = res.data.question;
+          }
+          else
+          {              
+              Alert('Invalid emailaddress!', res.data.message, function() {
+                  $scope.canReset=false;
+          });
+                           
+          }      
       });
   }
   

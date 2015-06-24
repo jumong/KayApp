@@ -161,13 +161,22 @@ angular.module('starter.services', [])
 		          headers : {'Content-Type': 'application/json'}
 		        });
 		},
+        ResetPassword:function(data){
+            data.APIKEY = APIKey;
+            return $http({
+                method:'POST',
+                url:APIPath+'account/resetPassword',
+                data:data,
+                headers:{'Content-Type':'application/json'}            
+            });
+        },
         GetResetQuestion:function(username){
             var data={};         
 			data.APIKEY = APIKey;
 			data.username = username;
 			return $http({
 				method : 'POST',
-				url : APIPath + 'users/resetPassword',
+				url : APIPath + 'account/getResetQuestion',
 				data : data,
 				headers : {'Content-Type' : 'application/json'}
 			});           
@@ -294,7 +303,9 @@ angular.module('starter.services', [])
 			company : '',
 			contactNumber : '',
 			address : '',
-			region : ''
+			region : '',
+            question:'',
+            answer:''
 		}
 	};
 })
