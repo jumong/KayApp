@@ -46,7 +46,12 @@ KayApp.controller('ProductCtrl', function($scope, $stateParams, $http, API, $ion
 		}); //End Each
 
 		$scope.Applications = $scope.ProductApplications[$scope.Type];
-	});
+	},function (error) {           
+          $rootScope.HideLoader(); 
+          Alert('Error', error.data || 'Something went wrong, please try again.', function() {
+            $scope.canReset=false;
+         });
+    });
 
 	$scope.$on('ngRepeatFinished', function() {
 	    $timeout(function() {

@@ -33,7 +33,12 @@ KayApp.controller('RequestCtrl', ['$rootScope','$scope','$stateParams','Local','
 				$scope.HideLoader();
 				$scope.showAlert();
 			};
-		})
+		},function (error) {           
+          $rootScope.HideLoader(); 
+          Alert('Error', error.data || 'Something went wrong, please try again.', function() {
+            $scope.canReset=false;
+         });
+      })
 	}
 
 	$scope.ClearForm = function() {
@@ -62,7 +67,12 @@ KayApp.controller('RequestCtrl', ['$rootScope','$scope','$stateParams','Local','
 					Local.UpdateUserStatus(response.data);
 					$scope.Authorized = true;
 				};
-			});
+			},function (error) {           
+                  $rootScope.HideLoader(); 
+                  Alert('Error', error.data || 'Something went wrong, please try again.', function() {
+                    $scope.canReset=false;
+                 });
+            });
 		};
 
 		if (toState == 'app.request') {

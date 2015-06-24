@@ -16,7 +16,12 @@ KayApp.controller('SettingsCtrl', function( $scope , API , Local, $state , $root
 		API.UpdateUser($scope.User).then(function(response) {
 			Alert('Response', response.data.message);
 			$rootScope.HideLoader();
-		});
+		},function (error) {           
+          $rootScope.HideLoader(); 
+          Alert('Error', error.data || 'Something went wrong, please try again.', function() {
+            $scope.canReset=false;
+         });
+        });
 	}
 
 	$scope.LogOutUser = function() {
@@ -39,6 +44,11 @@ KayApp.controller('SettingsCtrl', function( $scope , API , Local, $state , $root
 			} else{
 				Alert('Error', res.data.message);
 			}
-		});
+		},function (error) {           
+          $rootScope.HideLoader(); 
+          Alert('Error', error.data || 'Something went wrong, please try again.', function() {
+            $scope.canReset=false;
+         });
+    });
 	}
 });

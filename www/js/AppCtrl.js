@@ -104,7 +104,7 @@ angular.module('starter.controllers', [])
            else
            {
                 $rootScope.HideLoader(); 
-                Alert('Failed !', res.data.message, function() {
+                Alert('Invalid  email address!', res.data.message, function() {
                   $state.go('app.home');
                });
            }
@@ -189,6 +189,11 @@ angular.module('starter.controllers', [])
         alert('Something went wrong, please try again.');
       }
       $rootScope.HideLoader();
+    },function (error) {           
+          $rootScope.HideLoader(); 
+          Alert('Error', error.data || 'Something went wrong, please try again.', function() {
+            $scope.canReset=false;
+         });
     });
   }
 
@@ -205,6 +210,11 @@ angular.module('starter.controllers', [])
        $rootScope.HideLoader();
        $scope.signUpModal.hide();
        $state.go('app.home');
+    },function (error) {           
+          $rootScope.HideLoader(); 
+          Alert('Error', error.data || 'Something went wrong, please try again.', function() {
+            $scope.canReset=false;
+         });
     });
   }
 
