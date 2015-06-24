@@ -86,7 +86,8 @@ angular.module('starter.controllers', [])
     $scope.resetPasswordModal.hide();
   }
   
-  $scope.ResetPassword = function(){ 
+ $scope.ResetPassword = function(){ 
+      $rootScope.Loading();   
       var data={}
       data.question =$scope.Reset.question;
       data.username=$scope.Reset.username;
@@ -94,31 +95,49 @@ angular.module('starter.controllers', [])
        API.ResetPassword(data).then(function(res){
             if(res.data.success)
             {
-             $scope.resetPasswordModal.hide();
-              
-              Alert('Success !', res.data.message, function() {
+                $rootScope.HideLoader();             
+                Alert('Success !', res.data.message, function() {
+                $scope.resetPasswordModal.hide();
+                $state.go('app.home');
+               });                
+            }
+           else
+           {
+                $rootScope.HideLoader(); 
+                Alert('Failed !', res.data.message, function() {
                   $state.go('app.home');
                });
-                
-            }
-       });      
+           }
+       },function (error) {           
+          $rootScope.HideLoader(); 
+          Alert('Error', error.data || 'Something went wrong, please try again.', function() {
+            $scope.canReset=false;
+         });
+    });      
   }
   
   $scope.GetResetQuestion = function(){
+     $rootScope.Loading();      
       API.GetResetQuestion($scope.Reset.username).then(function(res){
           if(res.data.success)
           {
+            $rootScope.HideLoader(); 
             $scope.canReset =true;
             $scope.Reset.question = res.data.question;
           }
           else
-          {              
-              Alert('Invalid email address', res.data.message, function() {
-                  $scope.canReset = false;
-          });
-                           
+          {   
+               $rootScope.HideLoader(); 
+              Alert('Invalid emailaddress!', res.data.message, function() {
+                  $scope.canReset=false;
+                });                           
           }      
-      });
+      },function (error) {           
+          $rootScope.HideLoader(); 
+          Alert('Error', error.data || 'Something went wrong, please try again.', function() {
+            $scope.canReset=false;
+         });
+    })
   }
   
   
