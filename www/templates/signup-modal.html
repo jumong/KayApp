@@ -78,22 +78,19 @@
 					<span class="err" ng-show="NewAccount.ContactNumber.$error.required">Please provide your contact number.</span>
 				</div>
 
-			  <label class="item item-input">
+			 <!--  <label class="item item-input">
 			    <input type="text" placeholder="Physical Address" name="Address" ng-model="NewUser.address" required="">
-			  </label>
+			  </label> -->
 
-			  	<div ng-show="NewAccount.$submitted || NewAccount.Address.$touched">
+			  	<!-- <div ng-show="NewAccount.$submitted || NewAccount.Address.$touched">
 					<span class="err" ng-show="NewAccount.Address.$error.required">Please provide your address.</span>
-				</div>
+				</div> -->
 
-			  <label class="item item-input item-select">
-			    <div class="input-label">
-			      Region
-			    </div>
-			    <select ng-options="region for region in Regions" ng-model="NewUser.region" required="">
-			    	<option value=""></option>
-			    </select>
-			  </label>
+				<ul class="list">
+				    <li class="item" ng-click="EnterAddress()">
+				      <i class="icon ion-home rightIcon"></i>Address
+				    </li>
+				</ul>
 
 			  <p class="formTxt">Security</p>
 

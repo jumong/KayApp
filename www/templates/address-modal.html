@@ -1,0 +1,36 @@
+<ion-modal-view class="smallModal">
+  <ion-content padding="true">
+      
+    <form novalidate name="AddressForm">
+
+        <p class="formTxt">Please enter your address</p>
+      
+        <label class="item item-input">
+          <textarea class="caps" placeholder="Address Line 1" name="Address1" ng-model="NewUser.address[0]" required=""></textarea>
+        </label>
+
+        <div ng-show="AddressForm.Address1.$touched">
+          <span class="err" ng-show="AddressForm.Address1.$error.required">Please provide your address.</span>
+        </div>
+
+        <label class="item item-input">
+          <textarea class="caps" placeholder="Address Line 2" name="Address1" ng-model="NewUser.address[1]"></textarea>
+        </label>
+
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Region
+          </div>
+          <select ng-options="region for region in Regions" ng-model="NewUser.region" required="">
+            <option value=""></option>
+          </select>
+        </label>
+
+    </form>
+
+    <button ng-click="CloseAddress()" class="button button-block button-balanced" ng-show="AddressForm.$valid">
+      Done
+    </button>
+
+  </ion-content>
+</ion-modal-view>

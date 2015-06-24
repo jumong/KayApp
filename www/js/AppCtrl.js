@@ -47,6 +47,13 @@ angular.module('starter.controllers', [])
   }).then(function(modal){
     $scope.resetPasswordModal=modal;
   });
+
+  $ionicModal.fromTemplateUrl('templates/address-modal.html',{
+    scope : $scope,
+    animation : 'scale-in'
+  }).then(function(modal){
+    $scope.addressModal = modal;
+  });
     
 
   $ionicModal.fromTemplateUrl('templates/settings-modal.html', {
@@ -265,6 +272,14 @@ angular.module('starter.controllers', [])
             // error
           });  
     }
+
+  $scope.EnterAddress = function() {
+    $scope.addressModal.show();
+  }
+
+  $scope.CloseAddress = function() {
+    $scope.addressModal.hide();
+  }
 
 
 
