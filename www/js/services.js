@@ -51,6 +51,11 @@ angular.module('starter.services', [])
 			temp.Authorized = false;
 			localStorage.KayApp = JSON.stringify(temp);
 		},
+		UpdatePassword : function(pw) {
+			var temp = JSON.parse(localStorage.KayApp);
+			temp.User.password = pw;
+			localStorage.KayApp = JSON.stringify(temp);
+		},
 		GetLogin : function() {
 			if (localStorage.KayApp) {
 				return JSON.parse(localStorage.KayApp);
@@ -192,6 +197,17 @@ angular.module('starter.services', [])
 				data : user,
 				headers : {'Content-Type' : 'application/json'}
 			});
+		},
+		ChangePassword : function(passwords) {
+			$http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode(Local.GetLogin().User.emailaddress + ':' + Local.GetLogin().User.password);
+			passwords.username = Local.GetLogin().User.username;
+			passwords.APIKEY = APIKey;
+			return $http({
+				method : 'POST',
+				url : APIPath + 'account/changePassword',
+				data : passwords,
+				headers : {'Content-Type' : 'application/json'}
+			})
 		}
 	};
 })

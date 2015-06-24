@@ -3,6 +3,7 @@
 KayApp.controller('SettingsCtrl', function( $scope , API , Local, $state , $rootScope , Alert){
 	$scope.User = Local.GetLogin().User;
 	$scope.Activities = Local.GetActivities();
+	$scope.NewPassword = {};
 
 	$rootScope.GoUrl = function(url) {
 	    $state.go(url);
@@ -19,23 +20,25 @@ KayApp.controller('SettingsCtrl', function( $scope , API , Local, $state , $root
 	}
 
 	$scope.LogOutUser = function() {
-	    // var user;
-	    // if (localStorage.KayApp) {
-	    //   user = JSON.parse(localStorage.KayApp);
-	    // };
-	    // if (user.LoggedIn) {
-	    //   user.LoggedIn = false;
-	    //   localStorage.KayApp = JSON.stringify(user);
-	    //   Alert('Info','User logged out');
-	    //   $state.go('app.home');
-	    //   $rootScope.settings.hide();
-	    // }
-
 	    if (localStorage.KayApp) {
 			delete localStorage.KayApp;
 			Alert('Info','User logged out');
 			$state.go('app.home');
 			$rootScope.settings.hide();
 	    };
+	}
+
+	$scope.SendPasswordChange = function() {
+		$rootScope.Loading();
+		API.ChangePassword($scope.NewPassword).then(function(res) {
+			$rootScope.HideLoader();
+			if (res.data.success) {
+				Alert('Success', res.data.message);
+				Local.UpdatePassword($scope.NewPassword.newPassword);
+				$state.go('app.home');
+			} else{
+				Alert('Error', res.data.message);
+			}
+		});
 	}
 });

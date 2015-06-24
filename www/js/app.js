@@ -143,6 +143,19 @@ var KayApp = angular.module('starter', ['ionic', 'starter.controllers','starter.
     }
   })
 
+  // CHANGE PASSWORD
+
+  .state('app.changepassword', {
+    url: "/changepassword",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/changepassword.html",
+        controller: 'SettingsCtrl'
+      }
+    }
+  })
+  
+
   // FIND US CONTROLLER
 
   .state('app.findus', {
