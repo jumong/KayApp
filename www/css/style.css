@@ -38,10 +38,8 @@ h4 {
  	height: 30px;
 }
 
-.bar-header {
-	background: url('../img/kayapp_white-green.png') #063b6f no-repeat center 30px;
-	background-size: 150px !important;
-	background-position-x: 10px;
+body {
+  -ms-content-zooming: none;
 }
 
 .platform-ios .bar-header {
