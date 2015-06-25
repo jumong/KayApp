@@ -182,7 +182,7 @@ angular.module('starter.controllers', [])
         $scope.CloseNewAccount();
         $state.go('app.home');
 
-        Alert('Thank You!', 'Your registration details are being verified. You will receive an email notifying you when your KayApp user has been activated. Should not receive this notification within 24 hours please contact our offices on <a href="tel:+27317172300">+27 31 717 2300</a>', function() {
+        Alert('Thank You!', data.data.message, function() {
           $state.go('app.home');
         });
 
