@@ -362,8 +362,75 @@ angular.module('starter.services', [])
 		}
 
 		return temp;
+	};
+})
 
+.factory('RelationshipTypes', function(){
+	return function(){
+		return [
+			'Academic',
+			'Accomodation',
+			'Agent',
+			'Architect',
+			'Cash Sale Customer',
+			'Competitor',
+			'Consulting Engineer',
+			'Contractor',
+			'Customer',
+			'Developer',
+			'Distributor',
+			'District Municipality',
+			'Landscaper',
+			'Local Municipality',
+			'Manufacturer',
+			'Merchant',
+			'National Government',
+			'Plumber',
+			'Project Manager',
+			'Provincial Government',
+			'Quantity Surveyor',
+			'Retailer',
+			'Service Provider',
+			'Supplier',
+			'Transporter',
+			'Waterproofer'
+		]
+	};
+})
 
+.factory('Industries', function(){
+	return function(){
+		return [
+			'Advertising',
+			'Agriculture',
+			'Building',
+			'Chemical',
+			'Civil',
+			'Coastal',
+			'CRB & Paving',
+			'Earthworks',
+			'Electrical',
+			'Environment',
+			'Forestry',
+			'Geotechnical',
+			'Horticulture',
+			'Housing',
+			'Industrial',
+			'Lining',
+			'Marine',
+			'Media',
+			'Mining',
+			'Ports',
+			'Rail',
+			'Retail',
+			'Roads',
+			'Sports Turf',
+			'Structural',
+			'Surfacing',
+			'Waste',
+			'Water',
+			'Waterproofing'
+		]
 	};
 })
 

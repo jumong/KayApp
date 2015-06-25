@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function(Regions, $scope, $ionicModal, $timeout, $state, $ionicPopup, Local, API, $rootScope, User, $ionicSideMenuDelegate, $cordovaInAppBrowser, $ionicLoading, $ionicUser, $ionicPush, Alert) {
+.controller('AppCtrl', function(Regions, $scope, $ionicModal, $timeout, $state, $ionicPopup, Local, API, $rootScope, User, $ionicSideMenuDelegate, $cordovaInAppBrowser, $ionicLoading, $ionicUser, $ionicPush, Alert, RelationshipTypes, Industries) {
 
   $scope.canReset=false;
   $scope.loginData = {};
@@ -8,6 +8,8 @@ angular.module('starter.controllers', [])
   $scope.LoginFormData = {};
   $rootScope.LoggedIn = Local.GetLogin().LoggedIn;
   $rootScope.GameOn = false;
+  $scope.RelationshipTypes = RelationshipTypes();
+  $scope.Industries = Industries();
 
   if (!Local.HasPushEnabled()) {
 

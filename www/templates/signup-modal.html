@@ -78,19 +78,40 @@
 					<span class="err" ng-show="NewAccount.ContactNumber.$error.required">Please provide your contact number.</span>
 				</div>
 
-			 <!--  <label class="item item-input">
-			    <input type="text" placeholder="Physical Address" name="Address" ng-model="NewUser.address" required="">
-			  </label> -->
-
-			  	<!-- <div ng-show="NewAccount.$submitted || NewAccount.Address.$touched">
-					<span class="err" ng-show="NewAccount.Address.$error.required">Please provide your address.</span>
-				</div> -->
-
 				<ul class="list">
 				    <li class="item" ng-click="EnterAddress()">
 				      <i class="icon ion-home rightIcon"></i>Address
 				    </li>
 				</ul>
+
+			 
+			 <p class="formTxt">Other Information</p>
+
+			<label class="item item-input item-select">
+				<div class="input-label">
+				  Relationship Type
+				</div>
+				<select ng-options="rel for rel in RelationshipTypes" ng-model="NewUser.relationshipType" name="Relationship" required="">
+					<option value=""></option>
+				</select>
+			</label>
+
+			<div ng-show="NewAccount.$submitted || NewAccount.Relationship.$touched">
+				<span class="err" ng-show="NewAccount.Relationship.$error.required">Please provide your relationship type.</span>
+			</div>
+
+			<label class="item item-input item-select">
+				<div class="input-label">
+				  Industry
+				</div>
+				<select ng-options="ind for ind in Industries" ng-model="NewUser.industry" name="Industry" required="">
+					<option value=""></option>
+				</select>
+			</label>
+
+			<div ng-show="NewAccount.$submitted || NewAccount.Industry.$touched">
+				<span class="err" ng-show="NewAccount.Industry.$error.required">Please provide your industry.</span>
+			</div>
 
 			  <p class="formTxt">Security</p>
 
