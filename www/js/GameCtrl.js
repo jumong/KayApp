@@ -48,7 +48,7 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 	    });
 	});
 
-	start();
+	// start();
 
 
 
