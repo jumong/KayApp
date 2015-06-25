@@ -142,6 +142,8 @@ angular.module('starter.services', [])
 			data.date = new Date().toDateString();
 			data.contactNumber = Local.GetLogin().User.contactNumber;
 			data.company = Local.GetLogin().User.company;
+			data.relationshipType = Local.GetLogin().User.relationshipType;
+			data.industry = Local.GetLogin().User.industry;
 			Local.StoreActivity(data);
 		    return $http(
 		        {
