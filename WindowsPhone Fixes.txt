@@ -1,0 +1,27 @@
+
+
+Dropdown forces user to select the option twice
+1. Add data-tab-disabled="true" in select list
+
+============================================================================
+ViewPort in IE
+1. add this to js file
+
+if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+	var msViewportStyle = document.createElement("style");
+	msViewportStyle.appendChild(
+        document.createTextNode(
+            "@-ms-viewport{width:auto!important}"
+        )
+    );
+	document.getElementsByTagName("head")[0].
+        appendChild(msViewportStyle);
+}
+
+2 add this to css file
+
+@-ms-viewport{width:device-width}
+
+=============================================================================
+Icons not working
+1. remove query string in .ttf [ionic/css/ionic.css]
