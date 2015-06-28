@@ -69,7 +69,8 @@
 		    <div class="input-label">
 		      Region
 		    </div>
-		    <select ng-options="region for region in Regions" ng-model="Request.region">
+		    <select ng-options="region for region in Regions" ng-model="Request.region" data-tab-disabled="true">
+		    	<option value=""></option>
 		    </select>
 		  </label>
 
@@ -78,7 +79,7 @@
 		    <div class="input-label">
 		      Request Type
 		    </div>
-		    <select ng-model="Request.type">
+		    <select ng-model="Request.type" data-tab-disabled="true">
 		    	<option>Quote</option>
 		    	<option>Order</option>
 		    </select>
@@ -158,7 +159,8 @@
 		    <div class="input-label">
 		      Enquiry Type
 		    </div>
-		    <select ng-options="option for option in Options" ng-model="Enquiry.type" name="EnquiryType" required="">
+		    <select ng-options="option for option in Options" ng-model="Enquiry.type" name="EnquiryType" required="" data-tab-disabled="true">
+		    	<option value=""></option>
 		    </select>
 		  </label>
 

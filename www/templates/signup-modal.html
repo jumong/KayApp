@@ -91,7 +91,7 @@
 				<div class="input-label">
 				  Relationship Type
 				</div>
-				<select ng-options="rel for rel in RelationshipTypes" ng-model="NewUser.relationshipType" name="Relationship" required="">
+				<select ng-options="rel for rel in RelationshipTypes" ng-model="NewUser.relationshipType" name="Relationship" required="" data-tab-disabled="true">
 					<option value=""></option>
 				</select>
 			</label>
@@ -104,7 +104,7 @@
 				<div class="input-label">
 				  Industry
 				</div>
-				<select ng-options="ind for ind in Industries" ng-model="NewUser.industry" name="Industry" required="">
+				<select ng-options="ind for ind in Industries" ng-model="NewUser.industry" name="Industry" required="" data-tab-disabled="true">
 					<option value=""></option>
 				</select>
 			</label>
@@ -119,7 +119,7 @@
 			    <div class="input-label">
 			      Security Question
 			    </div>
-			    <select ng-model="NewUser.Question" required="">
+			    <select ng-model="NewUser.Question" required="" data-tab-disabled="true">
 			    	<option value="petsName">What is your pet's name?</option>
 			    	<option value="fatherBirthYear">In what year was your father born?</option>
 			    	<option value="favourite">What is your favourite colour?</option>
