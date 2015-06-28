@@ -12,6 +12,16 @@ KayApp.controller('RequestCtrl', ['$rootScope','$scope','$stateParams','Local','
 
 	$scope.Options = GetOptions($scope);
 
+	$scope.PhotoInput = function() {
+		if ($rootScope.Platform == 'macintel' || $rootScope.Platform == 'win32') {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	// alert($rootScope.Platform);
+
 	$rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){ 
 		$scope.CheckLogin(toState.name);
 	});
@@ -116,34 +126,44 @@ KayApp.controller('RequestCtrl', ['$rootScope','$scope','$stateParams','Local','
 		};
 	}
 
+	$scope.FileSelect = function(name) {
+		$(name).click();
+	}
+
 	
 	$scope.ChooseSourceAndTakePhoto = function() {
 	  $scope.Photo = {};
 
-	  var myPopup = $ionicPopup.show({
-	    title: 'Attach new picture from..',
-	    scope: $scope,
-	    buttons: [
-	      {
-	        text: '<b>Camera</b>',
-	        type: 'button-positive',
-	        onTap: function(e) {
-	          $scope.FromCam = 1;
-	        }
-	      },
-	      {
-	        text: '<b>Photo Library</b>',
-	        type: 'button-positive',
-	        onTap: function(e) {
-	          $scope.FromCam = 0;
-	        }
-	      }
+	  if ($rootScope.Platform == 'macintel' || $rootScope.Platform == 'win32') {
+	  	$scope.FileSelect('#photo');
+	  } else{
+	  	var myPopup = $ionicPopup.show({
+		    title: 'Attach new picture from..',
+		    scope: $scope,
+		    buttons: [
+		      {
+		        text: '<b>Camera</b>',
+		        type: 'button-positive',
+		        onTap: function(e) {
+		          $scope.FromCam = 1;
+		        }
+		      },
+		      {
+		        text: '<b>Photo Library</b>',
+		        type: 'button-positive',
+		        onTap: function(e) {
+		          $scope.FromCam = 0;
+		        }
+		      }
 
-	    ]
-	  });
-	  myPopup.then(function(res) {
-	    TakePhoto($scope.FromCam, $scope.Photo);
-	  });
+		    ]
+		  });
+		  myPopup.then(function(res) {
+		    TakePhoto($scope.FromCam, $scope.Photo);
+		  });
+	  }
+
+	  
 	 };
 
 	 // $scope.ChooseSourceAndTakePhoto();

@@ -106,6 +106,8 @@
 		    </a>
 		</div>
 
+		<input type="file" fileread="Photo.src" id="photo" accept=".jpg,.jpeg" ng-show="PhotoInput()" style="display: none;">
+
 		<button class="button button-positive cam" ng-click="ChooseSourceAndTakePhoto()" ng-hide="Photo.src">
 		  <i class="icon ion-camera cam"></i>
 		</button>
@@ -187,6 +189,8 @@
 		<button class="button button-positive cam" ng-click="ChooseSourceAndTakePhoto()" ng-hide="Photo.src">
 		  <i class="icon ion-camera cam"></i>
 		</button>
+
+		<input type="file" fileread="Photo.src" id="photo" accept=".jpg,.jpeg" ng-show="PhotoInput()" style="display: none;">
 
 		<button ng-click="SendEnquiry(Enquiry)" ng-show="StandardRequest.$valid" type="submit" class="button nextToCam button-balanced" ng-class="{blockBtn : Photo.src}">
 		  Submit

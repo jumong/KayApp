@@ -4,36 +4,28 @@ angular.module('starter.services', [])
 .factory('TakePhoto', function($cordovaCamera, $ionicPlatform){
 	return function(fromCam, photo){
 
+		$ionicPlatform.ready(function() {
+  			var options = {
+		      quality: 75,
+		      destinationType: Camera.DestinationType.DATA_URL,
+		      sourceType: fromCam,
+		      allowEdit: true,
+		      encodingType: Camera.EncodingType.JPEG,
+		      targetWidth: 500,
+		      targetHeight: 500,
+		      popoverOptions: CameraPopoverOptions,
+		      saveToPhotoAlbum: true
+		    };
+		  
 
-		try {
+	  		$cordovaCamera.getPicture(options).then(function(imageData) {
+		      photo.src = "data:image/jpeg;base64," + imageData;
+		      photo.date = new Date();
+		    }, function(err) {
+		      console.log(err);
+		    });
+		}); // End Platform Ready
 
-			$ionicPlatform.ready(function() {
-
-	  			var options = {
-			      quality: 75,
-			      destinationType: Camera.DestinationType.DATA_URL,
-			      sourceType: fromCam,
-			      allowEdit: true,
-			      encodingType: Camera.EncodingType.JPEG,
-			      targetWidth: 500,
-			      targetHeight: 500,
-			      popoverOptions: CameraPopoverOptions,
-			      saveToPhotoAlbum: true
-			    };
-			  
-
-		  		$cordovaCamera.getPicture(options).then(function(imageData) {
-			      photo.src = "data:image/jpeg;base64," + imageData;
-			      photo.date = new Date();
-			    }, function(err) {
-			      console.log(err);
-			    });
-			}); // End Platform Ready
-
-
-		} catch (err) {
-  			alert(err);
-  		}
 
 	};
 })

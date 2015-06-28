@@ -9,6 +9,7 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 
 
 	var box = document.getElementById('box'),
+	gameArea = document.getElementById('gameArea'),
 	boxPos = 10,
 	itemPos = 0,
 	boxVelocity = 0.1,
@@ -28,9 +29,9 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 	timeBetweenSpawns = 5000,
 	lastSpawn = 0,
 	itemsToSpawn = 1,
-	totalItems = 0,
-	allItems = [],
-	itemPositions = [];
+	accelerationRate = 0.008,
+	spaceBetweenObjects = -80;
+	allItems = [];
 
 	
 	$scope.Result;
@@ -48,7 +49,7 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 	    });
 	});
 
-	// start();
+	start();
 
 
 
@@ -95,16 +96,27 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 		box.style.top = boxPos + 'px';
 		
 		for (var i = 0; i < allItems.length; i++) {
-			allItems[i].style.right = itemPositions[i] + 'px';
+			allItems[i].item.style.right = allItems[i].position + 'px';
+
+			if (allItems[i].item.style.right.split('.',1) > window.outerWidth) {
+				$(allItems[i].item).remove();
+			};
 		};
 	}
 
 	function update(delta, timestamp) {
 		boxPos += boxVelocity * delta;
-		// itemPos += itemVelocity * delta;
 
-		for (var i = 0; i < itemPositions.length; i++) {
-			itemPositions[i] += itemVelocity * delta;
+		for (var i = 0; i < allItems.length; i++) {
+			var item = allItems[i];
+			item.position += ((Math.random().toFixed(1))/5) + item.accel * delta;
+			item.accel += accelerationRate;
+			if (item.position > 0 && !item.accelerated) {
+				item.accel = accelerationRate;
+				item.accelerated = true;
+			};
+			//Check for collision
+			if (item.item.style.top) {};
 		};
 
 		if (timestamp > lastSpawn + timeBetweenSpawns) {
@@ -118,14 +130,13 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 		lastSpawn = timestamp;
 		
 		for (var i = 0; i < itemsToSpawn; i++) {
-			$('._jsGameArea').append('<p class="_jsItem GameItem" id="item'+totalItems+'""></p>');
-			var item = document.getElementById('item'+totalItems);
-			allItems.push(item);
-			totalItems++;
-			itemPositions.push(itemPos);
+			var height = (Math.floor(Math.random() * 9) + 1);
+			var calcedHeight = (screen.height / 10) * height;
+			$('._jsGameArea').append('<p class="_jsItem GameItem" style="top: '+calcedHeight+'px;" id="item'+allItems.length+'""></p>');
+			var item = document.getElementById('item'+allItems.length);
+			allItems.push({item : item, position : i * spaceBetweenObjects, accel : accelerationRate});
 		};
 		itemsToSpawn++;
-		console.log(allItems);
 	}
 
 	function mainLoop(timestamp) {

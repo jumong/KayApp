@@ -46,6 +46,18 @@ body {
   -ms-content-zooming: none;
 }
 
+.platform-browser .bar-header {
+	background: url('../img/kayapp_white-green.png') #063b6f no-repeat center !important;
+	background-size: 150px !important;
+	background-position-x: 10px;
+}
+
+/*NODE WEBKIT*/
+.bar-header {
+	-webkit-app-region : drag;
+	-webkit-user-select: none;
+}
+
 .platform-ios .bar-header {
 	background: url('../img/kayapp_white-green.png') #063b6f no-repeat center 30px !important;
 	background-size: 150px !important;
@@ -367,15 +379,6 @@ ion-content {
   font-size: 0.7rem;
 }
 
-#box {
-    background-color: red;
-    height: 50px;
-    left: 20px;
-    position: absolute;
-    top: 10px;
-    width: 50px;
-}
-
 .gameArea {
 	position: fixed;
 	top: 0;
@@ -410,12 +413,21 @@ ion-content {
 
 /*GAME*/
 
+#box {
+    background-color: red;
+    height: 50px;
+    left: 20px;
+    position: absolute;
+    top: 10px;
+    width: 50px;
+}
+
 .GameItem {
 	position: absolute;
 	width: 10px;
 	height: 10px;
 	background: blue;
-	top: 20px;
+	top: 20%;
 	right: 0px;
 }
 

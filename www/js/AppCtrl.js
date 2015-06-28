@@ -10,6 +10,7 @@ angular.module('starter.controllers', [])
   $rootScope.GameOn = false;
   $scope.RelationshipTypes = RelationshipTypes();
   $scope.Industries = Industries();
+  $rootScope.Platform = ionic.Platform.platform();
 
   if (!Local.HasPushEnabled()) {
 
