@@ -46,6 +46,10 @@ body {
   -ms-content-zooming: none;
 }
 
+.platform-wp8 {
+	overflow: scroll;
+}
+
 .platform-browser .bar-header {
 	background: url('../img/kayapp_white-green.png') #063b6f no-repeat center !important;
 	background-size: 150px !important;

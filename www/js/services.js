@@ -210,7 +210,7 @@ angular.module('starter.services', [])
 	 // return 'http://localhost:5001/api/';
 	return 'http://Kayappapi.kaymac.co.za/api/';
 	// return 'http://kayappapi.azurewebsites.net/api/';
-	// return 'http://10.1.50.24:5001/api/'
+	// return 'http://10.1.50.20:5001/api/'
 })
 
 .factory('APIKey', function(){
@@ -321,6 +321,19 @@ angular.module('starter.services', [])
             Question:'',
             Answer:''
 		}
+	};
+})
+
+.factory('Platform', function(){
+	return {
+		deviceInformation : ionic.Platform.device(),
+		isWebView : ionic.Platform.isWebView(),
+		isIPad : ionic.Platform.isIPad(),
+		isIOS : ionic.Platform.isIOS(),
+		isAndroid : ionic.Platform.isAndroid(),
+		isWindowsPhone : ionic.Platform.isWindowsPhone(),
+		currentPlatform : ionic.Platform.platform(),
+		currentPlatformVersion : ionic.Platform.version(),
 	};
 })
 

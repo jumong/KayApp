@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function(Regions, $scope, $ionicModal, $timeout, $state, $ionicPopup, Local, API, $rootScope, User, $ionicSideMenuDelegate, $cordovaInAppBrowser, $ionicLoading, $ionicUser, $ionicPush, Alert, RelationshipTypes, Industries) {
+.controller('AppCtrl', function(Regions, $scope, $ionicModal, $timeout, $state, $ionicPopup, Local, API, $rootScope, User, $ionicSideMenuDelegate, $cordovaInAppBrowser, $ionicLoading, $ionicUser, $ionicPush, Alert, RelationshipTypes, Industries, Platform, $location) {
 
   $scope.canReset=false;
   $scope.loginData = {};
@@ -159,8 +159,13 @@ angular.module('starter.controllers', [])
     $rootScope.settings.hide();
   }
 
-  $rootScope.GoTo = function(url, param) {
-    $state.go(url, param);
+  $rootScope.GoTo = function(url, param, loc) {
+    if (Platform.isWindowsPhone) {
+      $location.path(loc);
+    } else {
+      $state.go(url, param);
+    }
+    
   }
 
   $scope.Regions = Regions.Get();
