@@ -325,10 +325,14 @@ angular.module('starter.controllers', [])
 
 
   // This is a temporary hack for the issue with the bottom tabs
-  setInterval(function() {
-    $('.bottomTab').removeClass('tab-item-active');
-    $('.bottomTab.'+$state.params.type).addClass('tab-item-active');
-  },200);
+
+  if (!Platform.isWindowsPhone) {
+    setInterval(function() {
+      $('.bottomTab').removeClass('tab-item-active');
+      $('.bottomTab.'+$state.params.type).addClass('tab-item-active');
+    },200);
+  };
+  
 
 
     

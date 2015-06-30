@@ -24,8 +24,9 @@ var KayApp = angular.module('starter', ['ionic', 'starter.controllers','starter.
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $ionicAppProvider) {
   // $ionicConfigProvider.views.swipeBackEnabled(false);
 
-  // $ionicConfigProvider.views.transition('none');
-  // $ionicConfigProvider.views.transition('none');
+  if (ionic.Platform.isWindowsPhone()) {
+    $ionicConfigProvider.views.transition('none');
+  };
 
   $ionicAppProvider.identify({
     // The App ID for the server
