@@ -11,6 +11,7 @@ angular.module('starter.controllers', [])
   $scope.RelationshipTypes = RelationshipTypes();
   $scope.Industries = Industries();
   $rootScope.Platform = ionic.Platform.platform();
+  $scope.IsWindows = Platform.isWindowsPhone; 
 
   if (!Local.HasPushEnabled()) {
 
