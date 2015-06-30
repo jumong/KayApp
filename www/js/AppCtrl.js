@@ -254,7 +254,8 @@ angular.module('starter.controllers', [])
       var options = {
           location: 'no',
           clearcache: 'yes',
-          toolbar: 'yes'
+          toolbar: 'yes',
+          EnableViewPortScale : 'yes'
         };
 
         var StringCheck;

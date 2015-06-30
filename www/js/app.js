@@ -25,6 +25,7 @@ var KayApp = angular.module('starter', ['ionic', 'starter.controllers','starter.
   // $ionicConfigProvider.views.swipeBackEnabled(false);
 
   // $ionicConfigProvider.views.transition('none');
+  // $ionicConfigProvider.views.transition('none');
 
   $ionicAppProvider.identify({
     // The App ID for the server
