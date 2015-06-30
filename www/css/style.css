@@ -87,6 +87,10 @@ body {
 	top: 25px;
 }
 
+.platform-wp8 .gear {
+	top: 10px;
+}
+
 ion-content {
 	/*background: #eee;*/
 }
