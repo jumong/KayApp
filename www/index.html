@@ -5,6 +5,7 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title>KayApp</title>
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Sigmar+One' rel='stylesheet' type='text/css'>
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
@@ -43,7 +44,7 @@
   <body ng-app="starter">
     <ion-nav-view>
 
-        <i class="ion-ios-gear gear" ng-click="Settings()" ng-show="LoggedIn && ShowTabs"></i>
+        <i class="ion-ios-gear gear" ng-click="Settings()" ng-show="LoggedIn && ShowTabs && !GameOn"></i>
 
         <ion-tabs class="tabs-positive tabs-icon-only _jsBottomTabs" ng-show="ShowTabs && !GameOn && !IsWindows">
 

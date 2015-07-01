@@ -7,9 +7,12 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 		$state.go('app.home');
 	}
 
+	$scope.Score = 0;
 
 	var box = document.getElementById('box'),
 	gameArea = document.getElementById('gameArea'),
+	powerBar = document.getElementById('powerBar'),
+	boxRight = screen.width - 80,
 	boxPos = 10,
 	itemPos = 0,
 	boxVelocity = 0.1,
@@ -26,15 +29,20 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 	frameID,
 	running = false,
 	started = false,
-	timeBetweenSpawns = 5000,
+	timeBetweenSpawns = 4225,
 	lastSpawn = 0,
 	itemsToSpawn = 1,
 	accelerationRate = 0.008,
-	spaceBetweenObjects = -80;
+	spaceBetweenObjects = -80,
+	score = 0,
 	allItems = [];
+	$rootScope.GameOn = true;
 
+	box.style.right = boxRight + 'px';
+	var boxHeight = $(box).height();
 	
 	$scope.Result;
+	$scope.TimeLeft = 30;
 
 	document.addEventListener("deviceready", function () {
 		var options = { frequency: timeStep };
@@ -49,7 +57,7 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 	    });
 	});
 
-	start();
+	// start();
 
 
 
@@ -68,12 +76,21 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 		running = false;
 		started = false;
 		cancelAnimationFrame(frameID);
-		$rootScope.GameOn = false;
+		// $rootScope.GameOn = false;
 	}
 
 	function start() {
 		if (!started) {
 			started = true;
+
+			var timer = setInterval(function() {
+				$scope.TimeLeft--;
+				$scope.$apply();
+				if ($scope.TimeLeft < 1) {
+					stop();
+					clearInterval(timer);
+				};
+			},1000)
 
 			$rootScope.GameOn = true;
 
@@ -96,11 +113,42 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 		box.style.top = boxPos + 'px';
 		
 		for (var i = 0; i < allItems.length; i++) {
-			allItems[i].item.style.right = allItems[i].position + 'px';
+			var item = allItems[i];
+			item.item.style.right = item.position + 'px';
 
-			if (allItems[i].item.style.right.split('.',1) > window.outerWidth) {
-				$(allItems[i].item).remove();
+			if (allItems[i].item.style.right.split('.',1) > screen.width) {
+				$(item.item).remove();
 			};
+
+			// Check for collision
+			var itemTop = parseInt(item.item.style.top.split('.',1));
+			var boxTop = parseInt(box.style.top.split('.',1));
+			if (item.position > boxRight && item.position < boxRight + boxHeight) {
+
+				if (itemTop > boxTop && itemTop < boxTop + boxHeight) {
+					gotHim(item.item, i);
+				};
+
+				
+			};
+		};
+	}
+
+	function gotHim(item, i) {
+		$(item).remove();
+		allItems.splice(i,1);
+		score++;
+		if (score == 20) {
+			GameOver(score);
+		};
+		$scope.Score = score;
+		powerBar.style.width = score * 10 + 'px';
+		$scope.$apply();
+	}
+
+	function GameOver(score) {
+		if (score == 20) {
+			stop();
 		};
 	}
 
@@ -115,8 +163,6 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 				item.accel = accelerationRate;
 				item.accelerated = true;
 			};
-			//Check for collision
-			if (item.item.style.top) {};
 		};
 
 		if (timestamp > lastSpawn + timeBetweenSpawns) {
