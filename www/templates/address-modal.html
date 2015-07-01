@@ -1,10 +1,35 @@
 <ion-modal-view class="smallModal">
   <ion-content padding="true">
       
-    <form novalidate name="AddressForm">
-
-        <p class="formTxt">Please enter your address</p>
+  
       
+    <form novalidate name="AddressForm">
+        <p class="formTxt">Please enter your address</p>
+        
+<!--
+   <ul class="list">
+  <li class="item item-toggle item-text-wrap">    
+       Same as work physical address
+     <label class="toggle toggle-assertive">
+        
+       <input type="checkbox">
+       <div class="track">
+         <div class="handle"></div>
+       </div>
+     </label>
+  </li>    
+</ul>
+-->
+    <ul class="list">
+	  <li class="item item-checkbox item-text-wrap">
+	     <label class="checkbox">
+	       <input type="checkbox" ng-model="IHaveAnAccount">
+	     </label>
+	     Same as work physical address.
+	  </li>
+	</ul>
+        
+       <div class="list list-inset">
         <label class="item item-input">
           <textarea class="caps" placeholder="Address Line 1" name="Address1" ng-model="NewUser.address[0]" required=""></textarea>
         </label>
@@ -16,6 +41,14 @@
         <label class="item item-input">
           <textarea class="caps" placeholder="Address Line 2" name="Address1" ng-model="NewUser.address[1]"></textarea>
         </label>
+        
+         <label class="item item-input">
+          <textarea class="caps" placeholder="Address Line 3" name="Address1" ng-model="NewUser.address[2]"></textarea>
+        </label>
+        
+        <label class="item item-input">
+          <textarea class="caps" placeholder="City" name="Address1" ng-model="NewUser.address[3]" rows="2"/>
+        </label>
 
         <label class="item item-input item-select">
           <div class="input-label">
@@ -25,7 +58,7 @@
             <option value=""></option>
           </select>
         </label>
-
+        </div>
     </form>
 
     <button ng-click="CloseAddress()" class="button button-block button-balanced" ng-show="AddressForm.$valid">

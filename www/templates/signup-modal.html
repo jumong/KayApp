@@ -73,16 +73,19 @@
 			  <label class="item item-input">
 			    <input type="text" placeholder="Contact Number" name="ContactNumber" ng-model="NewUser.contactNumber" required="">
 			  </label>
-
 			  	<div ng-show="NewAccount.$submitted || NewAccount.ContactNumber.$touched">
 					<span class="err" ng-show="NewAccount.ContactNumber.$error.required">Please provide your contact number.</span>
-				</div>
-
+				</div>               
 				<ul class="list">
 				    <li class="item" ng-click="EnterAddress()">
-				      <i class="icon ion-home rightIcon"></i>Address
+				      <i class="icon ion-briefcase rightIcon"></i>Work Physical Address
+				    </li>                    
+                    <li class="item" ng-click="EnterPostalAddress()">
+				      <i class="icon ion-email rightIcon"></i>Work Postal Address
 				    </li>
 				</ul>
+                
+                
 
 			 
 			 <p class="formTxt">Other Information</p>

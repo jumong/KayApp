@@ -107,8 +107,8 @@ KayApp.controller('RequestCtrl', ['$rootScope','$scope','$stateParams','Local','
 	$scope.showAlert = function() {
 		var alertPopup = $ionicPopup.alert({
 			title: 'Thank You!',
-			template: 'A representative from Kaytech will be in contact with you shortly. If you require any further assistance please contact us on <a href="tel:+27317172300">+27 31 717 2300</a>'
-		});
+            templateUrl: "templates/request-response.html"
+        });
 		alertPopup.then(function(res) {
 			$state.go('app.home');
 		});

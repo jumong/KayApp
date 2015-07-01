@@ -317,6 +317,8 @@ angular.module('starter.services', [])
 			company : '',
 			contactNumber : '',
 			address : [],
+            postalAddress:[],
+            sameAsPhysical:false,
 			region : '',
             Question:'',
             Answer:''
