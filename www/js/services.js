@@ -347,7 +347,7 @@ angular.module('starter.services', [])
 		switch(scope.Type){
 			case 'account':
 				scope.Heading = 'Account Enquiry';
-				temp = ['New Account Application', 'Credit Limit Increase', 'Invoice Request', 'Statement Request', 'Transaction Query'];
+				temp = ['New Account Application', 'Credit Limit Increase', 'Invoice Request', 'Statement Request', 'Transaction Query','Request BBBEE Certificate Copy','Request Delivery Note Copy'];
 				break;
 			case 'order':
 				scope.Heading = 'Order Request/Quote'
