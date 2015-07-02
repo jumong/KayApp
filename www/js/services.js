@@ -409,6 +409,7 @@ angular.module('starter.services', [])
 			'Developer',
 			'Distributor',
 			'District Municipality',
+			'Kaytech Employee',
 			'Landscaper',
 			'Local Municipality',
 			'Manufacturer',
