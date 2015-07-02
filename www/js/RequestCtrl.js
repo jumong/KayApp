@@ -131,14 +131,21 @@ KayApp.controller('RequestCtrl', ['$rootScope','$scope','$stateParams','Local','
 	}
 
 	
+
+
+ $scope.closePopup = false;
+
+
 	$scope.ChooseSourceAndTakePhoto = function() {
 	  $scope.Photo = {};
+	 
 
 	  if ($rootScope.Platform == 'macintel' || $rootScope.Platform == 'win32') {
 	  	$scope.FileSelect('#photo');
 	  } else{
-	  	var myPopup = $ionicPopup.show({
-		    title: 'Attach new picture from..',
+	  var myPopup = $ionicPopup.show({	
+	  		cssClass:'photoAattachment',
+	  		templateUrl:'templates/photo-attachment.html',
 		    scope: $scope,
 		    buttons: [
 		      {
@@ -155,20 +162,23 @@ KayApp.controller('RequestCtrl', ['$rootScope','$scope','$stateParams','Local','
 		          $scope.FromCam = 0;
 		        }
 		      }
+		    ],
 
-		    ]
 		  });
-		  myPopup.then(function(res) {
+
+		  myPopup.then(function(res) {	
 		    TakePhoto($scope.FromCam, $scope.Photo);
 		  });
+		   
+		   $scope.closePopup=function(){		   
+			myPopup.close();
+		   }
+
 	  }
-
 	  
-	 };
-
-	 // $scope.ChooseSourceAndTakePhoto();
-
+	 }; 
 	
+
 }])
 
 

@@ -1,4 +1,21 @@
 /* Empty. Add your own CSS if you like */
+.photoAattachment .popup-head{
+	padding: 0px;
+  border-bottom: none;
+}
+
+.closeButton{
+	text-decoration: none;
+	color:#808080;
+}
+
+.closeButton: hover{
+	text-decoration: none;
+	color:#808080;
+}
+
+
+
 @-ms-viewport{width:device-width}
 
 
