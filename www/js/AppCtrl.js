@@ -1,7 +1,9 @@
 angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function(Regions, $scope, $ionicModal, $timeout, $state, $ionicPopup, Local, API, $rootScope, User, $ionicSideMenuDelegate, $cordovaInAppBrowser, $ionicLoading, $ionicUser, $ionicPush, Alert, RelationshipTypes, Industries, Platform, $location) {
-
+  $scope.address ='Work Physical Address';
+  $scope.postal='Work Postal Address';
+  $scope.SameAsPhysical= {checked:true};
   $scope.canReset=false;
   $scope.loginData = {};
   $scope.IHaveAnAccount = false;
@@ -42,6 +44,8 @@ angular.module('starter.controllers', [])
     $rootScope.ShowTabs = !$ionicSideMenuDelegate.isOpen();
   })
 
+ 
+
   $rootScope.Settings = function() {
     $rootScope.settings.show();
   }
@@ -57,6 +61,14 @@ angular.module('starter.controllers', [])
     animation : 'scale-in'
   }).then(function(modal){
     $scope.addressModal = modal;
+  });
+
+
+  $ionicModal.fromTemplateUrl('templates/postal-modal.html',{
+    scope : $scope,
+    animation : 'scale-in'
+  }).then(function(modal){
+    $scope.postalAddressModal = modal;
   });
     
 
@@ -172,6 +184,7 @@ angular.module('starter.controllers', [])
   $scope.Regions = Regions.Get();
 
   $scope.CreateUser = function() {
+
 
     if ($scope.NewUser.password != $scope.NewUser.confirmPassword) {
       Alert('Error','Your passwords do not match.');
@@ -325,9 +338,73 @@ angular.module('starter.controllers', [])
     $scope.addressModal.show();
   }
 
-  $scope.CloseAddress = function() {
+  $scope.CloseAddress = function() {  
+
+    var a = '';
+    $scope.NewUser.address.forEach(function(i){
+    if(i == $scope.NewUser.address[0] ){
+           a=i;
+         }else{
+           if(i!=='')
+              a+= ', '+i; 
+        }
+    });
+
+    if(a==='')
+      $scope.address='Work Physical Address';
+    else      
+      $scope.address=a; 
+
+
     $scope.addressModal.hide();
   }
+
+  $scope.EnterPostalAddress = function(){
+    $scope.postalAddressModal.show();      
+  }
+
+  $scope.ClosePostalAddress = function(){
+
+    var p = '';
+    $scope.NewUser.postalAddress.forEach(function(i){
+    if(i == $scope.NewUser.postalAddress[0] ){
+          p=i;
+        } else{
+
+            if(i!=='')
+              p+=  ', '+i; 
+          
+        }
+    });
+
+     
+    if(p==='')
+      $scope.postal='Work Postal Address';
+    else      
+       $scope.postal=p; 
+  
+    
+    $scope.postalAddressModal.hide();
+
+  }
+
+  $scope.UpdatePostalAddress=function(value){
+    if(value){
+      $scope.NewUser.postalAddress[0] = $scope.NewUser.address[0];
+      $scope.NewUser.postalAddress[1] = $scope.NewUser.address[1];
+      $scope.NewUser.postalAddress[2] = $scope.NewUser.address[2];
+      $scope.NewUser.postalAddress[3] = $scope.NewUser.address[3];
+    }
+    else{
+      $scope.NewUser.postalAddress[0] = '';
+      $scope.NewUser.postalAddress[1] = '';
+      $scope.NewUser.postalAddress[2] = '';
+      $scope.NewUser.postalAddress[3] = '';
+    }
+  }
+
+
+  //$scope.$watch('');
 
 
   // This is a temporary hack for the issue with the bottom tabs

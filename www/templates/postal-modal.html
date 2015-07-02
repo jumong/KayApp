@@ -1,0 +1,42 @@
+<ion-modal-view class="smallModal">
+  <ion-content padding="true">
+      
+  
+      
+    <form novalidate name="AddressForm">
+        <p class="formTxt">Please enter work postal address</p>        
+
+    <ul class="list">
+	  <li class="item item-checkbox item-text-wrap">
+	     <label class="checkbox">
+	       <input type="checkbox" ng-click="UpdatePostalAddress(SameAsPhysical)" ng-model="SameAsPhysical">
+	     </label>
+	     Same as work physical address.
+	  </li>
+	</ul>        
+       <div class="list list-inset">
+        <label class="item item-input">
+          <textarea class="caps" placeholder="Address Line 1" name="Address1" ng-model="NewUser.postalAddress[0]" required=""></textarea>
+        </label>
+        <div ng-show="AddressForm.Address1.$touched">
+          <span class="err" ng-show="AddressForm.Address1.$error.required">Please provide your address.</span>
+        </div>
+
+        <label class="item item-input">
+          <textarea class="caps" placeholder="Address Line 2" name="Address1" ng-model="NewUser.postalAddress[1]"></textarea>
+        </label>
+        
+         <label class="item item-input">
+          <textarea class="caps" placeholder="Address Line 3" name="Address1" ng-model="NewUser.postalAddress[2]"></textarea>
+        </label>
+        
+        <label class="item item-input">
+          <textarea class="caps" placeholder="City" name="Address1" ng-model="NewUser.postalAddress[3]" />
+        </label>        
+        </div>
+    </form>
+    <button ng-click="ClosePostalAddress()" class="button button-block button-balanced" ng-show="AddressForm.$valid">
+      Done
+    </button>
+  </ion-content>
+</ion-modal-view>
