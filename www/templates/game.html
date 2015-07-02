@@ -3,9 +3,30 @@
 
 	<div class="gameArea _jsGameArea" id="gameArea">
 		<div id="box"></div>
-		<p ng-click="StopGame()" class="stopGame">Stop Game</p>
-		<div class="scoreDisplay">{{TimeLeft}}</div>
+		<p ng-click="StopGame()" class="stopGame rotate90">Stop Game</p>
+		<div class="scoreDisplay rotate90">{{TimeLeft}}</div>
 		<img src="img/game/healthContainer.png" alt="" id="powerContainer">
 		<div id="powerBar"></div>
+
+		<div id="menuBox" ng-show="!Started" class="level3" ng-class="{'shown' : !Started}">
+			<div class="menuText rotate90">
+				<div id="userName" ng-show="!Started">Hi, {{User.firstName}}!</div>
+				<h4>Aim of the game:</h4>
+				<p>Collect as many items as you can to see how much bidim you can create!</p>
+				<div id="startGame" class="gameBigButton level4" ng-click="StartGame()" ng-show="!Started">Start Game</div>
+			</div>
+		</div>
+
+		<div id="resultBox" ng-show="ShowResult" class="level3" ng-class="{'shown' : ShowResult}">
+			<div class="resultText rotate90">
+				<div class="congrats">Good Job {{User.firstName}}!</div>
+				<div class="productData">
+					<p>{{Product.name}}</p>
+					<img src="{{Product.image}}">
+				</div>
+				<div id="okButton" class="gameBigButton level4" ng-click="Reset()">OK!</div>
+			</div>
+		</div>
+
 	</div>
 

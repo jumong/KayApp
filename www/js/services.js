@@ -374,6 +374,26 @@ angular.module('starter.services', [])
 	};
 })
 
+.factory('Bidim', function(){
+	return [
+		{
+			name : 'A1'
+		},
+		{
+			name : 'A2'
+		},
+		{
+			name : 'A3'
+		},
+		{
+			name : 'A4'
+		},
+		{
+			name : 'A5'
+		}
+	]
+})
+
 .factory('RelationshipTypes', function(){
 	return function(){
 		return [

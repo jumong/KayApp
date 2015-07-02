@@ -1,11 +1,13 @@
 
 
-KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope, $state ){
+KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope, $state, Local, Bidim ){
 
 	$scope.StopGame = function() {
 		stop();
 		$state.go('app.home');
 	}
+
+	$scope.User = Local.GetLogin().User;
 
 	$scope.Score = 0;
 
@@ -43,6 +45,7 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 	
 	$scope.Result;
 	$scope.TimeLeft = 30;
+	$scope.ShowResult = false;
 
 	document.addEventListener("deviceready", function () {
 		var options = { frequency: timeStep };
@@ -59,8 +62,9 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 
 	// start();
 
-
-
+	$scope.StartGame = function() {
+		start();
+	}
 
 	// GAME LOOP
 
@@ -72,22 +76,48 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 
 	}
 
+	function GameOver(score) {
+		stop();
+		showResult(Math.floor(score/2));
+	}
+
+	function showResult(grade) {
+		$scope.ShowResult = true;
+		$scope.Product = Bidim[Math.floor(grade/2)];
+		$scope.$apply();
+	}
+
+	$scope.Reset = function() {
+		started = false;
+		$scope.Started = started;
+		$scope.ShowResult = false;
+		score = 0;
+		allItems = [];
+		delta = 0;
+		$scope.TimeLeft = 30;
+		lastSpawn = 0;
+		itemsToSpawn = 1;
+		$('._jsItem').remove();
+		$scope.$apply();
+	}
+
 	function stop() {
 		running = false;
-		started = false;
 		cancelAnimationFrame(frameID);
-		// $rootScope.GameOn = false;
 	}
 
 	function start() {
 		if (!started) {
 			started = true;
 
+			$scope.Started = started;
+			$scope.$apply();
+
 			var timer = setInterval(function() {
 				$scope.TimeLeft--;
 				$scope.$apply();
 				if ($scope.TimeLeft < 1) {
-					stop();
+					GameOver(score);
 					clearInterval(timer);
 				};
 			},1000)
@@ -144,12 +174,6 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 		$scope.Score = score;
 		powerBar.style.width = score * 10 + 'px';
 		$scope.$apply();
-	}
-
-	function GameOver(score) {
-		if (score == 20) {
-			stop();
-		};
 	}
 
 	function update(delta, timestamp) {
