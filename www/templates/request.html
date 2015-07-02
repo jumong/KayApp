@@ -84,9 +84,9 @@
 		    	<option>Order</option>
 		    </select>
 		  </label>
-
+		  
 		  <label class="item item-input">
-		    <input type="text" placeholder="Products/Quantities" name="ProductsQuantities" ng-model="Request.prodquant" required="">
+		  <textarea placeholder="Products/Quantities" name="ProductsQuantities" ng-model="Request.prodquant" required=""></textarea>		   
 		  </label>
 
 		  	<div ng-show="OrderQuoteRequest.$submitted || OrderQuoteRequest.ProductsQuantities.$touched">
@@ -94,7 +94,7 @@
 			</div>
 
 		  <label class="item item-input">
-		    <input type="text" placeholder="Project Details" ng-model="Request.details">
+		  <textarea placeholder="Project Details" ng-model="Request.details"></textarea>		  
 		  </label>
 
 		<div class="list" ng-show="Photo.src">
