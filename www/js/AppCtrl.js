@@ -221,7 +221,12 @@ angular.module('starter.controllers', [])
        $state.go('app.home');
     },function (error) {           
           $rootScope.HideLoader(); 
-          Alert('Error', error.data || 'Something went wrong, please try again.', function() {
+
+          var message =error.data;
+          if(error.data='Unauthorized')
+            message = 'Either username or password is incorrect, please try again.';
+
+          Alert('Error', message || 'Something went wrong, please try again.', function() {
             $scope.canReset=false;
          });
     });
