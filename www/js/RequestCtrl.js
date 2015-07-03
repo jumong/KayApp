@@ -8,6 +8,7 @@ KayApp.controller('RequestCtrl', ['$rootScope','$scope','$stateParams','Local','
 	$scope.Regions = Regions.Get();
 	$scope.Enquiry = {};
 	$scope.Authorized = Local.GetLogin().Authorized;
+	$scope.Photos = [];
 	console.log('Authorized : ' + $scope.Authorized);
 
 	$scope.Options = GetOptions($scope);
@@ -165,9 +166,14 @@ KayApp.controller('RequestCtrl', ['$rootScope','$scope','$stateParams','Local','
 		    ],
 
 		  });
+<<<<<<< Updated upstream
 
 		  myPopup.then(function(res) {	
 		    TakePhoto($scope.FromCam, $scope.Photo);
+=======
+		  myPopup.then(function(res) {
+		    TakePhoto($scope.FromCam, $scope.Photo, $scope.Photos);
+>>>>>>> Stashed changes
 		  });
 		   
 		   $scope.closePopup=function(){		   

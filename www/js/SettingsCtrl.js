@@ -25,6 +25,7 @@ KayApp.controller('SettingsCtrl', function( $scope , API , Local, $state , $root
 	}
 
 	$scope.LogOutUser = function() {
+		localStorage.KayAppEmail = JSON.parse(localStorage.KayApp).User.emailaddress;
 	    if (localStorage.KayApp) {
 			delete localStorage.KayApp;
 			Alert('Info','User logged out');

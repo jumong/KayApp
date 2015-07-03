@@ -178,17 +178,17 @@
 				<span class="err" ng-show="StandardRequest.EnquiryDetails.$error.required">Please provide some more information.</span>
 			</div>
 
-		<div class="list" ng-show="Photo.src">
+		<div class="list" ng-repeat="photo in Photos">
 		    <a class="item item-thumbnail-left" href="#">
-				<img src="{{Photo.src}}">
-				<h2>{{Photo.date  | date:'medium'}}</h2>
+				<img src="{{photo.src}}">
+				<h2>{{photo.date  | date:'medium'}}</h2>
 				<button class="button button-small button-assertive" ng-click="Remove(Photo)">
 					<i class="icon ion-ios-close-empty"></i> Remove
 				</button>
 		    </a>
 		</div>
 
-		<button class="button button-positive cam" ng-click="ChooseSourceAndTakePhoto()" ng-hide="Photo.src">
+		<button class="button button-positive cam" ng-click="ChooseSourceAndTakePhoto()">
 		  <i class="icon ion-camera cam"></i>
 		</button>
 

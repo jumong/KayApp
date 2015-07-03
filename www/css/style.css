@@ -317,6 +317,14 @@ ion-content {
 }
 
 
+/*SMALLER DEVICES*/
+
+@media (max-width: 600px) {
+	.item-select select {
+		max-width: 45%;
+	}
+}
+
 
 
 
