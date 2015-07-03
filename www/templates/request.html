@@ -97,11 +97,11 @@
 		  <textarea placeholder="Project Details" ng-model="Request.details"></textarea>		  
 		  </label>
 
-		<div class="list" ng-show="Photo.src">
+		<div class="list" ng-repeat="photo in Photos track by $index">
 		    <a class="item item-thumbnail-left" href="#">
-				<img src="{{Photo.src}}">
-				<h2>{{Photo.date  | date:'medium'}}</h2>
-				<button class="button button-small button-assertive" ng-click="Remove(Photo)">
+				<img src="{{photo.src}}">
+				<h2>{{photo.date  | date:'medium'}}</h2>
+				<button class="button button-small button-assertive" ng-click="Remove(Photo, $index)">
 					<i class="icon ion-ios-close-empty"></i> Remove
 				</button>
 		    </a>
@@ -178,11 +178,11 @@
 				<span class="err" ng-show="StandardRequest.EnquiryDetails.$error.required">Please provide some more information.</span>
 			</div>
 
-		<div class="list" ng-repeat="photo in Photos">
+		<div class="list" ng-repeat="photo in Photos track by $index">
 		    <a class="item item-thumbnail-left" href="#">
 				<img src="{{photo.src}}">
 				<h2>{{photo.date  | date:'medium'}}</h2>
-				<button class="button button-small button-assertive" ng-click="Remove(Photo)">
+				<button class="button button-small button-assertive" ng-click="Remove(Photo, $index)">
 					<i class="icon ion-ios-close-empty"></i> Remove
 				</button>
 		    </a>

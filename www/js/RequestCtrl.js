@@ -35,8 +35,8 @@ KayApp.controller('RequestCtrl', ['$rootScope','$scope','$stateParams','Local','
 
 	$scope.SendEnquiry = function(data) {
 		$scope.Loading();
-		if ($scope.Photo) {
-			data.photo = $scope.Photo;
+		if ($scope.Photos.length) {
+			data.photo = $scope.Photos;
 		};
 		data.EnquiryType = $scope.Heading;
 		API.SendRequestEnquiry(data).then(function(response) {
@@ -117,14 +117,8 @@ KayApp.controller('RequestCtrl', ['$rootScope','$scope','$stateParams','Local','
 
 	$scope.CheckLogin('app.request');
 
-	$scope.Remove = function() {
-		$scope.Photo = {};
-		if ($scope.Enquiry.photo) {
-			delete $scope.Enquiry.photo;
-		};
-		if ($scope.Request.photo) {
-			delete $scope.Request.photo;
-		};
+	$scope.Remove = function(photo, index) {
+		$scope.Photos.splice(index, 1);
 	}
 
 	$scope.FileSelect = function(name) {
@@ -134,7 +128,7 @@ KayApp.controller('RequestCtrl', ['$rootScope','$scope','$stateParams','Local','
 	
 
 
- $scope.closePopup = false;
+ 	$scope.closePopup = false;
 
 
 	$scope.ChooseSourceAndTakePhoto = function() {
@@ -166,14 +160,9 @@ KayApp.controller('RequestCtrl', ['$rootScope','$scope','$stateParams','Local','
 		    ],
 
 		  });
-<<<<<<< Updated upstream
 
-		  myPopup.then(function(res) {	
-		    TakePhoto($scope.FromCam, $scope.Photo);
-=======
 		  myPopup.then(function(res) {
 		    TakePhoto($scope.FromCam, $scope.Photo, $scope.Photos);
->>>>>>> Stashed changes
 		  });
 		   
 		   $scope.closePopup=function(){		   
