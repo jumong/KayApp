@@ -476,14 +476,16 @@ ion-content {
     height: 50px;
     position: absolute;
     top: 10px;
-    width: 50px;
+    width: 60px;
+    background: url('../img/game/GameGuy.png');
+    background-size: cover;
 }
 
 .GameItem {
 	position: absolute;
-	width: 10px;
-	height: 10px;
-	background: blue;
+	width: 30px;
+	height: 30px;
+	background: url('../img/game/bottle.png');
 	top: 20%;
 	right: 0px;
 }
