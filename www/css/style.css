@@ -1,4 +1,6 @@
 /* Empty. Add your own CSS if you like */
+
+
 .photoAattachment .popup-head{
 	padding: 0px;
   border-bottom: none;
@@ -639,3 +641,6 @@ ion-content {
 }
 
 
+.tab-item.tab-item-active, .tab-item.active, .tab-item.activated {
+    color: #fff;
+}
