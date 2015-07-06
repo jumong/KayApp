@@ -180,16 +180,40 @@ var KayApp = angular.module('starter', ['ionic', 'starter.controllers','starter.
 });
 
 KayApp.directive('imageSizer', function(){
-  // Runs during compile
   return {
      restrict: 'A',
     link: function($scope, elem, iAttrs, controller) {
 
       elem.on('load', function() {
+
+        console.log($(this).width());
+        console.log($(this).attr('src'));
+
+        if ($(this).height() < 10) {
+          $(this).height($(this).height() * 1.3);
+          $(this).width($(this).width() * 1.3);
+        };
+
         if ($(this).height() < 20) {
           $(this).height($(this).height() * 1.3);
           $(this).width($(this).width() * 1.3);
         };
+
+        if ($(this).height() > 40) {
+          $(this).height($(this).height() * 0.7);
+          $(this).width($(this).width() * 0.7);
+        };
+
+        if ($(this).attr('src').indexOf('Rockgrid') > -1) {
+          $(this).height($(this).height() * 1.3);
+          $(this).width($(this).width() * 1.3);
+        };
+
+        if ($(this).attr('src').indexOf('neoweb') > -1) {
+          $(this).height($(this).height() * 0.8);
+          $(this).width($(this).width() * 0.8);
+        };
+
       });
 
     }

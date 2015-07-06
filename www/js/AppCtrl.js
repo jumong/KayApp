@@ -309,6 +309,9 @@ angular.module('starter.controllers', [])
             case 'water-and-waste-containment' :
               StringCheck = 'Waste Containment'
               break;
+            case 'full-page' :
+              StringCheck = false
+              break;
             default:
               StringCheck = 'Waste Containment'
               break;
@@ -316,9 +319,11 @@ angular.module('starter.controllers', [])
         };
 
         $rootScope.$on('$cordovaInAppBrowser:loadstop', function(e, event){
-          $cordovaInAppBrowser.insertCSS({
-            code: '.headerCenter, #sidebar, #topBar, #main-menu, .mainFooter, .kayAppBox {display: none !important;}'
-          });
+          if (StringCheck) {
+            $cordovaInAppBrowser.insertCSS({
+              code: '.headerCenter, #sidebar, #topBar, #main-menu, .mainFooter, .kayAppBox {display: none !important;}'
+            });
+          };
 
           // Filter the Case Studies
           if (type) {
@@ -416,7 +421,12 @@ angular.module('starter.controllers', [])
   if (!Platform.isWindowsPhone) {
     setInterval(function() {
       $('.bottomTab').removeClass('tab-item-active');
-      $('.bottomTab.'+$state.params.type).addClass('tab-item-active');
+      if ($state.params.type) {
+        $('.bottomTab.'+$state.params.type).addClass('tab-item-active');
+      } else {
+        $('.bottomTab.home').addClass('tab-item-active');
+      }
+
     },200);
   };
   

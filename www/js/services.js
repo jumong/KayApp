@@ -89,11 +89,13 @@ angular.module('starter.services', [])
 		},
 		StoreActivity : function(activity) {
 			var temp;
+			var tempObj = new Object(activity);
+			delete tempObj.photo;
 			if (!localStorage.KayAppActivities) {
 				localStorage.KayAppActivities = '[]';
 			};
 			temp = JSON.parse(localStorage.KayAppActivities);
-			temp.push(activity);
+			temp.push(tempObj);
 			localStorage.KayAppActivities = JSON.stringify(temp);
 		},
 		GetActivities : function() {
@@ -137,11 +139,11 @@ angular.module('starter.services', [])
 			data.company = Local.GetLogin().User.company;
 			data.relationshipType = Local.GetLogin().User.relationshipType;
 			data.industry = Local.GetLogin().User.industry;
-			// try {
-			// 	Local.StoreActivity(data);
-			// } catch (err) {
-			// 	alert(err);
-			// }
+			try {
+				Local.StoreActivity(data);
+			} catch (err) {
+				alert(err);
+			}
 
 		    return $http(
 		        {
@@ -214,9 +216,9 @@ angular.module('starter.services', [])
 
 .factory('APIPath', function() {
 	  // return 'http://localhost:5001/api/';
-	// return 'http://Kayappapi.kaymac.co.za/api/';
+	return 'http://Kayappapi.kaymac.co.za/api/';
 	// return 'http://kayappapi.azurewebsites.net/api/';
-	return 'http://192.168.1.102:5001/api/'
+	// return 'http://192.168.1.102:5001/api/'
 })
 
 .factory('APIKey', function(){
