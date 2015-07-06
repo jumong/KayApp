@@ -13,7 +13,7 @@
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
 
-      <!-IE FIxes-->
+      <!-IE Fixes-->
      <script src="js/wp8fixes.js"></script> 
       
     <!-- ionic/angularjs js -->
@@ -48,16 +48,14 @@
 
         <ion-tabs class="tabs-positive tabs-icon-only _jsBottomTabs" ng-show="ShowTabs && !GameOn && !IsWindows">
 
-<<<<<<< HEAD
+
           <ion-tab class="bottomTab home" ng-click="GoTo('app.home', {}, '/app/home/')" title="Home" icon-on="ion-home" icon-off="ion-home" ng-class="{'tab-item-active': isActive('home')}"></ion-tab>
-=======
-          <ion-tab class="bottomTab  home" ng-click="GoTo('app.home', {}, '/app/home/')" title="Home" icon-on="ion-home" icon-off="ion-home" ng-class="{'tab-item-active': isActive('home')}"></ion-tab>
->>>>>>> origin/master
+
           <ion-tab class="bottomTab order" ng-click="GoTo('app.request', {type : 'order'}, '/app/home/')" title="About" icon-on="ion-clipboard" icon-off="ion-clipboard" ng-class="{'tab-item-active': isActive('order'), '/app/home/'}"></ion-tab>
           <ion-tab class="bottomTab technical" ng-click="GoTo('app.request', {type : 'technical'}, '/app/home/')" title="Settings" icon-on="ion-settings" icon-off="ion-settings" ng-class="{'tab-item-active': isActive('technical')}"></ion-tab>
           <ion-tab class="bottomTab design" ng-click="GoTo('app.request', {type : 'design'}, '/app/home/')" title="Settings" icon-on="ion-paintbrush" icon-off="ion-paintbrush" ng-class="{'tab-item-active': isActive('design')}"></ion-tab>
             
-                      <ion-tab class="bottomTab productinfo" ng-click="GoTo('app.productinfo', {type : 'productinfo'}, '/app/productinfo/')" title="Settings" icon-on="ion-information-circled" icon-off="ion-information-circled" ng-class="{'tab-item-active': isActive('productinfo')}"></ion-tab>
+          <!-- <ion-tab class="bottomTab productinfo" ng-click="GoTo('app.productinfo', {type : 'productinfo'}, '/app/productinfo/')" title="Settings" icon-on="ion-information-circled" icon-off="ion-information-circled" ng-class="{'tab-item-active': isActive('productinfo')}"></ion-tab> -->
 
           <ion-tab class="bottomTab account" ng-click="GoTo('app.request', {type : 'account'}, '/app/home/')" title="Settings" icon-on="ion-settings" icon-off="ion-help-circled" ng-class="{'tab-item-active': isActive('account')}"></ion-tab>
 

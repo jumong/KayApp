@@ -421,6 +421,7 @@ angular.module('starter.controllers', [])
   if (!Platform.isWindowsPhone) {
     setInterval(function() {
       $('.bottomTab').removeClass('tab-item-active');
+      console.log($state.params.type);
       if ($state.params.type) {
         $('.bottomTab.'+$state.params.type).addClass('tab-item-active');
       } else {

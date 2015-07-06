@@ -1,7 +1,7 @@
 
 
 
-KayApp.controller('ProductCtrl', function($scope, $stateParams, $http, API, $ionicLoading, $ionicPlatform, $cordovaInAppBrowser, $rootScope, $timeout){
+KayApp.controller('ProductCtrl', function($scope, $stateParams, $http, API, $ionicLoading, $ionicPlatform, $cordovaInAppBrowser, $rootScope, $timeout, $state){
 	$scope.Type = $stateParams.type;
 	$scope.ProductApplications = {};
 	$scope.Applications;
