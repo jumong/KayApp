@@ -1,7 +1,9 @@
 /* Empty. Add your own CSS if you like */
 @-ms-viewport{width:device-width}
 
-
+.tabs-positive{
+   background-color:red; 
+}
 
 
 html, body, input {
@@ -271,6 +273,7 @@ a.noImage {
 
 .SideMenu {
 	background: #063b6f;
+   
 }
 
 .SideMenu .item-content, .SideMenu .item {
