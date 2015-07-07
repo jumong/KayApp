@@ -25,3 +25,12 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
 =============================================================================
 Icons not working
 1. remove query string in .ttf [ionic/css/ionic.css]
+
+
+============================================================================
+
+InAppBrowser crashes when opening case study.
+
+1. Open InAppBrowser.cs file [/Plugins/org.apache.cordova.inappbrowser/]
+2. Navigate to "injectScriptCode(string options)"
+3. Add " Thread.Sleep(3000);" after  if (browser != null)
