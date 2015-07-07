@@ -333,6 +333,16 @@ angular.module('starter.controllers', [])
           };
 
       });
+       
+       
+       if(Platform.isAndroid){       
+           if(type){
+               if(url.toLowerCase().indexOf('.pdf')>0){
+                   url ='https://docs.google.com/viewer?url='+encodeURIComponent(url);
+                   alert(url);
+               }
+           }
+       }
 
         $cordovaInAppBrowser.open(url, '_blank', options)
           .then(function(event) {
