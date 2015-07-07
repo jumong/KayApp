@@ -83,15 +83,14 @@
                     <li class="item" ng-click="EnterPostalAddress()">
 				      <i class="icon ion-email rightIcon"></i>{{postal}}
 				    </li>
-				</ul>
-                
+				</ul>      
                 
 
 			 
 			 <p class="formTxt">Other Information</p>
 
 			<label class="item item-input item-select">
-				<div class="input-label">
+				<div class="input-label item-text-wrap">
 				  Relationship Type
 				</div>
 				<select ng-options="rel for rel in RelationshipTypes" ng-model="NewUser.relationshipType" name="Relationship" required="" data-tab-disabled="true">
@@ -104,7 +103,7 @@
 			</div>
 
 			<label class="item item-input item-select">
-				<div class="input-label">
+				<div class="input-label item-text-wrap">
 				  Industry
 				</div>
 				<select ng-options="ind for ind in Industries" ng-model="NewUser.industry" name="Industry" required="" data-tab-disabled="true">
@@ -119,7 +118,7 @@
 			  <p class="formTxt">Security</p>
 
 			  <label class="item item-input item-select">
-			    <div class="input-label">
+			    <div class="input-label item-text-wrap">
 			      Security Question
 			    </div>
 			    <select ng-model="NewUser.Question" required="" data-tab-disabled="true">
