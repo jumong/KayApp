@@ -5,6 +5,7 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 	$scope.StopGame = function() {
 		stop();
 		$state.go('app.home');
+		$rootScope.GameOn = false;
 	}
 
 	$scope.User = Local.GetLogin().User;
@@ -79,7 +80,6 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 	function GameOver(score) {
 		stop();
 		showResult(Math.floor(score/2));
-		$rootScope.GameOn = true;
 	}
 
 	function showResult(grade) {
