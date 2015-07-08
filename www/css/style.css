@@ -564,7 +564,9 @@ ion-content {
 	-webkit-text-stroke-width: 1px;
   	-webkit-text-stroke-color: brown;
 	font-size: 3rem;
-	width: 100px;
+	width: 110px;
+	left: 136px;
+	top: 105px;
 }
 
 .rotate90 {
@@ -578,6 +580,9 @@ ion-content {
 	width: 100px;
 	right: -30px;
 	top: 290px;
+	color: #fff;
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: brown;
 }
 
 .menuText {
@@ -599,6 +604,12 @@ ion-content {
 	top: 40px;
 	right: 0px;
 	font-size: 2rem;
+}
+
+.bidimLogo {
+	font-family: Arial, sans-serif;
+	color: red;
+	font-weight: bold;
 }
 
 .level1 {
