@@ -346,13 +346,13 @@ angular.module('starter.controllers', [])
            }
        }
 
-        $cordovaInAppBrowser.open(url, '_blank', options)
-          .then(function(event) {
-            // success
+        $cordovaInAppBrowser.open(url, '_self', options)
+          .then(function(event) {          
           })
-          .catch(function(event) {
+          .catch(function(event) {           
             // error
           });  
+       
     }
 
   $scope.EnterAddress = function() {
