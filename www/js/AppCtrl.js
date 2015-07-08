@@ -99,6 +99,7 @@ angular.module('starter.controllers', [])
   
   $scope.ShowPasswordReset = function(){
       $scope.Reset = new User();
+      $scope.canReset =false;
       $scope.resetPasswordModal.show();
   }
 
@@ -148,8 +149,9 @@ angular.module('starter.controllers', [])
           else
           {   
                $rootScope.HideLoader(); 
+               $scope.canReset=false;
               Alert('Invalid emailaddress!', res.data.message, function() {
-                  $scope.canReset=false;
+                 
                 });                           
           }      
       },function (error) {           
