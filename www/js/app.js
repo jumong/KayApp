@@ -186,9 +186,6 @@ KayApp.directive('imageSizer', function(){
 
       elem.on('load', function() {
 
-        console.log($(this).width());
-        console.log($(this).attr('src'));
-
         if ($(this).height() < 10) {
           $(this).height($(this).height() * 1.3);
           $(this).width($(this).width() * 1.3);

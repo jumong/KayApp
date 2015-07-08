@@ -99,6 +99,7 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 		itemsToSpawn = 1;
 		$('._jsItem').remove();
 		$scope.$apply();
+		powerBar.style.width = '0px';
 	}
 
 	function stop() {
