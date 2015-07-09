@@ -11,6 +11,10 @@ KayApp.controller('SettingsCtrl', function( $scope , API , Local, $state , $root
 	    $scope.closeLogin();
 	}
 
+	$scope.ChangeGameSpeed = function(value) {
+		$rootScope.TimeStep = value;
+	}
+
 	$scope.SendUpdate = function() {
 		$rootScope.Loading();
 		API.UpdateUser($scope.User).then(function(response) {

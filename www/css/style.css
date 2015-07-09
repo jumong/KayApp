@@ -564,7 +564,9 @@ ion-content {
 	-webkit-text-stroke-width: 1px;
   	-webkit-text-stroke-color: brown;
 	font-size: 3rem;
-	width: 100px;
+	width: 110px;
+	right: 86px;
+	top: 245px;
 }
 
 .rotate90 {
@@ -578,6 +580,9 @@ ion-content {
 	width: 100px;
 	right: -30px;
 	top: 290px;
+	color: #fff;
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: brown;
 }
 
 .menuText {
@@ -590,8 +595,8 @@ ion-content {
 .resultText {
 	text-align: left;
 	position: absolute;
-	top: 60px;
-	right: -10px;
+	top: 220px;
+	right: -90px;
 }
 
 .scoreDisplay {
@@ -599,6 +604,56 @@ ion-content {
 	top: 40px;
 	right: 0px;
 	font-size: 2rem;
+}
+
+.bidimLogo {
+	font-family: Arial, sans-serif;
+	color: red;
+	font-weight: bold;
+}
+
+#userName.congrats {
+	top: 70px;
+	right: 30px;
+}
+
+.productData {
+
+}
+
+.productData p {
+	width: 130px;
+	position: absolute;
+	top: 140px;
+	right: 67px;
+}
+
+.productData h4 {
+	position: absolute;
+	right: -67px;
+  	top: 89px;
+	font-size: 3rem;
+	font-family: Arial, sans-serif;
+	color: red;
+	font-size: 2rem;
+	font-weight: bold;
+}
+
+.productData .bidimLogo {
+	text-transform: lowercase;
+	font-size: 2rem;
+}
+
+.productData img {
+	position: absolute;
+	width: 144px;
+	top: 138px;
+	right: -85px;
+	border-radius: 4px;
+}
+
+.productData p {
+
 }
 
 .level1 {

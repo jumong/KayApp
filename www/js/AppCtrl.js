@@ -15,6 +15,8 @@ angular.module('starter.controllers', [])
   $rootScope.Platform = ionic.Platform.platform();
   $scope.IsWindows = Platform.isWindowsPhone;
 
+  $rootScope.TimeStep = 60;
+
   if (localStorage.KayAppEmail) {
     $scope.LoginFormData.username = localStorage.KayAppEmail;
   };
@@ -99,6 +101,7 @@ angular.module('starter.controllers', [])
   
   $scope.ShowPasswordReset = function(){
       $scope.Reset = new User();
+      $scope.canReset =false;
       $scope.resetPasswordModal.show();
   }
 
@@ -148,8 +151,9 @@ angular.module('starter.controllers', [])
           else
           {   
                $rootScope.HideLoader(); 
+               $scope.canReset=false;
               Alert('Invalid emailaddress!', res.data.message, function() {
-                  $scope.canReset=false;
+                 
                 });                           
           }      
       },function (error) {           
@@ -344,13 +348,13 @@ angular.module('starter.controllers', [])
            }
        }
 
-        $cordovaInAppBrowser.open(url, '_blank', options)
-          .then(function(event) {
-            // success
+        $cordovaInAppBrowser.open(url, '_self', options)
+          .then(function(event) {          
           })
-          .catch(function(event) {
+          .catch(function(event) {           
             // error
           });  
+       
     }
 
   $scope.EnterAddress = function() {
