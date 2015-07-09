@@ -19,11 +19,11 @@
 
 		<div id="resultBox" ng-show="ShowResult" class="level3" ng-class="{'shown' : ShowResult}">
 			<div class="resultText rotate90">
-				<div class="congrats">Good Job {{User.firstName}}!</div>
+				<div id="userName" class="congrats">Good Job {{User.firstName}}!</div>
 				<div class="productData">
-					<h4>{{Product.name}}</p>
-					<p>{{Product.use}}</p>
+					<h4><span class="bidimLogo">bidim</span>{{Product.name}}</h4>
 					<img src="{{Product.image}}">
+					<p>Usage: {{Product.use}}</p>
 				</div>
 				<div id="okButton" class="gameBigButton level4" ng-click="Reset()">OK!</div>
 			</div>

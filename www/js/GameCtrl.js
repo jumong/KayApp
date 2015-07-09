@@ -24,7 +24,7 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 	lastTimeStamp = 0,
 	maxFPS = 60,
 	delta = 0,
-	timeStep = 1000 / 60,
+	timeStep = 1000 / $rootScope.TimeStep,
 	numUpdateSteps = 0,
 	fps = 60,
 	framesThisSecond = 0,
@@ -212,6 +212,8 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 	}
 
 	function mainLoop(timestamp) {
+
+		console.log($rootScope.TimeStep);
 
 		if (timestamp < lastTimeStamp + (1000 / maxFPS)) {
 			frameID = requestAnimationFrame(mainLoop);

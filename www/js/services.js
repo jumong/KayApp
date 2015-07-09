@@ -385,52 +385,52 @@ angular.module('starter.services', [])
 		{
 			name : 'A1',
 			use : 'Subsoil drainage in basement garages',
-			image : '/img/game/A1-A2.jpg'
+			image : 'img/game/A1-A2.jpg'
 		},
 		{
 			name : 'A2',
 			use : 'Subsoil drainage in basement garages',
-			image : '/img/game/A1-A2.jpg'
+			image : 'img/game/A1-A2.jpg'
 		},
 		{
 			name : 'A3',
 			use : 'As a drainage layer behind gabions',
-			image : '/img/game/A3-A4.jpg'
+			image : 'img/game/A3-A4.jpg'
 		},
 		{
 			name : 'A4',
 			use : 'As a drainage layer behind gabions',
-			image : '/img/game/A3-A4.jpg'
+			image : 'img/game/A3-A4.jpg'
 		},
 		{
 			name : 'A5',
 			use : 'As part of a drainage system in a tailings facility',
-			image : '/img/game/A5-A2.A6'
+			image : 'img/game/A5-A2.A6'
 		},
 		{
 			name : 'A6',
 			use : 'As part of a drainage system in a tailings facility',
-			image : '/img/game/A5-A6.jpg'
+			image : 'img/game/A5-A6.jpg'
 		},
 		{
 			name : 'A7',
 			use : 'As separation under rip rap when used as protection against erosion in embankments and shorelines',
-			image : '/img/game/A7-A8.jpg'
+			image : 'img/game/A7-A8.jpg'
 		},
 		{
 			name : 'A8',
 			use : 'As separation under rip rap when used as protection against erosion in embankments and shorelines',
-			image : '/img/game/A7-A8.jpg'
+			image : 'img/game/A7-A8.jpg'
 		},
 		{
 			name : 'A9',
 			use : 'In landfill capping liner protection',
-			image : '/img/game/A9-A10.jpg'
+			image : 'img/game/A9-A10.jpg'
 		},
 		{
 			name : 'A10',
 			use : 'In landfill capping liner protection',
-			image : '/img/game/A9-A10.jpg'
+			image : 'img/game/A9-A10.jpg'
 		}
 	]
 })

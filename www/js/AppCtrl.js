@@ -15,6 +15,8 @@ angular.module('starter.controllers', [])
   $rootScope.Platform = ionic.Platform.platform();
   $scope.IsWindows = Platform.isWindowsPhone;
 
+  $rootScope.TimeStep = 60;
+
   if (localStorage.KayAppEmail) {
     $scope.LoginFormData.username = localStorage.KayAppEmail;
   };
