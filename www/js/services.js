@@ -405,7 +405,7 @@ angular.module('starter.services', [])
 		{
 			name : 'A5',
 			use : 'As part of a drainage system in a tailings facility',
-			image : 'img/game/A5-A2.A6'
+			image : 'img/game/A5-A6.jpg'
 		},
 		{
 			name : 'A6',

@@ -19,14 +19,14 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 	boxPos = 10,
 	itemPos = 0,
 	boxVelocity = 0.1,
-	// itemVelocity = 0.05,
-	boxLastPos = 10,
-	itemVelocity = 0.2,
+	itemVelocity = 0.05,
+	// itemVelocity = 0.2,
 	limit = 300,
 	lastTimeStamp = 0,
 	maxFPS = 60,
 	delta = 0,
 	timeStep = 1000 / $rootScope.TimeStep,
+	numUpdateSteps = 0,
 	fps = 60,
 	framesThisSecond = 0,
 	lastFpsUpdate = 0,
@@ -142,15 +142,12 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 		delta = 0;
 	}
 
-	function draw(interp) {
+	function draw() {
 		box.style.top = boxPos + 'px';
-
-		box.style.top = (boxLastPos + (boxPos - boxLastPos) * interp) + 'px';
 		
 		for (var i = 0; i < allItems.length; i++) {
 			var item = allItems[i];
-			// item.item.style.right = item.position + 'px';
-			item.item.style.right = (item.lastPosition + (item.position - item.lastPosition) * interp) + 'px';
+			item.item.style.right = item.position + 'px';
 
 			if (allItems[i].item.style.right.split('.',1) > screen.width) {
 				$(item.item).remove();
@@ -183,19 +180,17 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 	}
 
 	function update(delta, timestamp) {
-		boxLastPos = boxPos;
 		boxPos += boxVelocity * delta;
 
 		for (var i = 0; i < allItems.length; i++) {
 			var item = allItems[i];
-			// item.position += ((Math.random().toFixed(1))/5) + item.accel * delta;
-			item.lastPosition = item.position;
-			item.position += itemVelocity * delta;
-			// item.accel += accelerationRate;
-			// if (item.position > 0 && !item.accelerated) {
-			// 	item.accel = accelerationRate;
-			// 	item.accelerated = true;
-			// };
+			item.position += ((Math.random().toFixed(1))/5) + item.accel * delta;
+			// item.position += itemVelocity * delta;
+			item.accel += accelerationRate;
+			if (item.position > 0 && !item.accelerated) {
+				item.accel = accelerationRate;
+				item.accelerated = true;
+			};
 		};
 
 		if (timestamp > lastSpawn + timeBetweenSpawns) {
@@ -226,18 +221,17 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 		};
 
 //		Calculate Frames this second
-		// if (timestamp > lastFpsUpdate + 1000) {
-		// 	fps = 0.25 * framesThisSecond + (1 - 0.25) * fps;
-		// 	lastFpsUpdate = timestamp;
-		// 	framesThisSecond = 0;
-		// };
-		// framesThisSecond++;
+		if (timestamp > lastFpsUpdate + 1000) {
+			fps = 0.25 * framesThisSecond + (1 - 0.25) * fps;
+			lastFpsUpdate = timestamp;
+			framesThisSecond = 0;
+		};
+		framesThisSecond++;
 
 //		Calculate time between updates (delta)
 		delta += timestamp - lastTimeStamp;
 		lastTimeStamp = timestamp;
 
-		var numUpdateSteps = 0;
 		while (delta >= timeStep) {
 			update(timeStep, timestamp);
 			delta -= timeStep;
@@ -247,7 +241,7 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 			};
 		}
 		
-		draw(delta / timeStep);
+		draw();
 		frameID = requestAnimationFrame(mainLoop);
 		
 	} // End Main Loop
