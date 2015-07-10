@@ -4,7 +4,7 @@
   
       
     <form novalidate name="AddressForm">
-        <p class="formTxt">Please enter your address</p>
+        <p class="formTxt">Please e​nter your company's physical address</p>
         
 <!--
    <ul class="list">
@@ -24,7 +24,7 @@
         
        <div class="list list-inset">
         <label class="item item-input">
-          <textarea class="caps" placeholder="Address Line 1" name="Address1" ng-model="NewUser.address[0]" required=""></textarea>
+          <input type="text" class="caps" placeholder="Address Line 1" name="Address1" ng-model="NewUser.address[0]" required="">
         </label>
 
         <div ng-show="AddressForm.Address1.$touched">
@@ -32,20 +32,20 @@
         </div>
 
         <label class="item item-input">
-          <textarea class="caps" placeholder="Address Line 2" name="Address1" ng-model="NewUser.address[1]"></textarea>
+          <input type="text" class="caps" placeholder="Address Line 2" name="Address1" ng-model="NewUser.address[1]">
         </label>
         
          <label class="item item-input">
-          <textarea class="caps" placeholder="Address Line 3" name="Address1" ng-model="NewUser.address[2]"></textarea>
+          <input type="text" class="caps" placeholder="Address Line 3" name="Address1" ng-model="NewUser.address[2]">
         </label>
         
         <label class="item item-input">
-          <textarea class="caps" placeholder="City" name="Address1" ng-model="NewUser.address[3]" rows="2"/>
+          <input type="text" class="caps" placeholder="City" name="Address1" ng-model="NewUser.address[3]" rows="2"/>
         </label>
 
         <label class="item item-input item-select">
           <div class="input-label item-text-wrap">
-            Region
+            {{NewUser.region}}
           </div>
           <select ng-options="region for region in Regions" ng-model="NewUser.region" required="" data-tab-disabled="true">
             <option value=""></option>

@@ -277,7 +277,7 @@ angular.module('starter.controllers', [])
 
 
    //In App Browser
-   $rootScope.LoadURL = function(url, type) {
+   $rootScope.LoadURL = function(url, type, external) {
       var options = {
           location: 'no',
           clearcache: 'yes',
@@ -348,7 +348,13 @@ angular.module('starter.controllers', [])
            }
        }
 
-        $cordovaInAppBrowser.open(url, '_self', options)
+       var browserType = '_blank';
+
+        if (external) {
+          browserType = '_system';
+        };
+
+        $cordovaInAppBrowser.open(url, browserType, options)
           .then(function(event) {          
           })
           .catch(function(event) {           
@@ -376,10 +382,11 @@ angular.module('starter.controllers', [])
     if(a==='')
       $scope.address='Work Physical Address';
     else      
-      $scope.address=a; 
+      $scope.address=$scope.NewUser.address[0]; 
 
 
     $scope.addressModal.hide();
+    console.log($scope.address);
   }
 
   $scope.EnterPostalAddress = function(){
@@ -404,7 +411,7 @@ angular.module('starter.controllers', [])
     if(p==='')
       $scope.postal='Work Postal Address';
     else      
-       $scope.postal=p; 
+       $scope.postal=$scope.NewUser.postalAddress[0]; 
   
     
     $scope.postalAddressModal.hide();

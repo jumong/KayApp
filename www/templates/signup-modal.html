@@ -77,21 +77,21 @@
 					<span class="err" ng-show="NewAccount.ContactNumber.$error.required">Please provide your contact number.</span>
 				</div>               
 				<ul class="list">
-				    <li class="item" ng-click="EnterAddress()">
+				    <li class="item caps" ng-click="EnterAddress()">
 				      <i class="icon ion-briefcase rightIcon"></i>{{address}}
 				    </li>                    
-                    <li class="item" ng-click="EnterPostalAddress()">
+                    <li class="item caps" ng-click="EnterPostalAddress()">
 				      <i class="icon ion-email rightIcon"></i>{{postal}}
 				    </li>
 				</ul>      
                 
 
 			 
-			 <p class="formTxt">Other Information</p>
+			 <p class="formTxt">Relationship Type</p>
 
 			<label class="item item-input item-select">
 				<div class="input-label item-text-wrap">
-				  Relationship Type
+				  {{NewUser.relationshipType}}
 				</div>
 				<select ng-options="rel for rel in RelationshipTypes" ng-model="NewUser.relationshipType" name="Relationship" required="" data-tab-disabled="true">
 					<option value=""></option>
@@ -102,9 +102,11 @@
 				<span class="err" ng-show="NewAccount.Relationship.$error.required">Please provide your relationship type.</span>
 			</div>
 
+			<p class="formTxt">Industry</p>
+
 			<label class="item item-input item-select">
 				<div class="input-label item-text-wrap">
-				  Industry
+				  {{NewUser.industry}}
 				</div>
 				<select ng-options="ind for ind in Industries" ng-model="NewUser.industry" name="Industry" required="" data-tab-disabled="true">
 					<option value=""></option>
@@ -115,11 +117,11 @@
 				<span class="err" ng-show="NewAccount.Industry.$error.required">Please provide your industry.</span>
 			</div>
 
-			  <p class="formTxt">Security</p>
+			  <p class="formTxt">Security Question</p>
 
 			  <label class="item item-input item-select">
 			    <div class="input-label item-text-wrap">
-			      Security Question
+			      {{NewUser.Question}}
 			    </div>
 			    <select ng-model="NewUser.Question" required="" data-tab-disabled="true">
 			    	<option value="petsName">What is your pet's name?</option>

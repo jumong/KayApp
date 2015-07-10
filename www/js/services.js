@@ -213,8 +213,8 @@ angular.module('starter.services', [])
 })
 
 .factory('APIPath', function() {
-	  return 'http://localhost:5001/api/';
-	//return 'http://Kayappapi.kaymac.co.za/api/';
+	  // return 'http://localhost:5001/api/';
+	return 'http://Kayappapi.kaymac.co.za/api/';
 	// return 'http://kayappapi.azurewebsites.net/api/';
 	// return 'http://192.168.1.102:5001/api/'
 })
@@ -226,7 +226,7 @@ angular.module('starter.services', [])
 .factory('Regions', function(){
 	return {
 		Get : function() {
-			return ['Northern Cape','Eastern Cape','Free State','Western Cape','Limpopo','North West','KwaZulu-Natal','Mpumalanga','Gauteng'];
+			return ['Northern Cape','Eastern Cape','Free State','Western Cape','Limpopo','North West','KwaZulu-Natal','Mpumalanga','Gauteng', 'Mozambique', 'Namibia', 'Lesotho', 'Swaziland', 'Botswana', 'Rest of Africa', 'Rest of World'];
 		}
 	}
 })
@@ -325,7 +325,7 @@ angular.module('starter.services', [])
 			address : [],
             postalAddress:[],
             sameAsPhysical:false,
-			region : '',
+			region : 'Region',
             Question:'',
             Answer:''
 		}
