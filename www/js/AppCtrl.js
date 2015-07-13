@@ -45,11 +45,9 @@ angular.module('starter.controllers', [])
       });
   };
 
-
   $scope.$watch(function() { 
     $rootScope.ShowTabs = !$ionicSideMenuDelegate.isOpen();
-  })
-
+  });
  
 
   $rootScope.Settings = function() {
@@ -92,11 +90,13 @@ angular.module('starter.controllers', [])
 
   $scope.CloseNewAccount = function() {
     $scope.signUpModal.hide();
+    // angular.element(document.querySelector('.ion-navicon')).removeClass('hide');
   }
 
   $scope.CloseNewAccountWithoutSignup = function() {
     $scope.signUpModal.hide();
     $state.go('app.home');
+    // angular.element(document.querySelector('.ion-navicon')).removeClass('hide');
   }
   
   $scope.ShowPasswordReset = function(){
@@ -185,6 +185,9 @@ angular.module('starter.controllers', [])
       $location.path(loc);
     } else {
       $state.go(url, param);
+      if (url == 'app.home') {
+        angular.element(document.querySelector('.ion-navicon')).removeClass('hide');
+      };
     }
     
   }

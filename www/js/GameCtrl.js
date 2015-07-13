@@ -143,8 +143,7 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 	}
 
 	function draw(interp) {
-		box.style.top = boxPos + 'px';
-
+		
 		box.style.top = (boxLastPos + (boxPos - boxLastPos) * interp) + 'px';
 		
 		for (var i = 0; i < allItems.length; i++) {
