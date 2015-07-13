@@ -357,7 +357,7 @@ angular.module('starter.controllers', [])
           browserType = '_system';
         };
 
-        $cordovaInAppBrowser.open(url, browserType, options)
+        $cordovaInAppBrowser.open(url, '_system', options)
           .then(function(event) {          
           })
           .catch(function(event) {           
