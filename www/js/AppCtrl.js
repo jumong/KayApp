@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function(Regions, $scope, $ionicModal, $timeout, $state, $ionicPopup, Local, API, $rootScope, User, $ionicSideMenuDelegate, $cordovaInAppBrowser, $ionicLoading, $ionicUser, $ionicPush, Alert, RelationshipTypes, Industries, Platform, $location) {
+.controller('AppCtrl', function(Regions, $scope, $ionicModal, $timeout, $state, $ionicPopup, Local, API, $rootScope, User, $ionicSideMenuDelegate, $cordovaInAppBrowser, $ionicLoading, $ionicUser, $ionicPush, Alert, RelationshipTypes, Industries, Platform, $location, $ionicHistory) {
   $scope.address ='Work Physical Address';
   $scope.postal='Work Postal Address';
   $scope.SameAsPhysical= {checked:true};
@@ -97,6 +97,7 @@ angular.module('starter.controllers', [])
     $scope.signUpModal.hide();
     $state.go('app.home');
     // angular.element(document.querySelector('.ion-navicon')).removeClass('hide');
+    $ionicHistory.$clearHistory();
   }
   
   $scope.ShowPasswordReset = function(){
@@ -461,6 +462,23 @@ angular.module('starter.controllers', [])
     if (state == $state.params.type) {
         return true;
     };
+  }
+
+  $scope.QuestionShort = function(val) {
+    switch(val){
+      case 'petsName':
+        return 'What is your pet\'s name?'
+        break;
+      case 'fatherBirthYear':
+        return 'In what year was your father born?'
+        break;
+      case 'favourite':
+        return 'What is your favourite colour?'
+        break;
+      default:
+        return 'Question'
+        break;
+    }
   }
 
 

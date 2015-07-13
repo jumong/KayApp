@@ -1,6 +1,8 @@
 
 
 
-KayApp.controller('HomeCtrl', ['$scope', function($scope){
-	
-}]);
+KayApp.controller('HomeCtrl', function($scope){
+	$scope.$on('$ionicView.beforeEnter', function (e,config) {
+	  config.enableBack = false;
+	});
+});

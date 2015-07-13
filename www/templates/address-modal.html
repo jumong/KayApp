@@ -47,7 +47,7 @@
           <div class="input-label item-text-wrap">
             {{NewUser.region}}
           </div>
-          <select ng-options="region for region in Regions" ng-model="NewUser.region" required="" data-tab-disabled="true">
+          <select ng-options="region for region in Regions" ng-model="NewUser.region" required="" data-tab-disabled="true" ng-class="{'customSmallSelect' : NewUser.region != 'Region'}">
             <option value=""></option>
           </select>
         </label>

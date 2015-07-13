@@ -90,10 +90,10 @@
 			 <p class="formTxt">Relationship Type</p>
 
 			<label class="item item-input item-select">
-				<div class="input-label item-text-wrap">
-				  {{NewUser.relationshipType}}
+				<div class="input-label item-text-wrap" ng-class="{'customLargeLabel' : NewUser.region != 'Relationship'}">
+				  {{NewUser.relationshipType || 'Relationship'}}
 				</div>
-				<select ng-options="rel for rel in RelationshipTypes" ng-model="NewUser.relationshipType" name="Relationship" required="" data-tab-disabled="true">
+				<select ng-options="rel for rel in RelationshipTypes" ng-model="NewUser.relationshipType" name="Relationship" required="" data-tab-disabled="true" ng-class="{'customLargeSelect' : NewUser.region != 'Relationship'}">
 					<option value=""></option>
 				</select>
 			</label>
@@ -105,10 +105,10 @@
 			<p class="formTxt">Industry</p>
 
 			<label class="item item-input item-select">
-				<div class="input-label item-text-wrap">
-				  {{NewUser.industry}}
+				<div class="input-label item-text-wrap" ng-class="{'customLargeLabel' : NewUser.region != 'Industry'}">
+				  {{NewUser.industry || 'Industry'}}
 				</div>
-				<select ng-options="ind for ind in Industries" ng-model="NewUser.industry" name="Industry" required="" data-tab-disabled="true">
+				<select ng-options="ind for ind in Industries" ng-model="NewUser.industry" name="Industry" required="" data-tab-disabled="true" ng-class="{'customLargeSelect' : NewUser.region != 'Industry'}">
 					<option value=""></option>
 				</select>
 			</label>
@@ -120,10 +120,10 @@
 			  <p class="formTxt">Security Question</p>
 
 			  <label class="item item-input item-select">
-			    <div class="input-label item-text-wrap">
-			      {{NewUser.Question}}
+			    <div class="input-label item-text-wrap" ng-class="{'customLargeLabel' : NewUser.region != 'Question'}">
+			      {{QuestionShort(NewUser.Question)}}
 			    </div>
-			    <select ng-model="NewUser.Question" required="" data-tab-disabled="true">
+			    <select ng-model="NewUser.Question" required="" data-tab-disabled="true" ng-class="{'customLargeSelect' : NewUser.region != 'Question'}">
 			    	<option value="petsName">What is your pet's name?</option>
 			    	<option value="fatherBirthYear">In what year was your father born?</option>
 			    	<option value="favourite">What is your favourite colour?</option>
