@@ -163,6 +163,7 @@
 		    	<option value=""></option>
 		    </select>
 		  </label>
+		  <div class="enquiryTypeExtra">{{Enquiry.type}}</div>
 
 		  	<div ng-show="StandardRequest.$submitted || StandardRequest.EnquiryType.$touched">
 				<span class="err" ng-show="StandardRequest.EnquiryType.$error.required">Please select enquiry type.</span>

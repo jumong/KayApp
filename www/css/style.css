@@ -404,6 +404,14 @@ ion-content {
 	text-transform: capitalize;
 }
 
+.enquiryTypeExtra {
+	text-align: center;
+	background-color: #999;
+	color: #fff;
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+}
+
 .largeTitle {
 	position: absolute;
 	color: #ccc;
