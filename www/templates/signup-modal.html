@@ -70,12 +70,30 @@
 					<span class="err" ng-show="NewAccount.Company.$error.required">Please provide your company name.</span>
 				</div>
 
+				<label class="item item-input">
+				    <input type="text" placeholder="Position in company" name="Position" ng-model="NewUser.position" required="">
+				  </label>
+
+			  	<div ng-show="NewAccount.$submitted || NewAccount.Position.$touched">
+					<span class="err" ng-show="NewAccount.Position.$error.required">Please provide your position.</span>
+				</div>
+
 			  <label class="item item-input">
-			    <input type="text" placeholder="Contact Number" name="ContactNumber" ng-model="NewUser.contactNumber" required="">
+			    <input type="text" placeholder="Business Phone" name="BusinessPhone" ng-model="NewUser.businessPhone" required="">
 			  </label>
-			  	<div ng-show="NewAccount.$submitted || NewAccount.ContactNumber.$touched">
-					<span class="err" ng-show="NewAccount.ContactNumber.$error.required">Please provide your contact number.</span>
-				</div>               
+
+			  	<div ng-show="NewAccount.$submitted || NewAccount.BusinessPhone.$touched">
+					<span class="err" ng-show="NewAccount.BusinessPhone.$error.required">Please provide your business phone number.</span>
+				</div>
+
+				<label class="item item-input">
+				    <input type="text" placeholder="Mobile Phone" name="MobilePhone" ng-model="NewUser.mobilePhone" required="">
+				  </label>
+			  
+			  	<div ng-show="NewAccount.$submitted || NewAccount.MobilePhone.$touched">
+					<span class="err" ng-show="NewAccount.MobilePhone.$error.required">Please provide your mobile phone number.</span>
+				</div>
+
 				<ul class="list">
 				    <li class="item caps" ng-click="EnterAddress()">
 				      <i class="icon ion-briefcase rightIcon"></i>{{address}}

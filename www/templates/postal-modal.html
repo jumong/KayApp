@@ -15,24 +15,29 @@
 	  </li>
 	</ul>        
        <div class="list list-inset">
-        <label class="item item-input">
-          <input type="text" class="caps" placeholder="Address Line 1" name="Address1" ng-model="NewUser.postalAddress[0]" required="">
-        </label>
-        <div ng-show="AddressForm.Address1.$touched">
-          <span class="err" ng-show="AddressForm.Address1.$error.required">Please provide your address.</span>
-        </div>
+          <label class="item item-input">
+            <input type="text" class="caps" placeholder="Address Line 1" name="Address1" ng-model="NewUser.postalAddress[0]" required="">
+          </label>
+          <div ng-show="AddressForm.Address1.$touched">
+            <span class="err" ng-show="AddressForm.Address1.$error.required">Please provide your address.</span>
+          </div>
 
-        <label class="item item-input">
-          <input type="text" class="caps" placeholder="Address Line 2" name="Address1" ng-model="NewUser.postalAddress[1]">
-        </label>
-        
-         <label class="item item-input">
-          <input type="text" class="caps" placeholder="Address Line 3" name="Address1" ng-model="NewUser.postalAddress[2]">
-        </label>
-        
-        <label class="item item-input">
-          <input type="text" class="caps" placeholder="City" name="Address1" ng-model="NewUser.postalAddress[3]" />
-        </label>        
+          <label class="item item-input">
+            <input type="text" class="caps" placeholder="Address Line 2" name="Address1" ng-model="NewUser.postalAddress[1]">
+          </label>
+          
+           <label class="item item-input">
+            <input type="text" class="caps" placeholder="Address Line 3" name="Address1" ng-model="NewUser.postalAddress[2]">
+          </label>
+          
+          <label class="item item-input">
+            <input type="text" class="caps" placeholder="City" name="Address1" ng-model="NewUser.postalAddress[3]" />
+          </label>
+
+          <label class="item item-input">
+            <input type="text" class="caps" placeholder="Zip Code" name="ZipCode" ng-model="NewUser.postalAddress[4]"/>
+          </label>
+              
         </div>
     </form>
     <button ng-click="ClosePostalAddress()" class="button button-block button-balanced" ng-show="AddressForm.$valid">

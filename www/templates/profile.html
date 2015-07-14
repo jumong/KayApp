@@ -51,24 +51,42 @@
 				<span class="err" ng-show="UpdateUserForm.Company.$error.required">Please provide your company name.</span>
 			</div>
 
-		  <label class="item item-input item-stacked-label">
-		    <span class="input-label">Contact Number</span>
-		    <input type="text" ng-model="User.contactNumber" name="ContactNumber" required="">
+		<label class="item item-input item-stacked-label">
+		    <span class="input-label">Position</span>
+		    <input type="text" ng-model="User.position" name="Position" required="">
 		  </label>
 
-		  	<div ng-show="UpdateUserForm.$submitted || UpdateUserForm.ContactNumber.$touched">
-				<span class="err" ng-show="UpdateUserForm.ContactNumber.$error.required">Please provide your contact number.</span>
+	  	<div ng-show="UpdateUserForm.$submitted || UpdateUserForm.Position.$touched">
+			<span class="err" ng-show="UpdateUserForm.Position.$error.required">Please provide your position.</span>
+		</div>
+
+		  <label class="item item-input item-stacked-label">
+		    <span class="input-label">Business Phone</span>
+		    <input type="text" ng-model="User.businessPhone" name="BusinessPhone" required="">
+		  </label>
+
+		  	<div ng-show="UpdateUserForm.$submitted || UpdateUserForm.BusinessPhone.$touched">
+				<span class="err" ng-show="UpdateUserForm.BusinessPhone.$error.required">Please provide your business phone number.</span>
+			</div>
+
+			<label class="item item-input item-stacked-label">
+				<span class="input-label">Mobile Phone</span>
+				<input type="text" ng-model="User.mobilePhone" name="MobilePhone" required="">
+			</label>
+
+		  	<div ng-show="UpdateUserForm.$submitted || UpdateUserForm.MobilePhone.$touched">
+				<span class="err" ng-show="UpdateUserForm.MobilePhone.$error.required">Please provide your mobile phone number.</span>
 			</div>
 
 
 			<ul class="list">
-				    <li class="item" ng-click="EnterAddress()">
-				      <i class="icon ion-briefcase rightIcon"></i>{{address}}
-				    </li>                    
-                    <li class="item" ng-click="EnterPostalAddress()">
-				      <i class="icon ion-email rightIcon"></i>{{postal}}
-				    </li>
-				</ul>
+			    <li class="item" ng-click="EnterAddress()">
+			      <i class="icon ion-briefcase rightIcon"></i>{{address}}
+			    </li>                    
+                <li class="item" ng-click="EnterPostalAddress()">
+			      <i class="icon ion-email rightIcon"></i>{{postal}}
+			    </li>
+			</ul>
 
 
 
