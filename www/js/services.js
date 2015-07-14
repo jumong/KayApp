@@ -44,6 +44,17 @@ angular.module('starter.services', [])
 			temp.Authorized = false;
 			localStorage.KayApp = JSON.stringify(temp);
 		},
+        UpdateLogin : function(user) {
+			var temp;
+			if (!localStorage.KayApp) {
+				localStorage.KayApp = '{}';
+			}
+			temp = JSON.parse(localStorage.KayApp);
+			temp.User = user;
+			temp.LoggedIn = true;
+			temp.Authorized = true;
+			localStorage.KayApp = JSON.stringify(temp);
+		},
 		UpdatePassword : function(pw) {
 			var temp = JSON.parse(localStorage.KayApp);
 			temp.User.password = pw;

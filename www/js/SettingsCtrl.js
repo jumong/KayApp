@@ -18,7 +18,12 @@ KayApp.controller('SettingsCtrl', function( $scope , API , Local, $state , $root
 	$scope.SendUpdate = function() {
 		$rootScope.Loading();
 		API.UpdateUser($scope.User).then(function(response) {
-			Alert('Response', response.data.message);
+            if(response.data.success)
+                Local.UpdateLogin($scope.User);
+			
+                Alert('Response', response.data.message);
+                        
+            
 			$rootScope.HideLoader();
 		},function (error) {           
           $rootScope.HideLoader(); 
