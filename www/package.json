@@ -1,13 +1,12 @@
 {
 	"main" : "index.html",
 	"name" : "KayApp",
-	"version": "0.1.0",
+	"version": "1.0.0",
 	"window" : {
 		"toolbar" : false,
 		"title" : "KayApp",
-		"min_width" : 400,
-		"min_height" : 400,
-		"height" : 500,
-		"width" : 800
+		"min_width" : 800,
+		"min_height" : 500,
+        "icon":"ApplicationIcon.png"
 	}
 }
