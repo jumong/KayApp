@@ -34,3 +34,12 @@ InAppBrowser crashes when opening case study.
 1. Open InAppBrowser.cs file [/Plugins/org.apache.cordova.inappbrowser/]
 2. Navigate to "injectScriptCode(string options)"
 3. Add " Thread.Sleep(3000);" after  if (browser != null)
+
+=============================================================================
+Turn off transition
+
+1 Open ionic.css file
+2. Comment out line 7538-7540
+/*.slide-in-up {
+  -webkit-transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0); }*/
