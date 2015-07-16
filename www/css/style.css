@@ -110,6 +110,10 @@ body {
 	top: 10px;
 }
 
+.platform-win32 .gear {
+	top: 10px;
+}
+
 ion-content {
 	/*background: #eee;*/
 }
