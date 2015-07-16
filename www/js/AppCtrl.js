@@ -428,6 +428,7 @@ angular.module('starter.controllers', [])
       $scope.NewUser.postalAddress[1] = $scope.NewUser.address[1];
       $scope.NewUser.postalAddress[2] = $scope.NewUser.address[2];
       $scope.NewUser.postalAddress[3] = $scope.NewUser.address[3];
+      $scope.NewUser.postalAddress[4] = $scope.NewUser.address[4];
     }
     else{
       $scope.NewUser.postalAddress[0] = '';

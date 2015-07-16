@@ -219,8 +219,8 @@ ion-content {
 }
 
 .customSmallSelect {
-	max-width: 100% !important;
-	left: 0;
+	max-width: 50% !important;
+	left: 0 !important;
 	padding: 0px 0px 0px 0px !important;
 }
 
@@ -230,6 +230,11 @@ ion-content {
 
 .customLargeLabel {
 	width: 100% !important;
+}
+
+.smallLabel {
+	position: relative;
+	left: 0 !important;
 }
 
 .productType {
