@@ -80,7 +80,10 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 
 	function GameOver(score) {
 		stop();
-		showResult(Math.floor(score/2));
+		if (score > 19) {
+			score = 19;
+		};
+		showResult(score);
 	}
 
 	function showResult(grade) {
