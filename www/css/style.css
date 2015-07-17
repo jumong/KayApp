@@ -226,17 +226,48 @@ ion-content {
 }
 
 
+
+@media(max-width:408px){
+    .productType .type{
+       max-width:80px;  
+    }   
+}
+
+
 @media(min-width:409px) and (max-width:460px ){    
      .productIcons img{
         width:30%;
+    }    
+    
+    .productType .type{
+       max-width:80px;  
+    }
+    
+   .productType .caseStudy{
+        max-width: 40%;
+    }
+}
+
+@media(min-width:430px) and (max-width:460px){
+    .productType .caseStudy{
+        max-width:35%;
     }
 }
 
 @media(min-width:461px) and (max-width:489px ){ 
 
     .productIcons img {
-        width:28%;
-    }      
+width:28%;
+    }     
+    
+    
+    
+   .productType .caseStudy{
+        max-width: 30%;
+    }
+   
+    
+   
 }
 
 @media(min-width:490px) and (max-width:509px ) { 
@@ -247,7 +278,11 @@ ion-content {
     
     .productIcons img {
         width:27%;
-    }     
+    }
+    
+    .productType .caseStudy{
+        max-width: 30%;
+    }
 }
 
 @media(min-width:510px) and (max-width:550px ) { 
@@ -258,14 +293,22 @@ ion-content {
     
     .productIcons img {
         width:25%;
-    }     
+    }  
+    
+    .productType .caseStudy{
+        max-width: 30%;
+    }
 }
 
 @media(min-width:551px ) and (max-width:578px)  {    
 
     .productIcons img {
         width:24%;
-    }     
+    }
+    
+    .productType .caseStudy{
+        max-width: 28%;
+    }
 }
 
 
@@ -273,29 +316,47 @@ ion-content {
 
     .productIcons img {
         width:20%;
-    }     
+    } 
+    
+    .productType .caseStudy{
+        max-width: 24%;
+    }
 }
 
 
 @media(min-width:686px) and (max-width:760px){
  .productIcons img {
         width:18%;
-    }  
+    } 
+    
+    .productType .caseStudy{
+        max-width: 22%;
+    }
+    
+    
 }
 
 
 
-@media(min-width:761px) and (max-width:768px) {
+@media(min-width:761px) and (max-width:767px) {
  .productIcons img {
         width:16%;
     }  
+    
+    .productType .caseStudy{
+        max-width: 22%;
+    }
 }
 
 
-@media(min-width:769px) and (max-width:808px) {
+@media(min-width:768px) and (max-width:808px) {
  .productIcons img {
         width:26%;
     }  
+    
+    .productType .caseStudy{
+        max-width: 30%;
+    }
 }
 
 
@@ -303,6 +364,10 @@ ion-content {
  .productIcons img {
         width:24%;
     }  
+    
+    .productType .caseStudy{
+        max-width: 30%;
+    }
 }
 
 
@@ -310,12 +375,24 @@ ion-content {
  .productIcons img {
         width:22%;
     }  
+    
+    .productType .caseStudy{
+        max-width: 26%;
+    }
 }
 
 
 @media(min-width:896px) and (max-width:955px) {
  .productIcons img {
         width:20%;
+    } 
+    
+.productType .type{
+    max-height: 90%
+}
+    
+  .productType .caseStudy{
+        max-width: 24%;
     }  
 }
 
@@ -324,6 +401,15 @@ ion-content {
  .productIcons img {
         width:18%;
     }  
+    
+    
+    .productType .type{
+    max-height: 90%
+}
+    
+  .productType .caseStudy{
+        max-width: 22%;
+    } 
 }
 
 
@@ -331,6 +417,14 @@ ion-content {
  .productIcons img {
         width:15%;
     }  
+    
+    .productType .type{
+    max-height: 90%
+}
+    
+  .productType .caseStudy{
+        max-width: 20%;
+    } 
 }
 
 
@@ -338,22 +432,49 @@ ion-content {
 @media(min-width:1178px) and (max-width:1346px)  {  
  .productIcons img {
         width:13%;
-    }  
+    } 
+    
+    .productType .type{
+    max-height: 90%
+}
+    
+  .productType .caseStudy{
+        max-width: 16%;
+    } 
+    
+    
 }
 
 
 @media(min-width:1347px) and (max-width:1487px)   {  
  .productIcons img {
         width:11%;
-    }    
+    } 
+    
+    
+    .productType .type{
+    max-height: 85%
+}
+    
+  .productType .caseStudy{
+        max-width: 14%;
+    } 
   
 }
 
-@media(min-width:1488px) and (max-width:1519px)    {   
+@media(min-width:1488px) and (max-width:1519px) {   
     
  .productIcons img {
         width:11%;
-    }    
+    }     
+    
+     .productType .type{
+    max-height: 82%
+}
+    
+  .productType .caseStudy{
+        max-width: 12%;
+    } 
   
 }
 
@@ -361,7 +482,15 @@ ion-content {
     
  .productIcons img {
         width:9%;
-    }    
+    }  
+    
+    .productType .type{
+    max-height: 80%
+}
+    
+  .productType .caseStudy{
+        max-width: 10%;
+    } 
   
 }
 
@@ -370,7 +499,15 @@ ion-content {
     
  .productIcons img {
         width:7%;
-    }    
+    }   
+    
+ .productType .type{
+       max-height:50px;  
+    }
+    
+   .productType .caseStudy{
+        max-width: 10%;
+    }
   
 }
 

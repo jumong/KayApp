@@ -13,7 +13,7 @@
         </a>
 
         <a ng-repeat="product in Applications" ng-click="LoadURL(product.Link)" on-finish-render>
-            <img src="{{product.Image}}" image-sizer ng-show="{{product.Image.length > 10}}">
+            <img src="{{product.Image}}" image-sizer ng-show="{{product.Image.length > 10}}" class="type">
             {{product.Title}}
             <span ng-show="hasImage(product)" class="largeTitle">{{product.Title}}</span>
         </a>
