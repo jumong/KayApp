@@ -1,5 +1,7 @@
 /* Empty. Add your own CSS if you like */
-
+.clear{
+    clear: both;
+}
 
 .photoAattachment .popup-head{
 	padding: 0px;
@@ -198,7 +200,7 @@ ion-content {
 	width: 48%;
 	background: #fff;
 	color: #fff;
-	height: 85px;
+	height: 85px;    
 	border-bottom: 16px solid #063b6f;
 	padding-top: 67px;
 	font-size: 0.9em;
@@ -220,7 +222,163 @@ ion-content {
 	margin: auto;
 	font-size: 25px;
 	width: 34%;
+   
 }
+
+
+@media(min-width:409px) and (max-width:460px ){    
+     .productIcons img{
+        width:30%;
+    }
+}
+
+@media(min-width:461px) and (max-width:489px ){ 
+
+    .productIcons img {
+        width:28%;
+    }      
+}
+
+@media(min-width:490px) and (max-width:509px ) { 
+
+    .productIcons a{
+        height:85px;
+    }
+    
+    .productIcons img {
+        width:27%;
+    }     
+}
+
+@media(min-width:510px) and (max-width:550px ) { 
+
+    .productIcons a{
+        height:85px;
+    }
+    
+    .productIcons img {
+        width:25%;
+    }     
+}
+
+@media(min-width:551px ) and (max-width:578px)  {    
+
+    .productIcons img {
+        width:24%;
+    }     
+}
+
+
+@media(min-width:579px ) and (max-width:685px)   {    
+
+    .productIcons img {
+        width:20%;
+    }     
+}
+
+
+@media(min-width:686px) and (max-width:760px){
+ .productIcons img {
+        width:18%;
+    }  
+}
+
+
+
+@media(min-width:761px) and (max-width:768px) {
+ .productIcons img {
+        width:16%;
+    }  
+}
+
+
+@media(min-width:769px) and (max-width:808px) {
+ .productIcons img {
+        width:26%;
+    }  
+}
+
+
+@media(min-width:809px) and (max-width:853px) {
+ .productIcons img {
+        width:24%;
+    }  
+}
+
+
+@media(min-width:854px) and (max-width:895px) {
+ .productIcons img {
+        width:22%;
+    }  
+}
+
+
+@media(min-width:896px) and (max-width:955px) {
+ .productIcons img {
+        width:20%;
+    }  
+}
+
+
+@media(min-width:956px) and (max-width:1023px) {
+ .productIcons img {
+        width:18%;
+    }  
+}
+
+
+@media(min-width:1024px) and (max-width:1177px)  {  
+ .productIcons img {
+        width:15%;
+    }  
+}
+
+
+
+@media(min-width:1178px) and (max-width:1346px)  {  
+ .productIcons img {
+        width:13%;
+    }  
+}
+
+
+@media(min-width:1347px) and (max-width:1487px)   {  
+ .productIcons img {
+        width:11%;
+    }    
+  
+}
+
+@media(min-width:1488px) and (max-width:1519px)    {   
+    
+ .productIcons img {
+        width:11%;
+    }    
+  
+}
+
+@media(min-width:1520px)  and (max-width:1794px)   {   
+    
+ .productIcons img {
+        width:9%;
+    }    
+  
+}
+
+
+@media(min-width:1795px)    {   
+    
+ .productIcons img {
+        width:7%;
+    }    
+  
+}
+
+
+
+
+
+
 
 .customSmallSelect {
 	max-width: 50% !important;
