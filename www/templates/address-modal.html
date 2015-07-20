@@ -4,63 +4,64 @@
   
       
     <form novalidate name="AddressForm">
-        <p class="formTxt">Please e​nter your company's physical address</p>
-        
-<!--
-   <ul class="list">
-  <li class="item item-toggle item-text-wrap">    
-       Same as work physical address
-     <label class="toggle toggle-assertive">
-        
-       <input type="checkbox">
-       <div class="track">
-         <div class="handle"></div>
-       </div>
-     </label>
-  </li>    
-</ul>
--->
-    
-        
+        <p class="formTxt">Please enter your company's physical address</p>        
        <div class="list list-inset">
         <label class="item item-input">
           <input type="text" class="caps" placeholder="Address Line 1" name="Address1" ng-model="NewUser.address[0]" required="">
         </label>
 
-        <div ng-show="AddressForm.Address1.$touched">
+        <div ng-show="AddressForm.$submitted || AddressForm.Address1.$touched">
           <span class="err" ng-show="AddressForm.Address1.$error.required">Please provide your address.</span>
         </div>
 
         <label class="item item-input">
-          <input type="text" class="caps" placeholder="Address Line 2" name="Address1" ng-model="NewUser.address[1]">
+          <input type="text" class="caps" placeholder="Address Line 2" name="Address2" ng-model="NewUser.address[1]">
         </label>
         
          <label class="item item-input">
-          <input type="text" class="caps" placeholder="Address Line 3" name="Address1" ng-model="NewUser.address[2]">
+          <input type="text" class="caps" placeholder="Address Line 3" name="Address3" ng-model="NewUser.address[2]">
         </label>
         
         <label class="item item-input">
-          <input type="text" class="caps" placeholder="City" name="Address1" ng-model="NewUser.address[3]"/>
+          <input type="text" class="caps" placeholder="City" name="City" ng-model="NewUser.address[3]" required="true"/>
         </label>
-
-        <label class="item item-input">
-          <input type="text" class="caps" placeholder="Zip Code" name="ZipCode" ng-model="NewUser.address[4]"/>
-        </label>
+           
+        <div ng-show="AddressForm.$submitted || ddressForm.City.$touched">
+          <span class="err" ng-show="AddressForm.City.$error.required">Please provide your city.</span>
+        </div>       
+       
 
         <label class="item item-input item-select">
           <div class="input-label item-text-wrap smallLabel">
             {{NewUser.region}}
           </div>
-          <select ng-options="region for region in Regions" ng-model="NewUser.region" required="" data-tab-disabled="true" ng-class="{'customSmallSelect' : NewUser.region != 'Region'}">
+          <select ng-options="region for region in Regions" ng-model="NewUser.region" required="" name="Region" data-tab-disabled="true" ng-class="{'customSmallSelect' : NewUser.region != 'Region'}">
             <option value=""></option>
           </select>
         </label>
+           
+       <div ng-show="AddressForm.$submitted || AddressForm.Region.$touched">
+            <span class="err" ng-show="AddressForm.Region.$error.required">Please provide your region.</span>
+        </div>  
+           
+           
+           <label class="item item-input">
+          <input type="text" class="caps" placeholder="Zip Code" name="ZipCode" ng-model="NewUser.address[4]" required="true"/>
+        </label> 
+           
+        <div ng-show="AddressForm.$submitted || AddressForm.ZipCode.$touched">
+          <span class="err" ng-show="AddressForm.ZipCode.$error.required">Please provide your ZIP Code.</span>
         </div>
-    </form>
-
+           
     <button ng-click="CloseAddress()" class="button button-block button-balanced" ng-show="AddressForm.$valid">
       Done
     </button>
+           
+           
+        </div>
+    </form>
+
+   
 
   </ion-content>
 </ion-modal-view>
