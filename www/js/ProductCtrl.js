@@ -48,7 +48,7 @@ KayApp.controller('ProductCtrl', function($scope, $stateParams, $http, API, $ion
 		$scope.Applications = $scope.ProductApplications[$scope.Type];
 	},function (error) {           
           $rootScope.HideLoader(); 
-          Alert('Error', error.data || 'Something went wrong, please try again.', function() {
+          Alert('Error', error.data || 'Something went wrong. Please try again.', function() {
             $scope.canReset=false;
          });
     });
