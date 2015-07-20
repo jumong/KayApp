@@ -290,6 +290,8 @@ angular.module('starter.controllers', [])
         };
 
         var StringCheck;
+       
+      
 
         if (type) {
           switch(type){
@@ -357,6 +359,13 @@ angular.module('starter.controllers', [])
         if (external) {
           browserType = '_system';
         };
+       
+       
+        if(type){
+            url=url+type;
+        }
+       
+       
 
         $cordovaInAppBrowser.open(url, '_system', options)
           .then(function(event) {          
