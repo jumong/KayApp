@@ -27,7 +27,7 @@ KayApp.controller('SettingsCtrl', function( $scope , API , Local, $state , $root
 			$rootScope.HideLoader();
 		},function (error) {           
           $rootScope.HideLoader(); 
-          Alert('Error', error.data || 'Something went wrong, please try again.', function() {
+          Alert('Error', error.data || 'Something went wrong. Please try again.', function() {
             $scope.canReset=false;
          });
         });
@@ -56,7 +56,7 @@ KayApp.controller('SettingsCtrl', function( $scope , API , Local, $state , $root
 			}
 		},function (error) {           
           $rootScope.HideLoader(); 
-          Alert('Error', error.data || 'Something went wrong, please try again.', function() {
+          Alert('Error', error.data || 'Something went wrong. Please try again.', function() {
             $scope.canReset=false;
          });
     });

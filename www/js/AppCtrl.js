@@ -134,7 +134,7 @@ angular.module('starter.controllers', [])
            }
        },function (error) {           
           $rootScope.HideLoader(); 
-          Alert('Error', error.data || 'Something went wrong, please try again.', function() {
+          Alert('Error', error.data || 'Something went wrong. Please try again.', function() {
             $scope.canReset=false;
          });
     });      
@@ -159,7 +159,7 @@ angular.module('starter.controllers', [])
           }      
       },function (error) {           
           $rootScope.HideLoader(); 
-          Alert('Error', error.data || 'Something went wrong, please try again.', function() {
+          Alert('Error', error.data || 'Something went wrong. Please try again.', function() {
             $scope.canReset=false;
          });
     })
@@ -225,7 +225,7 @@ angular.module('starter.controllers', [])
       $rootScope.HideLoader();
     },function (error) {           
           $rootScope.HideLoader(); 
-          Alert('Error', error.data || 'Something went wrong, please try again.', function() {
+          Alert('Error', error.data || 'Something went wrong. Please try again.', function() {
             $scope.canReset=false;
          });
     });
@@ -251,7 +251,7 @@ angular.module('starter.controllers', [])
           if(error.data='Unauthorized')
             message = 'Either username or password is incorrect, please try again.';
 
-          Alert('Error', message || 'Something went wrong, please try again.', function() {
+          Alert('Error', message || 'Something went wrong. Please try again.', function() {
             $scope.canReset=false;
          });
     });
@@ -262,7 +262,7 @@ angular.module('starter.controllers', [])
   $scope.showPopup = function() {
     $scope.user = {}
 
-    Alert('Sorry!', 'Your account is being authorized, please try again soon.', function() {
+    Alert('Sorry!', 'Your account is being authorized. Please try again soon.', function() {
       $state.go('app.home');
     });
 

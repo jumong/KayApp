@@ -46,7 +46,7 @@ KayApp.controller('RequestCtrl', ['$rootScope','$scope','$stateParams','Local','
 			};
 		},function (error) {           
           $rootScope.HideLoader(); 
-          Alert('Error', error.data || 'Something went wrong, please try again.', function() {
+          Alert('Error', error.data || 'Something went wrong. Please try again.', function() {
             $scope.canReset=false;
          });
       })
@@ -80,7 +80,7 @@ KayApp.controller('RequestCtrl', ['$rootScope','$scope','$stateParams','Local','
 				};
 			},function (error) {           
                   $rootScope.HideLoader(); 
-                  Alert('Error', error.data || 'Something went wrong, please try again.', function() {
+                  Alert('Error', error.data || 'Something went wrong. Please try again.', function() {
                     $scope.canReset=false;
                  });
             });
