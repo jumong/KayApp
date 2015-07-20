@@ -361,7 +361,8 @@ angular.module('starter.controllers', [])
         };
        
        
-        if(type){
+        if(type && StringCheck!=false){
+            
             url=url+type;
         }
        
