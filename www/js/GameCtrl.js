@@ -8,6 +8,23 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 		$rootScope.GameOn = false;
 	}
 
+	// $(window).on('keydown', function(evt) {
+	// 	if (evt.keyCode == 37) {
+	// 		boxVelocity = -0.2;
+	// 	};
+	// 	if (evt.keyCode == 39) {
+	// 		boxVelocity = 0.2;
+	// 	};
+	// });
+	// $(window).on('keyup', function(evt) {
+	// 	if (evt.keyCode == 37) {
+	// 		boxVelocity = 0;
+	// 	};
+	// 	if (evt.keyCode == 39) {
+	// 		boxVelocity = 0;
+	// 	};
+	// });
+
 	$scope.User = Local.GetLogin().User;
 
 	$scope.Score = 0;
@@ -16,6 +33,7 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 	gameArea = document.getElementById('gameArea'),
 	powerBar = document.getElementById('powerBar'),
 	boxRight = screen.width - 80,
+	// boxRight = 800,
 	boxPos = 10,
 	itemPos = 0,
 	boxVelocity = 0.1,
@@ -42,7 +60,7 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 	allItems = [];
 	$rootScope.GameOn = true;
 
-	box.style.right = boxRight + 'px';
+	// box.style.right = boxRight + 'px';
 	var boxHeight = $(box).height();
 	
 	$scope.Result;
@@ -185,6 +203,7 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 	}
 
 	function update(delta, timestamp) {
+		console.log(boxVelocity);
 		boxLastPos = boxPos;
 		boxPos += boxVelocity * delta;
 

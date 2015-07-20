@@ -275,7 +275,7 @@ angular.module('starter.services', [])
 				lastName : user.lastName,
 				emailaddress: user.emailaddress,
 				company : user.company,
-				contactNumber : user.contactNumber,
+				contactNumber : user.mobilePhone,
 				address : user.address,
 				region : user.region,
 				type : '',
