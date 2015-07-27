@@ -38,7 +38,10 @@ KayApp.controller('SettingsCtrl', function( $scope , API , Local, $state , $root
 	    if (localStorage.KayApp) {
 			delete localStorage.KayApp;
 			Alert('Info','User logged out');
-			$state.go('app.home');
+            $scope.loginData = {};			
+			$scope.LoginFormData = {};
+			$rootScope.LoggedIn = Local.GetLogin().LoggedIn;
+			$state.go('app.home');            
 			$rootScope.settings.hide();
 	    };
 	}
