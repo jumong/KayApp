@@ -38,7 +38,7 @@
          </div>
 
           <label class="item item-input">
-            <input type="text" class="caps" placeholder="Zip Code" name="ZipCode" ng-model="NewUser.postalAddress[4]" required="true"/>
+            <input type="text"  maxlength="4" class="caps" placeholder="Zip Code" name="ZipCode" ng-model="NewUser.postalAddress[4]" required="true"/>
           </label>
            <div ng-show="AddressForm.$submitted || AddressForm.ZipCode.$touched">
           <span class="err" ng-show="AddressForm.ZipCode.$error.required">Please provide your ZIP Code.</span>

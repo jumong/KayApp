@@ -26,7 +26,7 @@
           <input type="text" class="caps" placeholder="City" name="City" ng-model="NewUser.address[3]" required="true"/>
         </label>
            
-        <div ng-show="AddressForm.$submitted || ddressForm.City.$touched">
+        <div ng-show="AddressForm.$submitted || AddressForm.City.$touched">
           <span class="err" ng-show="AddressForm.City.$error.required">Please provide your city.</span>
         </div>       
        
@@ -46,7 +46,7 @@
            
            
            <label class="item item-input">
-          <input type="text" class="caps" placeholder="Zip Code" name="ZipCode" ng-model="NewUser.address[4]" required="true"/>
+          <input type="text"  maxlength="4" class="caps" placeholder="Zip Code" name="ZipCode"  ng-model="NewUser.address[4]" required="true"/>
         </label> 
            
         <div ng-show="AddressForm.$submitted || AddressForm.ZipCode.$touched">
