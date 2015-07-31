@@ -205,15 +205,10 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 	function update(delta, timestamp) {
 		boxLastPos = boxPos;
 
-<<<<<<< HEAD
-		if (boxPos > 0 && boxPos < screen.height) {
-			boxPos += boxVelocity * delta;
-		}
-=======
+
 		if (boxPos > 0 && boxPos < screen.width) {
             boxPos += boxVelocity * delta;
         };
->>>>>>> origin/master
 
 		for (var i = 0; i < allItems.length; i++) {
 			var item = allItems[i];
