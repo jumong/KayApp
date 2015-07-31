@@ -207,7 +207,7 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 
 		if (boxPos > 0 && boxPos < screen.height) {
 			boxPos += boxVelocity * delta;
-		};
+		}
 
 		for (var i = 0; i < allItems.length; i++) {
 			var item = allItems[i];
