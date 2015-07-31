@@ -31,6 +31,7 @@ angular.module('starter.services', [])
 	};
 })
 
+
 .factory('Local', function(APIPath, $http){
 	return {
 		StoreLogin : function(user) {

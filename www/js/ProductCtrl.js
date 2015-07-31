@@ -18,8 +18,6 @@ KayApp.controller('ProductCtrl', function($scope, $stateParams, $http, API, $ion
 		}
 	}
 
-	// End in app browser
-
 	API.GetProducts().then(function(body) {
 		var projects = $(body.data).find('.project');
 
