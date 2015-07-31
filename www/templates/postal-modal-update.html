@@ -1,0 +1,53 @@
+<ion-modal-view class="smallModal">
+  <ion-content padding="true">
+      
+  
+      
+    <form novalidate name="AddressForm">
+        <p class="formTxt">Please enter your company's postal address</p>        
+
+    <ul class="list">
+	  <li class="item item-checkbox item-text-wrap">
+	     <label class="checkbox">
+	       <input type="checkbox" ng-click="UpdatePostalAddress(SameAsPhysical)" ng-model="SameAsPhysical">
+	     </label>
+	     Same as work physical address.
+	  </li>
+	</ul>        
+       <div class="list list-inset">
+          <label class="item item-input">
+            <input type="text" class="caps" placeholder="Address Line 1" name="Address1" ng-model="User.postalAddress[0]" required="">
+          </label>
+          <div ng-show="AddressForm.Address1.$touched">
+            <span class="err" ng-show="AddressForm.Address1.$error.required">Please provide your address.</span>
+          </div>
+
+          <label class="item item-input">
+            <input type="text" class="caps" placeholder="Address Line 2" name="Address2" ng-model="User.postalAddress[1]" >
+          </label>
+          
+           <label class="item item-input">
+            <input type="text" class="caps" placeholder="Address Line 3" name="Address3" ng-model="User.postalAddress[2]">
+          </label>
+          
+          <label class="item item-input">
+            <input type="text" class="caps" placeholder="City" name="City" ng-model="User.postalAddress[3]" required="" />
+          </label>
+          <div ng-show="AddressForm.$submitted || ddressForm.City.$touched">
+            <span class="err" ng-show="AddressForm.City.$error.required">Please provide your city.</span>
+         </div>
+
+          <label class="item item-input">
+            <input type="text"  maxlength="4" class="caps" placeholder="Zip Code" name="ZipCode" ng-model="User.postalAddress[4]" required=""/>
+          </label>
+           <div ng-show="AddressForm.$submitted || AddressForm.ZipCode.$touched">
+          <span class="err" ng-show="AddressForm.ZipCode.$error.required">Please provide your ZIP Code.</span>
+        </div>
+        <button ng-click="ClosePostalAddress()" class="button button-block button-balanced" ng-show="AddressForm.$valid">
+            Done
+        </button>              
+        </div>
+    </form>
+    
+  </ion-content>
+</ion-modal-view>
