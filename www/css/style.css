@@ -1,4 +1,9 @@
 /* Empty. Add your own CSS if you like */
+.no-activity{
+    padding:10px;
+    text-align:center;
+}
+
 .clear{
     clear: both;
 }
@@ -773,14 +778,16 @@ ion-content {
 	background-size: cover;
 	z-index: 1000000000000 !important;
 	font-family: 'Sigmar One', cursive;
+    
 }
 
 .platform-browser .gameArea {
-	transform: rotate(270deg) !important;
+/*	transform: rotate(270deg) !important;*/
 }
 
 .gameArea h4, .gameArea p {
 	font-family: 'Sigmar One', cursive;
+    font-size:small;
 }
 
 #powerContainer {
@@ -789,6 +796,10 @@ ion-content {
 	left: 60px;
 	width: 210px;
 	z-index: 10;
+}
+
+#gameArea{
+ transform: rotate(90deg)   
 }
 
 #powerBar {

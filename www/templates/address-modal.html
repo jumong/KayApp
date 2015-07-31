@@ -26,7 +26,7 @@
           <input type="text" class="caps" placeholder="City" name="City" ng-model="NewUser.address[3]" required="true"/>
         </label>
            
-        <div ng-show="AddressForm.$submitted || ddressForm.City.$touched">
+        <div ng-show="AddressForm.$submitted || AddressForm.City.$touched">
           <span class="err" ng-show="AddressForm.City.$error.required">Please provide your city.</span>
         </div>       
        
@@ -35,7 +35,7 @@
           <div class="input-label item-text-wrap smallLabel">
             {{NewUser.region}}
           </div>
-          <select ng-options="region for region in Regions" ng-model="NewUser.region" required="" name="Region" data-tab-disabled="true" ng-class="{'customSmallSelect' : NewUser.region != 'Region'}">
+          <select ng-options="region for region in Regions" ng-model="NewUser.region" required="" name="Region"  ng-class="{'customSmallSelect' : NewUser.region != 'Region'}">
             <option value=""></option>
           </select>
         </label>
@@ -46,7 +46,7 @@
            
            
            <label class="item item-input">
-          <input type="text" class="caps" placeholder="Zip Code" name="ZipCode" ng-model="NewUser.address[4]" required="true"/>
+          <input type="text"  maxlength="4" class="caps" placeholder="Zip Code" name="ZipCode"  ng-model="NewUser.address[4]" required=""/>
         </label> 
            
         <div ng-show="AddressForm.$submitted || AddressForm.ZipCode.$touched">
