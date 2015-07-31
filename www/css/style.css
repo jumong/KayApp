@@ -1,4 +1,9 @@
 /* Empty. Add your own CSS if you like */
+.no-activity{
+    padding:10px;
+    text-align:center;
+}
+
 .clear{
     clear: both;
 }

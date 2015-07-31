@@ -1,9 +1,8 @@
 <ion-view>
   <ion-content>
-    <h3>Activity Record</h3>
-
-    <div class="list">
-
+    <h3>Activity Record</h3>      
+    <p class="no-activity" ng-show="!Activities">There are no activities found.</p>    
+    <div class="list" ng-hide="!Activities">
 	   <a class="item item-avatar" href="#" ng-repeat="activity in Activities">
 	      <img src="{{activity.photo.src}}">
 	      <h2 style="text-align: left">{{activity.type}}</h2>
@@ -11,9 +10,6 @@
 	      <p>{{activity.type}}</p>
 	      <p>{{activity.date}}</p>
 	    </a>
-
 	</div>
-
-
   </ion-content>
 </ion-view>

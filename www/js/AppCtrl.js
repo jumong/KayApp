@@ -203,10 +203,46 @@ angular.module('starter.controllers', [])
       return;
     };
 
+    if (!$scope.NewUser.address[0]) {
+        Alert('Error', 'Please enter address line 1 in physical address.');
+        return;
+    }
+
+    if (!$scope.NewUser.address[3]) {
+        Alert('Error', 'Please enter city in physical address.');
+        return;
+    }
+
+    if ($scope.NewUser.region == 'Region') {
+        Alert('Error', 'Please select region in physical address.');
+        return;
+    };
+
+    if (!$scope.NewUser.address[4]) {
+        Alert('Error', 'Please enter ZIP code in physical address.');
+        return;
+    }    
+
+
+    if(!$scope.NewUser.postalAddress[0]){
+        Alert('Error', 'Please enter address line 1 in postal address.');
+        return;
+    }
+    if (!$scope.NewUser.postalAddress[3]) {
+        Alert('Error', 'Please enter city in postal address.');
+        return;
+    }
+
+    if (!$scope.NewUser.postalAddress[4]) {
+        Alert('Error', 'Please enter ZIP code in postal address.');
+        return;
+    }
+
     $rootScope.Loading();
 
-    $scope.NewUser.username = $scope.NewUser.emailaddress;
-
+    $scope.NewUser.username = $scope.NewUser.emailaddress;   
+   
+      
     API.CreateUser($scope.NewUser).then(function(data) {
       if (data.data.success) {
         Local.StoreLogin($scope.NewUser);

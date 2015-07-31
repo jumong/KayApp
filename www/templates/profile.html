@@ -31,16 +31,7 @@
 
 		  	<div ng-show="UpdateUserForm.$submitted || UpdateUserForm.EmailAddress.$touched">
 				<span class="err" ng-show="UpdateUserForm.EmailAddress.$error.required">Please provide your email.</span>
-			</div>
-
-		  <!-- <label class="item item-input item-stacked-label">
-		    <span class="input-label">Address</span>
-		    <input type="text" ng-model="User.address" name="Address" required="">
-		  </label>
-
-		  	<div ng-show="UpdateUserForm.$submitted || UpdateUserForm.Address.$touched">
-				<span class="err" ng-show="UpdateUserForm.Address.$error.required">Please provide your address.</span>
-			</div> -->
+			</div>		  
 
 		  <label class="item item-input item-stacked-label">
 		    <span class="input-label">Company</span>
@@ -80,10 +71,10 @@
 
 
 			<ul class="list">
-			    <li class="item" ng-click="EnterAddress()">
+			    <li class="item" ng-click="UpdateAddress()">
 			      <i class="icon ion-briefcase rightIcon"></i>{{address}}
 			    </li>                    
-                <li class="item" ng-click="EnterPostalAddress()">
+                <li class="item" ng-click="UpdatePostalAddress()">
 			      <i class="icon ion-email rightIcon"></i>{{postal}}
 			    </li>
 			</ul>
@@ -97,7 +88,7 @@
 				<div class="input-label item-text-wrap">
 				  Relationship Type
 				</div>
-				<select ng-options="rel for rel in RelationshipTypes" ng-model="User.relationshipType" name="Relationship" required="" data-tab-disabled="true">
+				<select ng-options="rel for rel in RelationshipTypes" ng-model="User.relationshipType" name="Relationship" required="" >
 					<option value=""></option>
 				</select>
 			</label>
@@ -123,13 +114,16 @@
 				<span class="err" ng-show="UpdateUserForm.Region.$error.required">Please provide your contact number.</span>
 			</div>
 
-		 <button ng-click="SendUpdate()" class="button button-block button-balanced" ng-show="UpdateUserForm.$valid">
-		  Submit
-		</button>
+		 
 
 		</form>
 
 	</div>
+      <div class="list list-inset">
+        <button ng-click="SendUpdate()" class="button button-block button-balanced" ng-show="UpdateUserForm.$valid">
+		  Submit
+		</button>
+      </div>
 
 
   </ion-content>

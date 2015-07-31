@@ -230,8 +230,8 @@ angular.module('starter.services', [])
 })
 
 .factory('APIPath', function() {
-    //return 'http://localhost:5001/api/';
-	return 'http://Kayappapi.kaymac.co.za/api/';
+    return 'http://localhost:5001/api/';
+	//return 'http://Kayappapi.kaymac.co.za/api/';
 	// return 'http://kayappapi.azurewebsites.net/api/';
 	// return 'http://192.168.1.102:5001/api/'
 })
@@ -331,22 +331,27 @@ angular.module('starter.services', [])
 })
 
 .factory('User', function(){
-	return function () {
-		return {
-			username: '',
-			password: '',
-			fullname : '',
-			emailaddress : '',
-			company : '',
-			contactNumber : '',
-			address : [],
-            postalAddress:[],
-            sameAsPhysical:false,
-			region : 'Region',
-            Question:'',
-            Answer:''
-		}
-	};
+return function () {
+return {
+username: '',
+password: '',
+firstName: '',
+lastName: '',
+emailaddress : '',
+company: '',
+position: '',
+businessPhone: '',
+mobilePhone:'',
+address : [],
+postalAddress:[],
+sameAsPhysical:false,
+region : 'Region',
+Question:'',
+Answer: '',
+relationshipType: '',
+industry: ''
+}
+};
 })
 
 .factory('Platform', function(){
