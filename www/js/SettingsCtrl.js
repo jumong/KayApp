@@ -1,27 +1,10 @@
 
 
-KayApp.controller('SettingsCtrl', function( $scope , API , Local, $state , $rootScope ,$ionicModal, Alert,Platform){
+KayApp.controller('SettingsCtrl', function( $scope , API , Local, $state , $rootScope , Alert,Platform){
 	$scope.User = Local.GetLogin().User;
 	$scope.Activities = Local.GetActivities();
 	$scope.NewPassword = {};
     $scope.phone_number = /^\+?\d{2}[- ]?\d{3}[- ]?\d{5}$/;
-    
-    
-    
-     $ionicModal.fromTemplateUrl('templates/address-modal-update.html',{
-    scope : $scope,
-    animation : 'scale-in'
-  }).then(function(modal){
-    $scope.addressUpdateModal = modal;
-  });
-
-
-  $ionicModal.fromTemplateUrl('templates/postal-modal-update.html',{
-    scope : $scope,
-    animation : 'scale-in'
-  }).then(function(modal){
-    $scope.postalAddressUpdateModal = modal;
-  });
 
 	$rootScope.GoUrl = function(url) {
 	    $state.go(url);
@@ -41,9 +24,9 @@ KayApp.controller('SettingsCtrl', function( $scope , API , Local, $state , $root
 		$rootScope.TimeStep = value;
 	}
 
-<<<<<<< HEAD
 	$scope.SendUpdate = function() {
- 
+
+
 	    if ($scope.NewUser) {
 	        $scope.User.address = $scope.NewUser.address;
 	        $scope.User.postalAddress = $scope.NewUser.postalAddress;
@@ -51,9 +34,6 @@ KayApp.controller('SettingsCtrl', function( $scope , API , Local, $state , $root
 
         alert(JSON.stringify($scope.User));
         return;
-=======
-	$scope.SendUpdate = function() {        
->>>>>>> origin/master
 
 	    if (!$scope.User.address[0]) {
 	        Alert('Error', 'Please enter address line 1 in physical address.');
@@ -97,7 +77,7 @@ KayApp.controller('SettingsCtrl', function( $scope , API , Local, $state , $root
                 Local.UpdateLogin($scope.User);
 			
                 Alert('Response', response.data.message);
-;
+            $scope.NewUser = {};
                         
             
 			$rootScope.HideLoader();
@@ -139,62 +119,60 @@ KayApp.controller('SettingsCtrl', function( $scope , API , Local, $state , $root
             $scope.canReset=false;
          });
     });
-}
+	}
     
     $scope.UpdatePostalAddress = function () {
-    $scope.postalAddressUpdateModal.show();
+
+    $scope.User = Local.GetLogin().User;
+        if($scope.NewUser === undefined)
+            $scope.NewUser =$scope.User;
+
+    if (!$scope.NewUser.postalAddress[0])
+        $scope.NewUser.postalAddress[0] = $scope.User.postalAddress[0];
+
+    if (!$scope.NewUser.postalAddress[1])
+        $scope.NewUser.postalAddress[1] = $scope.User.postalAddress[1];
+
+    if (!$scope.NewUser.postalAddress[2])
+        $scope.NewUser.postalAddress[2] = $scope.User.postalAddress[2];
+
+    if (!$scope.NewUser.postalAddress[3])
+        $scope.NewUser.postalAddress[3] = $scope.User.postalAddress[3];
+
+    if (!$scope.NewUser.postalAddress[4])
+        $scope.NewUser.postalAddress[4] = parseInt( $scope.User.postalAddress[4]);
+
+    $scope.postalAddressModal.show();
 }
 
-    $scope.UpdateAddress = function () {  
-        $scope.addressUpdateModal.show();
+    $scope.UpdateAddress = function () {
+        
+       
+    $scope.User = Local.GetLogin().User;
+        
+    if($scope.NewUser === undefined)
+        $scope.NewUser =$scope.User;
+
+    if (!$scope.NewUser.address[0])
+        $scope.NewUser.address[0] = $scope.User.address[0];
+
+    if (!$scope.NewUser.address[1])
+        $scope.NewUser.address[1] = $scope.User.address[1];
+
+    if (!$scope.NewUser.address[2])
+        $scope.NewUser.address[2] = $scope.User.address[2];
+
+    if (!$scope.NewUser.address[3])
+        $scope.NewUser.address[3] = $scope.User.address[3];
+
+    $scope.NewUser.address[4] = parseInt( $scope.User.address[4]);
+
+    if ($scope.NewUser.region == 'Region')
+        $scope.NewUser.region = $scope.User.region;
+
+
+    $scope.addressModal.show();
 }
-    
-    
-     $scope.CloseAddress = function() {  
-
-    var a = '';
-    $scope.User.address.forEach(function(i){
-    if(i == $scope.User.address[0] ){
-           a=i;
-         }else{
-           if(i!=='')
-              a+= ', '+i; 
-        }
-    });
-
-    if(a==='')
-      $scope.address='Work Physical Address';
-    else      
-      $scope.address=$scope.User.address[0]; 
-
-
-    $scope.addressUpdateModal.hide();    
-  }
-  
-   $scope.ClosePostalAddress = function(){
-
-    var p = '';
-    $scope.User.postalAddress.forEach(function(i){
-    if(i == $scope.User.postalAddress[0] ){
-          p=i;
-        } else{
-
-            if(i!=='')
-              p+=  ', '+i; 
-          
-        }
-    });
-
-     
-    if(p==='')
-      $scope.postal='Work Postal Address';
-    else      
-       $scope.postal=$scope.User.postalAddress[0]; 
-  
-    
-    $scope.postalAddressUpdateModal.hide();
-
-  }
     
     
 });
