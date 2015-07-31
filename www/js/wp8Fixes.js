@@ -8,8 +8,6 @@ if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
 	document.getElementsByTagName("head")[0].
         appendChild(msViewportStyle);
 
-     alert(screen.height);
-
      $('._jsBottomTabs').css({
      	top : screen.height - $('._jsBottomTabs').height()
      });
