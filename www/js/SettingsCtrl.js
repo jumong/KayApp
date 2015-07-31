@@ -25,6 +25,9 @@ KayApp.controller('SettingsCtrl', function( $scope , API , Local, $state , $root
 	}
 
 	$scope.SendUpdate = function() {
+        
+   
+
 
 
 	    if ($scope.NewUser) {

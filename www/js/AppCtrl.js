@@ -20,7 +20,6 @@ angular.module('starter.controllers', [])
   if (localStorage.KayAppEmail) {
     $scope.LoginFormData.username = localStorage.KayAppEmail;
   };
-  
 
   if (!Local.HasPushEnabled()) {
 
@@ -439,8 +438,12 @@ angular.module('starter.controllers', [])
     $scope.addressModal.hide();
     console.log($scope.address);
   }
-  
-   $scope.ClosePostalAddress = function(){
+
+  $scope.EnterPostalAddress = function(){
+    $scope.postalAddressModal.show();      
+  }
+
+  $scope.ClosePostalAddress = function(){
 
     var p = '';
     $scope.NewUser.postalAddress.forEach(function(i){
@@ -464,13 +467,6 @@ angular.module('starter.controllers', [])
     $scope.postalAddressModal.hide();
 
   }
-  
-
-  $scope.EnterPostalAddress = function(){
-    $scope.postalAddressModal.show();      
-  }
-
- 
 
   $scope.UpdatePostalAddress=function(value){
     if(value){

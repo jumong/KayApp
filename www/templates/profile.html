@@ -53,22 +53,20 @@
 
 		  <label class="item item-input item-stacked-label">
 		    <span class="input-label">Business Phone</span>
-		    <input type="text" ng-model="User.businessPhone" name="BusinessPhone" ng-pattern="phone_number" required="">
+		    <input type="text" ng-model="User.businessPhone" name="BusinessPhone" required="">
 		  </label>
 
 		  	<div ng-show="UpdateUserForm.$submitted || UpdateUserForm.BusinessPhone.$touched">
 				<span class="err" ng-show="UpdateUserForm.BusinessPhone.$error.required">Please provide your business phone number.</span>
-                <span class="err" ng-show="UpdateUserForm.BusinessPhone.$error.pattern">Please provide valid business phone number.</span>
 			</div>
 
 			<label class="item item-input item-stacked-label">
 				<span class="input-label">Mobile Phone</span>
-				<input type="text" ng-model="User.mobilePhone" name="MobilePhone" ng-pattern="phone_number" required="">
+				<input type="text" ng-model="User.mobilePhone" name="MobilePhone" required="">
 			</label>
 
 		  	<div ng-show="UpdateUserForm.$submitted || UpdateUserForm.MobilePhone.$touched">
 				<span class="err" ng-show="UpdateUserForm.MobilePhone.$error.required">Please provide your mobile phone number.</span>
-                <span class="err" ng-show="UpdateUserForm.MobilePhone.$error.pattern">Please provide valid mobile phone number.</span>
 			</div>
 
 
