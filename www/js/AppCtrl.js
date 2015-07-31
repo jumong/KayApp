@@ -438,12 +438,8 @@ angular.module('starter.controllers', [])
     $scope.addressModal.hide();
     console.log($scope.address);
   }
-
-  $scope.EnterPostalAddress = function(){
-    $scope.postalAddressModal.show();      
-  }
-
-  $scope.ClosePostalAddress = function(){
+  
+   $scope.ClosePostalAddress = function(){
 
     var p = '';
     $scope.NewUser.postalAddress.forEach(function(i){
@@ -467,6 +463,13 @@ angular.module('starter.controllers', [])
     $scope.postalAddressModal.hide();
 
   }
+  
+
+  $scope.EnterPostalAddress = function(){
+    $scope.postalAddressModal.show();      
+  }
+
+ 
 
   $scope.UpdatePostalAddress=function(value){
     if(value){
