@@ -7,7 +7,6 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 		$state.go('app.home');
 		$rootScope.GameOn = false;
 	}
-	
 
 	$scope.User = Local.GetLogin().User;
 

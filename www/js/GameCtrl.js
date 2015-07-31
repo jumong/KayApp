@@ -8,6 +8,23 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 		$rootScope.GameOn = false;
 	}
 
+	// $(window).on('keydown', function(evt) {
+	// 	if (evt.keyCode == 37) {
+	// 		boxVelocity = -0.2;
+	// 	};
+	// 	if (evt.keyCode == 39) {
+	// 		boxVelocity = 0.2;
+	// 	};
+	// });
+	// $(window).on('keyup', function(evt) {
+	// 	if (evt.keyCode == 37) {
+	// 		boxVelocity = 0;
+	// 	};
+	// 	if (evt.keyCode == 39) {
+	// 		boxVelocity = 0;
+	// 	};
+	// });
+
 	$scope.User = Local.GetLogin().User;
 
 	$scope.Score = 0;

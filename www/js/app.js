@@ -24,7 +24,6 @@ var KayApp = angular.module('starter', ['ionic', 'starter.controllers','starter.
   });
 })
 
-
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider, $ionicAppProvider) {
   // $ionicConfigProvider.views.swipeBackEnabled(false);
 

@@ -25,7 +25,11 @@ KayApp.controller('SettingsCtrl', function( $scope , API , Local, $state , $root
 	}
 
 	$scope.SendUpdate = function() {
-		
+        
+   
+
+
+
 	    if ($scope.NewUser) {
 	        $scope.User.address = $scope.NewUser.address;
 	        $scope.User.postalAddress = $scope.NewUser.postalAddress;
@@ -122,27 +126,27 @@ KayApp.controller('SettingsCtrl', function( $scope , API , Local, $state , $root
     
     $scope.UpdatePostalAddress = function () {
 
-	    $scope.User = Local.GetLogin().User;
-	        if($scope.NewUser === undefined)
-	            $scope.NewUser =$scope.User;
+    $scope.User = Local.GetLogin().User;
+        if($scope.NewUser === undefined)
+            $scope.NewUser =$scope.User;
 
-	    if (!$scope.NewUser.postalAddress[0])
-	        $scope.NewUser.postalAddress[0] = $scope.User.postalAddress[0];
+    if (!$scope.NewUser.postalAddress[0])
+        $scope.NewUser.postalAddress[0] = $scope.User.postalAddress[0];
 
-	    if (!$scope.NewUser.postalAddress[1])
-	        $scope.NewUser.postalAddress[1] = $scope.User.postalAddress[1];
+    if (!$scope.NewUser.postalAddress[1])
+        $scope.NewUser.postalAddress[1] = $scope.User.postalAddress[1];
 
-	    if (!$scope.NewUser.postalAddress[2])
-	        $scope.NewUser.postalAddress[2] = $scope.User.postalAddress[2];
+    if (!$scope.NewUser.postalAddress[2])
+        $scope.NewUser.postalAddress[2] = $scope.User.postalAddress[2];
 
-	    if (!$scope.NewUser.postalAddress[3])
-	        $scope.NewUser.postalAddress[3] = $scope.User.postalAddress[3];
+    if (!$scope.NewUser.postalAddress[3])
+        $scope.NewUser.postalAddress[3] = $scope.User.postalAddress[3];
 
-	    if (!$scope.NewUser.postalAddress[4])
-	        $scope.NewUser.postalAddress[4] = parseInt( $scope.User.postalAddress[4]);
+    if (!$scope.NewUser.postalAddress[4])
+        $scope.NewUser.postalAddress[4] = parseInt( $scope.User.postalAddress[4]);
 
-	    $scope.postalAddressModal.show();
-	}
+    $scope.postalAddressModal.show();
+}
 
     $scope.UpdateAddress = function () {
         
