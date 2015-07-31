@@ -20,6 +20,7 @@ angular.module('starter.controllers', [])
   if (localStorage.KayAppEmail) {
     $scope.LoginFormData.username = localStorage.KayAppEmail;
   };
+  
 
   if (!Local.HasPushEnabled()) {
 

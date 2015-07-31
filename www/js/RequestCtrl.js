@@ -21,8 +21,6 @@ KayApp.controller('RequestCtrl', ['$rootScope','$scope','$stateParams','Local','
 		}
 	}
 
-	// alert($rootScope.Platform);
-
 	$rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){ 
 		$scope.CheckLogin(toState.name);
 	});

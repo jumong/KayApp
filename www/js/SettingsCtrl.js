@@ -25,11 +25,7 @@ KayApp.controller('SettingsCtrl', function( $scope , API , Local, $state , $root
 	}
 
 	$scope.SendUpdate = function() {
-        
-   
-
-
-
+ 
 	    if ($scope.NewUser) {
 	        $scope.User.address = $scope.NewUser.address;
 	        $scope.User.postalAddress = $scope.NewUser.postalAddress;
