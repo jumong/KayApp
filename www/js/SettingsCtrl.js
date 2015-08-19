@@ -149,8 +149,7 @@ $ionicModal.fromTemplateUrl('templates/address-modal-update.html',{
 }
     
     $scope.UpdatePostalAddress = function () {      
-        $scope.postalAddressUpdateModal.show();
-        AppAnalytics.trackPageViewed('Profile');  
+        $scope.postalAddressUpdateModal.show();       
     }
 
     $scope.UpdateAddress = function () {  
