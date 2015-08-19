@@ -624,6 +624,44 @@ angular.module('starter.services', [])
             return output;
         }
     };
+})
+
+.factory('AppAnalytics',function(){
+
+        return{
+            initializeAnalytics:function(){
+                if(analytics !== undefined){
+                    analytics.startTrackerWithId("UA-66288265-1");
+                    return true;
+                }
+                else{
+                    return false;
+                }
+                
+            
+        },
+        trackPageViewed:function(data){
+            if(analytics !== undefined){                   
+                analytics.trackView(data);
+                return true;
+            }
+            else{
+                return false;
+            }           
+                
+        },
+        trackRequestMade:function(data){
+             if(analytics !== undefined){                   
+                analytics.trackEvent(data.Category, data.RequestType, data.Province, 1);
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+    }
+
+
 });
 
 

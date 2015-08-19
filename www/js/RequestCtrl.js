@@ -2,7 +2,7 @@
 
 
 
-KayApp.controller('RequestCtrl', ['$rootScope','$scope','$stateParams','Local','Request','GetOptions','Regions', 'Enquiry', 'API', '$timeout', '$ionicLoading', '$ionicPopup', '$state', 'TakePhoto', '$state', 'Alert', function($rootScope, $scope, $stateParams, Local, Request, GetOptions, Regions, Enquiry, API, $timeout, $ionicLoading, $ionicPopup, $state, TakePhoto, $state, Alert){
+KayApp.controller('RequestCtrl', ['$rootScope','$scope','$stateParams','Local','Request','GetOptions','Regions', 'Enquiry', 'API', '$timeout', '$ionicLoading', '$ionicPopup', '$state', 'TakePhoto', '$state', 'Alert','$ionicPlatform','AppAnalytics', function($rootScope, $scope, $stateParams, Local, Request, GetOptions, Regions, Enquiry, API, $timeout, $ionicLoading, $ionicPopup, $state, TakePhoto, $state, Alert, $ionicPlatform, AppAnalytics){
 	$scope.Type = $stateParams.type;
 	$scope.Heading;
 	$scope.Regions = Regions.Get();
@@ -10,6 +10,11 @@ KayApp.controller('RequestCtrl', ['$rootScope','$scope','$stateParams','Local','
 	$scope.Authorized = Local.GetLogin().Authorized;
 	$scope.Photos = [];
 	console.log('Authorized : ' + $scope.Authorized);
+    
+    $ionicPlatform.ready(function(){        
+            AppAnalytics.trackPageViewed('Request ('+$scope.Type+')');      
+   });
+    
 
 	$scope.Options = GetOptions($scope);
 
@@ -23,7 +28,7 @@ KayApp.controller('RequestCtrl', ['$rootScope','$scope','$stateParams','Local','
 
 	// alert($rootScope.Platform);
 
-	$rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){ 
+	$rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams, $ionicPlatform, AppAnalytics){ 
 		$scope.CheckLogin(toState.name);
 	});
 
@@ -38,11 +43,16 @@ KayApp.controller('RequestCtrl', ['$rootScope','$scope','$stateParams','Local','
 		if ($scope.Photos.length) {
 			data.photo = $scope.Photos;
 		};
-		data.EnquiryType = $scope.Heading;
+		data.EnquiryType = $scope.Heading; 
+        
+        
 		API.SendRequestEnquiry(data).then(function(response) {
 			if (response.data.success) {
 				$scope.HideLoader();
-				$scope.showAlert();
+				$scope.showAlert();                  
+                
+                var ctx={Category:'Request',RequestType:$scope.Type,Province:data.region || 'n/a'};
+                AppAnalytics.trackRequestMade(ctx);
 			};
 		},function (error) {           
           $rootScope.HideLoader(); 

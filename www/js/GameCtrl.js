@@ -1,7 +1,12 @@
 
 
-KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope, $state, Local, Bidim ){
+KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope, $state, Local, Bidim, $ionicPlatform, AppAnalytics ){
 
+    $ionicPlatform.ready(function(){        
+            AppAnalytics.trackPageViewed('Bidim Game');      
+   });
+    
+    
 	$scope.StopGame = function() {
 		stop();
 		$state.go('app.home');

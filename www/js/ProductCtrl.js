@@ -1,10 +1,24 @@
 
 
 
-KayApp.controller('ProductCtrl', function($scope, $stateParams, $http, API, $ionicLoading, $ionicPlatform, $cordovaInAppBrowser, $rootScope, $timeout, $state){
+KayApp.controller('ProductCtrl', function($scope, $stateParams, $http, API, $ionicLoading, $ionicPlatform, $cordovaInAppBrowser, $rootScope, $timeout, $state, $ionicPlatform, AppAnalytics){
+     
 	$scope.Type = $stateParams.type;
 	$scope.ProductApplications = {};
-	$scope.Applications;
+	$scope.Applications;  
+    
+    $ionicPlatform.ready(function(){ 
+        
+        switch($state.current.name){                
+                case 'app.productinfo':
+                    AppAnalytics.trackPageViewed('Product Info');    
+                break;
+                
+                case 'app.producttype':
+                    AppAnalytics.trackPageViewed('Product Type');
+                break;           
+        }
+   });  
 
 	if ($scope.Type) {
 		$scope.Loading();
@@ -45,7 +59,7 @@ KayApp.controller('ProductCtrl', function($scope, $stateParams, $http, API, $ion
 
 		}); //End Each
 
-		$scope.Applications = $scope.ProductApplications[$scope.Type];
+        $scope.Applications = $scope.ProductApplications[$scope.Type];
 	},function (error) {           
           $rootScope.HideLoader(); 
           Alert('Error', error.data || 'Something went wrong. Please try again.', function() {
@@ -90,7 +104,9 @@ KayApp.controller('ProductCtrl', function($scope, $stateParams, $http, API, $ion
 				break;
 		}
 	}
-
+        
+   
+    
 });
 
 

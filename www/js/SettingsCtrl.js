@@ -1,14 +1,13 @@
 
 
-KayApp.controller('SettingsCtrl', function( $scope , API , Local, $state , $rootScope ,$ionicModal, Alert,Platform){
+KayApp.controller('SettingsCtrl', function( $scope , API , Local, $state , $rootScope ,$ionicModal, Alert,Platform,$ionicPlatform,AppAnalytics){
 	$scope.User = Local.GetLogin().User;
 	$scope.Activities = Local.GetActivities();
 	$scope.NewPassword = {};
     $scope.phone_number = /^\+?\d{2}[- ]?\d{3}[- ]?\d{5}$/;
     
     
-    
-     $ionicModal.fromTemplateUrl('templates/address-modal-update.html',{
+$ionicModal.fromTemplateUrl('templates/address-modal-update.html',{
     scope : $scope,
     animation : 'scale-in'
   }).then(function(modal){
@@ -22,6 +21,26 @@ KayApp.controller('SettingsCtrl', function( $scope , API , Local, $state , $root
   }).then(function(modal){
     $scope.postalAddressUpdateModal = modal;
   });
+    
+    
+    
+   $ionicPlatform.ready(function(){ 
+        
+        switch($state.current.name){                
+                case 'app.profile':
+                    AppAnalytics.trackPageViewed('Profile');    
+                break;
+                
+                case 'app.activity':
+                    AppAnalytics.trackPageViewed('Activity');
+                break;  
+                
+                case 'app.changepassword':
+                    AppAnalytics.trackPageViewed('Change Password');
+                break;
+        }
+   });  
+    
 
 	$rootScope.GoUrl = function(url) {
 	    $state.go(url);
@@ -129,16 +148,17 @@ KayApp.controller('SettingsCtrl', function( $scope , API , Local, $state , $root
     });
 }
     
-    $scope.UpdatePostalAddress = function () {
-    $scope.postalAddressUpdateModal.show();
-}
+    $scope.UpdatePostalAddress = function () {      
+        $scope.postalAddressUpdateModal.show();
+        AppAnalytics.trackPageViewed('Profile');  
+    }
 
     $scope.UpdateAddress = function () {  
         $scope.addressUpdateModal.show();
-}
+   }
     
     
-     $scope.CloseAddress = function() {  
+   $scope.CloseAddress = function() {  
 
     var a = '';
     $scope.User.address.forEach(function(i){
@@ -183,6 +203,10 @@ KayApp.controller('SettingsCtrl', function( $scope , API , Local, $state , $root
     $scope.postalAddressUpdateModal.hide();
 
   }
+   
+   
+       
+   }
     
     
 });

@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function(Regions, $scope, $ionicModal, $timeout, $state, $ionicPopup, Local, API, $rootScope, User, $ionicSideMenuDelegate, $cordovaInAppBrowser, $ionicLoading, $ionicUser, $ionicPush, Alert, RelationshipTypes, Industries, Platform, $location, $ionicHistory) {
+.controller('AppCtrl', function(Regions, $scope, $ionicModal, $timeout, $state, $ionicPopup, Local, API, $rootScope, User, $ionicSideMenuDelegate, $cordovaInAppBrowser, $ionicLoading, $ionicUser, $ionicPush, Alert, RelationshipTypes, Industries, Platform, $location, $ionicHistory,$ionicPlatform,AppAnalytics) {
   $scope.address ='Work Physical Address';
   $scope.postal='Work Postal Address';
   $scope.SameAsPhysical= {checked:true};
@@ -51,7 +51,9 @@ angular.module('starter.controllers', [])
  
 
   $rootScope.Settings = function() {
+      
     $rootScope.settings.show();
+      AppAnalytics.trackPageViewed('Settings'); 
   }
   
   $ionicModal.fromTemplateUrl('templates/resetPassword-modal.html',{
@@ -104,6 +106,7 @@ angular.module('starter.controllers', [])
       $scope.Reset = new User();
       $scope.canReset =false;
       $scope.resetPasswordModal.show();
+      AppAnalytics.trackPageViewed('Password Reset'); 
   }
 
   $scope.CancelResetPassword = function() {
