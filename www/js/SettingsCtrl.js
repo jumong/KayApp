@@ -1,6 +1,6 @@
 
 
-KayApp.controller('SettingsCtrl', function( $scope , API , Local, $state , $rootScope ,$ionicModal, Alert,Platform,$ionicPlatform,AppAnalytics){
+KayApp.controller('SettingsCtrl', function( $scope , API , Local, $state , $rootScope ,$ionicModal, Alert,Platform, $ionicPlatform, AppAnalytics){
 	$scope.User = Local.GetLogin().User;
 	$scope.Activities = Local.GetActivities();
 	$scope.NewPassword = {};
@@ -205,7 +205,7 @@ $ionicModal.fromTemplateUrl('templates/address-modal-update.html',{
    
    
        
-   }
+   
     
     
 });

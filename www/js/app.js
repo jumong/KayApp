@@ -10,9 +10,9 @@ var KayApp = angular.module('starter', ['ionic', 'starter.controllers','starter.
   $ionicPlatform.ready(function() {
             
       if(!ionic.Platform.isWindowsPhone()){         
-          if(typeof analytics !== undefined){
-              analytics.startTrackerWithId("UA-66288265-1");
-          }          
+//          if(typeof analytics !== undefined){
+//              analytics.startTrackerWithId("UA-66288265-1");
+//          }          
       }
       
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

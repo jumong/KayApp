@@ -230,8 +230,8 @@ angular.module('starter.services', [])
 })
 
 .factory('APIPath', function() {
-    //return 'http://localhost:5001/api/';
-	return 'http://Kayappapi.kaymac.co.za/api/';
+    return 'http://localhost:5001/api/';
+	//return 'http://Kayappapi.kaymac.co.za/api/';
 	// return 'http://kayappapi.azurewebsites.net/api/';
 	// return 'http://192.168.1.102:5001/api/'
 })
@@ -641,18 +641,19 @@ angular.module('starter.services', [])
             
         },
         trackPageViewed:function(data){
-            if(analytics !== undefined){                   
-                analytics.trackView(data);
-                return true;
-            }
-            else{
-                return false;
-            }           
+//            if(analytics !== undefined){                   
+//                analytics.trackView(data);
+//                return true;
+//            }
+//            else{
+//                return false;
+//            }    
+            return true;
                 
         },
         trackRequestMade:function(data){
              if(analytics !== undefined){                   
-                analytics.trackEvent(data.Category, data.RequestType, data.Province, 1);
+                //analytics.trackEvent(data.Category, data.RequestType, data.Province, 1);
                 return true;
             }
             else{
