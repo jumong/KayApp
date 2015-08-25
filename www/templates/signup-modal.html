@@ -39,7 +39,7 @@
 				</div>
 
 			  <label class="item item-input">
-			    <input type="email" placeholder="Email Address" name="EmailAddress" ng-model="NewUser.emailaddress" required="">
+			    <input type="email" placeholder="Email Address" name="EmailAddress" ng-model="NewUser.emailaddress" required=""/>
 			  </label>
 
 			  	<div ng-show="NewAccount.$submitted || NewAccount.EmailAddress.$touched">
@@ -47,7 +47,7 @@
 				</div>
 
 			  <label class="item item-input">
-			    <input type="password" placeholder="Password" name="Password" ng-model="NewUser.password" required="">
+			    <input type="password" placeholder="Password" name="Password" ng-model="NewUser.password" required=""/>
 			  </label>
 
 			  	<div ng-show="NewAccount.$submitted || NewAccount.Password.$touched">

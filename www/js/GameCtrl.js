@@ -34,6 +34,7 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 
 	$scope.Score = 0;
 
+    var guide = document.getElementById('guide');
 	var box = document.getElementById('box'),
 	gameArea = document.getElementById('gameArea'),
 	powerBar = document.getElementById('powerBar'),
@@ -128,6 +129,7 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 		$('._jsItem').remove();
 		$scope.$apply();
 		powerBar.style.width = '0px';
+        
 	}
 
 	function stop() {
