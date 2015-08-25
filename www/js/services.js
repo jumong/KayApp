@@ -631,7 +631,7 @@ angular.module('starter.services', [])
         return{
             initializeAnalytics:function(){
                 if(analytics !== undefined){
-                    analytics.startTrackerWithId("UA-66288265-1");
+                    analytics.startTrackerWithId("UA-66472313-1");
                     return true;
                 }
                 else{
