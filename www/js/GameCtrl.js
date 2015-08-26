@@ -112,7 +112,38 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 
 	function showResult(grade) {
 		$scope.ShowResult = true;
-		$scope.Product = Bidim[Math.floor(grade/2)];
+        var type = Math.floor(grade/2);
+        
+        switch(type){
+            case 1:
+            case 2:
+                $scope.Product = Bidim[Math.floor(grade/2)];
+                break;
+                
+            case 3:   
+            case 4:
+                $scope.Product = Bidim[Math.floor(grade/2)];
+                break;
+                
+            case 5:
+            case 6:
+                $scope.Product = Bidim[Math.floor(grade/2)];
+                break;
+                
+            case 7:
+            case 8:
+                $scope.Product = Bidim[Math.floor(grade/2)];
+                break;
+                
+            case 9:
+            case 10:
+                $scope.Product = Bidim[Math.floor(grade/2)];
+                break;
+                
+                
+        }
+        
+		//$scope.Product = Bidim[Math.floor(grade/2)];
 		$scope.$apply();
 	}
 

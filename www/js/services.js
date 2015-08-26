@@ -663,6 +663,95 @@ angular.module('starter.services', [])
     }
 
 
+})
+
+.factory('Bidim', function(){
+	return [
+		{
+            type:'A1-A2',
+			name : 'A1',
+			use : 'Subsoil drainage in basement garages',
+			image : 'img/game/A1-A2_1.jpg'
+		},
+		{
+            type:'A1-A2',
+			name : 'A2',
+			use : 'As part of subsoil drainage system in rooftop gardens',
+			image : 'img/game/A1-A2_2.jpg'
+		},
+		{
+            type:'A1-A2',
+			name : 'A3',
+			use : 'Blanket drain in vertical block walls',
+			image : 'img/game/A1-A2_3.jpg'
+		},
+		{
+            type:'A1-A2',
+			name : 'A4',
+			use : 'Separation layer over low bearing capacity soil',
+			image : 'img/game/A1-A2_4.jpg'
+		},
+		{
+            type:'A3-A4',
+			name : 'A5',
+			use : 'As a drainage layer behind gabions',
+			image : 'img/game/A3-A4_1.jpg'
+		},
+		{
+            type:'A3-A4',
+			name : 'A6',
+			use : 'In subsoil drains where a higher strength is required, .e.g. to filter larger volumes of water',
+			image : 'img/game/A3-A4_2.jpg'
+		},
+		{
+            type:'A5-A6',
+			name : 'A7',
+			use : 'As part of a drainage system in a tailings facility',
+			image : 'img/game/A5-A6_1.jpg'
+		},
+        {
+            type:'A5-A6',
+			name : 'A7',
+			use : 'Drainage layer in a wrap-around wall',
+			image : 'img/game/A5-A6_2.jpg'
+		},
+        {
+            type:'A5-A6',
+			name : 'A7',
+			use : 'As part of a subsoil roadside stone drain',
+			image : 'img/game/A5-A6_3.jpg'
+		},
+        {
+            type:'A5-A6',
+			name : 'A7',
+			use : 'Blanket drain in sports fields',
+			image : 'img/game/A5-A6_4.jpg'
+		},
+        {
+            type:'A5-A6',
+			name : 'A7',
+			use : 'As filtration and separation in a leachate drainage system',
+			image : 'img/game/A5-A6_5.jpg'
+		},
+		{
+            type:'A7-A8',
+			name : 'A8',
+			use : 'As separation under rip rap when used as protection against erosion in embankments and shorelines',
+			image : 'img/game/A7-A8_1.jpg'
+		},
+		{
+            type:'A9-A10',
+			name : 'A9',
+			use : 'In landfill capping liner protection',
+			image : 'img/game/A9-A10_1.jpg'
+		},
+		{
+            type:'A9-10',
+			name : 'A10',
+			use : 'As a blanket drain and separation layer under railtracks between base layers and ballast',
+			image : 'img/game/A9-A10_2.jpg'
+		}
+	]
 });
 
 
