@@ -230,8 +230,8 @@ angular.module('starter.services', [])
 })
 
 .factory('APIPath', function() {
-    return 'http://localhost:5001/api/';
-	//return 'http://Kayappapi.kaymac.co.za/api/';
+   // return 'http://localhost:5001/api/';
+	return 'http://Kayappapi.kaymac.co.za/api/';
 	// return 'http://kayappapi.azurewebsites.net/api/';
 	// return 'http://192.168.1.102:5001/api/'
 })
@@ -400,61 +400,6 @@ angular.module('starter.services', [])
 
 		return temp;
 	};
-})
-
-.factory('Bidim', function(){
-	return [
-		{
-			name : 'A1',
-			use : 'Subsoil drainage in basement garages',
-			image : 'img/game/A1-A2.jpg'
-		},
-		{
-			name : 'A2',
-			use : 'Subsoil drainage in basement garages',
-			image : 'img/game/A1-A2.jpg'
-		},
-		{
-			name : 'A3',
-			use : 'As a drainage layer behind gabions',
-			image : 'img/game/A3-A4.jpg'
-		},
-		{
-			name : 'A4',
-			use : 'As a drainage layer behind gabions',
-			image : 'img/game/A3-A4.jpg'
-		},
-		{
-			name : 'A5',
-			use : 'As part of a drainage system in a tailings facility',
-			image : 'img/game/A5-A6.jpg'
-		},
-		{
-			name : 'A6',
-			use : 'As part of a drainage system in a tailings facility',
-			image : 'img/game/A5-A6.jpg'
-		},
-		{
-			name : 'A7',
-			use : 'As separation under rip rap when used as protection against erosion in embankments and shorelines',
-			image : 'img/game/A7-A8.jpg'
-		},
-		{
-			name : 'A8',
-			use : 'As separation under rip rap when used as protection against erosion in embankments and shorelines',
-			image : 'img/game/A7-A8.jpg'
-		},
-		{
-			name : 'A9',
-			use : 'In landfill capping liner protection',
-			image : 'img/game/A9-A10.jpg'
-		},
-		{
-			name : 'A10',
-			use : 'In landfill capping liner protection',
-			image : 'img/game/A9-A10.jpg'
-		}
-	]
 })
 
 .factory('RelationshipTypes', function(){
@@ -636,9 +581,8 @@ angular.module('starter.services', [])
                 }
                 else{
                     return false;
-                }
-                
-            
+                }            
+               
         },
         trackPageViewed:function(data){
             if(analytics !== undefined){                   
@@ -648,7 +592,7 @@ angular.module('starter.services', [])
             else{
                 return false;
             }    
-            return true;
+       
                 
         },
         trackRequestMade:function(data){
@@ -658,7 +602,8 @@ angular.module('starter.services', [])
             }
             else{
                 return false;
-            }
+            }         
+            
         }
     }
 
@@ -675,31 +620,31 @@ angular.module('starter.services', [])
 		},
 		{
             type:'A1-A2',
-			name : 'A2',
+			name : 'A1',
 			use : 'As part of subsoil drainage system in rooftop gardens',
 			image : 'img/game/A1-A2_2.jpg'
 		},
 		{
             type:'A1-A2',
-			name : 'A3',
+			name : 'A2',
 			use : 'Blanket drain in vertical block walls',
 			image : 'img/game/A1-A2_3.jpg'
 		},
 		{
             type:'A1-A2',
-			name : 'A4',
+			name : 'A2',
 			use : 'Separation layer over low bearing capacity soil',
 			image : 'img/game/A1-A2_4.jpg'
 		},
 		{
             type:'A3-A4',
-			name : 'A5',
+			name : 'A3',
 			use : 'As a drainage layer behind gabions',
 			image : 'img/game/A3-A4_1.jpg'
 		},
 		{
             type:'A3-A4',
-			name : 'A6',
+			name : 'A4',
 			use : 'In subsoil drains where a higher strength is required, .e.g. to filter larger volumes of water',
 			image : 'img/game/A3-A4_2.jpg'
 		},
@@ -729,13 +674,13 @@ angular.module('starter.services', [])
 		},
         {
             type:'A5-A6',
-			name : 'A7',
+			name : 'A5',
 			use : 'As filtration and separation in a leachate drainage system',
 			image : 'img/game/A5-A6_5.jpg'
 		},
 		{
             type:'A7-A8',
-			name : 'A8',
+			name : 'A7',
 			use : 'As separation under rip rap when used as protection against erosion in embankments and shorelines',
 			image : 'img/game/A7-A8_1.jpg'
 		},

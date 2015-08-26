@@ -112,38 +112,35 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 
 	function showResult(grade) {
 		$scope.ShowResult = true;
-        var type = Math.floor(grade/2);
-        
+        var type = Math.floor(grade/2);        
         switch(type){
+            case 0:
             case 1:
             case 2:
-                $scope.Product = Bidim[Math.floor(grade/2)];
+                $scope.Product = getBidimProduct('A1-A2');
                 break;
                 
             case 3:   
             case 4:
-                $scope.Product = Bidim[Math.floor(grade/2)];
+                $scope.Product =  getBidimProduct('A3-A4');
                 break;
                 
             case 5:
             case 6:
-                $scope.Product = Bidim[Math.floor(grade/2)];
+                $scope.Product =  getBidimProduct('A5-A6');;
                 break;
                 
             case 7:
             case 8:
-                $scope.Product = Bidim[Math.floor(grade/2)];
+                $scope.Product =  getBidimProduct('A7-A8');
                 break;
                 
             case 9:
             case 10:
-                $scope.Product = Bidim[Math.floor(grade/2)];
-                break;
+                $scope.Product =  getBidimProduct('A9-A10');;
+                break;            
                 
-                
-        }
-        
-		//$scope.Product = Bidim[Math.floor(grade/2)];
+        }	       
 		$scope.$apply();
 	}
 
@@ -313,6 +310,17 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 		frameID = requestAnimationFrame(mainLoop);
 		
 	} // End Main Loop
-
+    
+    function getBidimProduct(grade){       
+        var products = [];
+        var bidims = Bidim;
+        for( i =0;i<bidims.length;i++){  
+            
+            if(bidims[i].type === grade){
+                products.push(bidims[i]);
+            }
+        }        
+        return products[Math.floor(Math.random()*products.length)];        
+    }
 
 });
