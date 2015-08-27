@@ -1018,9 +1018,9 @@ ion-content {
 	text-shadow: 0px 0px 10px brown;
 	-webkit-text-stroke-width: 1px;
   	-webkit-text-stroke-color: brown;
-	font-size: 3rem;
-	width: 110px;
-	right: 86px;
+	font-size: 1.5rem;
+	width: 55px;
+	right: -100px;
 	top: 245px;
 }
 

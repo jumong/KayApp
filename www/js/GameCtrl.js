@@ -157,6 +157,8 @@ KayApp.controller('GameCtrl', function( $scope, $cordovaDeviceMotion, $rootScope
 		$('._jsItem').remove();
 		$scope.$apply();
 		powerBar.style.width = '0px';
+        boxPos = 10;
+        box.style.top = boxPos + 'px';
         
 	}
 
