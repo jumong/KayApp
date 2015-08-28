@@ -774,8 +774,7 @@ ion-content {
   padding: 10px 10px;
   position: absolute;
   margin: 10px;
-  max-width: 99%;   
-  transform: rotate(90deg); 
+  max-width: 99%;  
   left: -12.3em;
   top: 12.5em;   
   border-bottom: 2px solid brown;
