@@ -575,7 +575,7 @@ angular.module('starter.services', [])
 
         return{
             initializeAnalytics:function(){
-                if(analytics !== undefined){
+                if(analytics){
                     analytics.startTrackerWithId("UA-66472313-1");
                     return true;
                 }
@@ -585,7 +585,7 @@ angular.module('starter.services', [])
                
         },
         trackPageViewed:function(data){
-            if(analytics !== undefined){                   
+            if(analytics){                   
                 analytics.trackView(data);
                 return true;
             }
@@ -596,7 +596,7 @@ angular.module('starter.services', [])
                 
         },
         trackRequestMade:function(data){
-             if(analytics !== undefined){                   
+             if(analytics){                   
                 analytics.trackEvent(data.Category, data.RequestType, data.Province, 1);
                 return true;
             }
